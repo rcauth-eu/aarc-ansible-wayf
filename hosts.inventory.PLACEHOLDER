@@ -1,0 +1,7 @@
+[wayf]
+myhost.mydomain
+
+[all:vars]
+# directory containing _env files for this inventory file
+configdir=config/PLACEHOLDER/
+

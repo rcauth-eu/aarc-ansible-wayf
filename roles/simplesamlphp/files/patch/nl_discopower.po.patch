@@ -1,0 +1,76 @@
+Description: add more country tabs
+ We add more countries, rename the eduGAIN tab and add tabs for
+ 'Overige landen' (other countries) and R&E infras.
+ We also add a text for preferred although currently it isn't used by any IdP,
+ but we have it in the taborder in config/module_discopower.php
+Author: Mischa Sallé <msalle@nikhef.nl>
+--- a/modules/discopower/locales/nl/LC_MESSAGES/discopower.po	2019-10-03 22:38:23.000000000 +0200
++++ b/modules/discopower/locales/nl/LC_MESSAGES/discopower.po	2019-11-21 21:46:42.678556100 +0100
+@@ -40,7 +40,7 @@
+ msgstr "Zweden"
+ 
+ msgid "{discopower:tabs:edugain}"
+-msgstr "Europa (eduGAIN)"
++msgstr "eduGAIN"
+ 
+ msgid "{discopower:tabs:iceland}"
+ msgstr "IJsland"
+@@ -54,6 +54,51 @@
+ msgid "{discopower:tabs:norway}"
+ msgstr "Noorwegen"
+ 
++msgid "{discopower:tabs:er_infras}"
++msgstr "Onderzoeks- en e-Infrastructuren"
++
++msgid "{discopower:tabs:belgium}"
++msgstr "Belgi&euml;"
++
++msgid "{discopower:tabs:czech}"
++msgstr "Tsjechi&euml;"
++
++msgid "{discopower:tabs:france}"
++msgstr "Frankrijk"
++
++msgid "{discopower:tabs:germany}"
++msgstr "Duitsland"
++
++msgid "{discopower:tabs:ireland}"
++msgstr "Ierland"
++
++msgid "{discopower:tabs:italy}"
++msgstr "Itali&euml;"
++
++msgid "{discopower:tabs:lithuania}"
++msgstr "Litouwen"
++
++msgid "{discopower:tabs:spain}"
++msgstr "Spanje"
++
++msgid "{discopower:tabs:uk}"
++msgstr "Verenigd Koninkrijk"
++
++msgid "{discopower:tabs:australia}"
++msgstr "Australi&euml;"
++
++msgid "{discopower:tabs:canada}"
++msgstr "Canada"
++
++msgid "{discopower:tabs:oman}"
++msgstr "Oman"
++
++msgid "{discopower:tabs:south-korea}"
++msgstr "Koreaanse Toegangsfederatie"
++
++msgid "{discopower:tabs:other}"
++msgstr "Overige landen"
++
+ msgid "{discopower:tabs:misc}"
+ msgstr "Overige"
+ 
+@@ -99,3 +144,6 @@
+ msgid "InCommon"
+ msgstr "InCommon"
+ 
++msgid "{discopower:tabs:preferred}"
++msgstr "Voorkeur"
++

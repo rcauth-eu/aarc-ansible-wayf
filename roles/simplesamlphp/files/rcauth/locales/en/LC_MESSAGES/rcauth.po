@@ -1,0 +1,33 @@
+
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: SimpleSAMLphp 1.18\n"
+"Report-Msgid-Bugs-To: ops-management@rcauth.eu\n"
+"Language: en\n"
+"Language-Team: \n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Authentication status"
+msgstr "Authentication status"
+
+msgid "{rcauth:fullname}"
+msgstr "The white-label Research and Collaboration<br>Authentication CA Service for Europe"
+
+msgid "{rcauth:footertext}"
+msgstr "The RCauth WAYF is part of the RCauth CA service. For support, please contact the help desk of your own home organisations or community."
+
+msgid "A service has requested you to authenticate yourself. Please enter your username and password in the form below."
+msgstr "A service has requested you to authenticate yourself. Please enter your username and password in the form below."
+
+msgid "{cron:cron:link_cron}"
+msgstr "Cron module information"
+
+msgid "{sanitycheck:strings:link_sanitycheck}"
+msgstr "Sanity check"
+
+msgid "{metarefresh:metarefresh:frontpage_link}"
+msgstr "Refresh federation metadata immediately"

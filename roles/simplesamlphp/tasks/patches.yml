@@ -1,0 +1,57 @@
+---
+
+# First apply the non-templated patches
+
+- name: apply patches
+  patch:
+    src: "patch/{{ item }}"
+    basedir: "{{ ssp_dir }}-{{ ssp_version }}"
+    strip: 1
+    backup: false
+  with_items:
+    - frontpage_config.php.patch
+    - frontpage_federation.twig.patch
+    - _frontpage_menu.twig.patch
+    - disco.twig.patch
+    - en_discopower.po.patch
+    - nl_discopower.po.patch
+    - MetaLoader.php.patch
+    - MetaLoader.php_tagmapping.patch
+    - fetch.php.patch
+    - hook_cron.php.patch
+    - Cron.php.patch
+    - croninfo.twig.patch
+    - contrab.patch
+
+# For templated patches, we create a tempdir and copy them there
+
+- name: create patch tempdir 
+  tempfile:
+    state: directory
+    suffix: .patch
+  register: patchtmp
+
+- name: copy templated patches
+  template:
+    src: "patch/{{ item }}.j2"
+    dest: "{{ patchtmp.path }}/{{ item }}"
+  with_items:
+    - saml20-idp-remote.php.patch
+    - saml20-sp-remote.php.patch
+    - saml20-idp-hosted.php.patch
+
+- name: apply templated patches
+  patch:
+    remote_src: true
+    src: "{{ patchtmp.path }}/{{ item }}"
+    basedir: "{{ ssp_dir }}-{{ ssp_version }}"
+    strip: 1
+  with_items:
+    - saml20-idp-remote.php.patch
+    - saml20-sp-remote.php.patch
+    - saml20-idp-hosted.php.patch
+
+- name: remove patch tempdir
+  file:
+    path: "{{ patchtmp.path }}"
+    state: absent

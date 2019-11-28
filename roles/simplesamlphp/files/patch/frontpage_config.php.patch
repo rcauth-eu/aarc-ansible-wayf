@@ -1,0 +1,17 @@
+Description: warnings should only go to admin
+ The configuration tab should only show warnings when the administrator is
+ logged in.
+Author: Mischa Sallé <msalle@nikhef.nl>
+--- a/modules/core/www/frontpage_config.php	2019-11-19 15:02:44.000000000 +0100
++++ b/modules/core/www/frontpage_config.php	2019-11-22 09:02:13.383403303 +0100
+@@ -180,7 +180,9 @@
+         $warning = $translator->t($warning);
+     }
+ }
+-$t->data['warnings'] = $warnings;
++// Only show warnings when we're admin!
++if ($isadmin)
++    $t->data['warnings'] = $warnings;
+ 
+ 
+ $t->data['links'] = $links;

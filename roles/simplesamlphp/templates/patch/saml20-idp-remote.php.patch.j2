@@ -1,0 +1,25 @@
+Description: Add different IdP metadata
+ Include the different IdP metadata files, divided into locally defined
+ production IdPs, locally defined test IdPs and the eduGAIN metadata.
+Author: Mischa Sallé <msalle@nikhef.nl>
+--- a/metadata/saml20-idp-remote.php	2019-11-19 15:05:50.000000000 +0100
++++ b/metadata/saml20-idp-remote.php	2019-11-21 21:54:50.080327611 +0100
+{# NOTE: we calculate the new size of the patch based on the list sizes #}
+@@ -7,3 +7,{{ prod_idp_remotes|count + test_idp_remotes|count + 11 }} @@
+  *
+  * See: https://simplesamlphp.org/docs/stable/simplesamlphp-reference-idp-remote
+  */
++ $metadata = [];
++
++ // Production non-eduGain IdPs
+{% for idp_remote in prod_idp_remotes %}
++ require_once('idp-remote/{{ idp_remote }}');
+{% endfor %}
++
++ // Test IdPs
+{% for idp_remote in test_idp_remotes %}
++ require_once('idp-remote/{{ idp_remote }}');
+{% endfor %}
++
++ // eduGAIN IdPs
++ require_once('metadata-generated/edugain/saml20-idp-remote.php');

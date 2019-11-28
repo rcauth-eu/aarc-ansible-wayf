@@ -1,0 +1,31 @@
+---
+
+- name: restart httpd
+  service:
+    name: httpd
+    state: restarted
+    enabled: yes
+
+- name: restart sshd
+  service:
+    name: sshd
+    state: restarted
+    enabled: yes
+
+- name: restart postfix
+  service:
+    name: postfix
+    state: restarted
+    enabled: yes
+
+- name: restart chronyd
+  service:
+    name: chronyd
+    state: restarted
+    enabled: yes
+
+- name: restart nftables
+  service:
+    name: nftables
+    state: restarted
+    enabled: yes

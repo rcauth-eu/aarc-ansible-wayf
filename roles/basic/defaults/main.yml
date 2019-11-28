@@ -1,0 +1,52 @@
+---
+########################################################################
+### DEFAULT VALUES FOR THE basic ROLE
+########################################################################
+
+### You must define or override the networks parsed as local and networks/hosts
+### trusted for ssh (the latter must be in the former)
+#local_nets:
+#  - 1.2.3.0/24
+
+#trusted_nets:
+#  - 1.2.3.4/32
+
+### same for IPv6
+#local_nets_v6:
+#  - 1234::/64
+
+#trusted_nets_v6:
+#  - 1234::1
+
+
+### Networks allowed inbound UDP traffic on port 53
+dns_src_nets_v6: "{{ trusted_nets_v6 }}"
+
+
+### Backup server config
+#rsync_hosts:
+#  - 1.2.3.4/32
+
+#rsync_hosts_v6:
+#  - 1234::1
+
+
+### NTP Server
+ntp_servers:
+  - 0.pool.ntp.org
+  - 1.pool.ntp.org
+
+
+### postfix
+
+### set smtp_server for relaying email
+#smtp_server: smtp.example.org
+
+
+### HTTP
+#server_aliases:
+#  - "www.example-wayf.org"
+
+### Apache hostcert and key
+hostcert: /etc/pki/tls/hostcert.pem
+hostkey: /etc/pki/tls/hostkey.pem

@@ -1,0 +1,31 @@
+---
+
+# chronyd Setup
+
+- name: add our ntp servers config
+  blockinfile:
+    path: /etc/chrony.conf
+    marker: "# {mark} LOCAL NTP SERVER"
+    owner: "root"
+    group: "root"
+    mode: 0644
+    backup: true
+    block: |
+      {% for ntp_server in ntp_servers %}
+      server {{ ntp_server }}
+      {% endfor %}
+  notify: restart chronyd
+
+# Since we now guaranteed have our block, we can safely remove the existing ones
+- name: remove existing ntp servers
+  replace:
+    path: /etc/chrony.conf
+    before: "# BEGIN LOCAL NTP SERVER"
+    regexp: '^((pool|server) .*)$'
+    replace: '#\1'
+    owner: "root"
+    group: "root"
+    mode: 0644
+    backup: true
+  notify: restart chronyd
+  

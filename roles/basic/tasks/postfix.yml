@@ -1,0 +1,19 @@
+---
+
+# postfix setup
+
+- name: ensure myhostname is set correctly
+  lineinfile:
+    path: "/etc/postfix/main.cf"
+    regexp: '^myhostname\s+=.*$'
+    line: "myhostname = {{ inventory_hostname }}"
+    backup: yes
+  notify: restart postfix
+
+- name: configure postfix relaying
+  lineinfile:
+    path: "/etc/postfix/main.cf"
+    regexp: '^relayhost\s+=.*$'
+    line: "relayhost = [{{ smtp_server }}]"
+    backup: yes
+  notify: restart postfix

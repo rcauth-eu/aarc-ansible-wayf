@@ -1,0 +1,30 @@
+Description: Add support for attributewhitelist
+ The handling is essentially the same as how the standard blacklist and
+ whitelist are handled.
+ See also hooks/hook_cron.php and lib/MetaLoader.php
+Author: Mischa Sallé <msalle@nikhef.nl>
+Author: Tamas Balogh <tamasb@nikhef.nl>
+--- a/modules/metarefresh/www/fetch.php	2019-11-06 14:29:32.000000000 +0100
++++ b/modules/metarefresh/www/fetch.php	2019-11-07 17:16:59.000000000 +0100
+@@ -24,6 +24,7 @@
+         # Get global black/whitelists
+         $blacklist = $mconfig->getArray('blacklist', []);
+         $whitelist = $mconfig->getArray('whitelist', []);
++        $attributewhitelist = $mconfig->getArray('attributewhitelist', []);
+ 
+         // get global type filters
+         $available_types = [
+@@ -57,6 +58,13 @@
+                 $source['whitelist'] = $whitelist;
+             }
+ 
++            # Merge global and src specific attributewhitelists, cannot use array_unique on multi-dim.
++            if (isset($source['attributewhitelist'])) {
++                $source['attributewhitelist'] = array_merge($source['attributewhitelist'], $attributewhitelist);
++            } else {
++                $source['attributewhitelist'] = $attributewhitelist;
++            }
++
+             \SimpleSAML\Logger::debug('[metarefresh]: In set ['.$setkey.'] loading source ['.$source['src'].']');
+             $metaloader->loadSource($source);
+         }

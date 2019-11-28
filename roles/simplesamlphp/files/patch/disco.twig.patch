@@ -1,0 +1,16 @@
+Description: allow HTML entities to be used in the tab names
+ In particular Dutch country names often contain special characters and we don't
+ want to use a particular encoding.
+Author: Mischa Sallé <msalle@nikhef.nl>
+--- a/modules/discopower/templates/disco.twig	2019-10-03 22:38:23.000000000 +0200
++++ b/modules/discopower/templates/disco.twig	2019-11-21 21:23:40.126324616 +0100
+@@ -30,7 +30,8 @@
+         <ul class="tabset_tabs">
+         {% for tab, idps in idplist %}
+             {% if idps is not empty %}
+-            <li class="tab-link{% if loop.first %}current{% endif %}" data-tab="{{ tab }}"><a href="#{{ tab }}"><span>{{ tabNames[tab]|trans }}</span></a></li>
++            {# NOTE: pass through raw to allow HTML in tabNames, e.g. Belgi&euml; #}
++            <li class="tab-link{% if loop.first %}current{% endif %}" data-tab="{{ tab }}"><a href="#{{ tab }}"><span>{{ tabNames[tab]|trans|raw }}</span></a></li>
+             {% endif %}
+         {% endfor %}
+         </ul>

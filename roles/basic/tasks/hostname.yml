@@ -1,0 +1,7 @@
+---
+
+# ensure hostname is set correctly 
+
+- name: set hostname
+  hostname:
+    name: "{{ inventory_hostname }}"

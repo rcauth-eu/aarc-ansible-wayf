@@ -1,0 +1,42 @@
+Description: discopower configuration
+ Based on modules/discopower/config-templates/module_discopower.php this sets
+ the local configuration of the discopower module.
+Author: Mischa Sallé <msalle@nikhef.nl>
+--- a/config/module_discopower.php	2019-10-03 22:38:23.000000000 +0200
++++ b/config/module_discopower.php	2019-11-21 22:11:45.728706673 +0100
+@@ -11,7 +11,34 @@
+      * List a set of tags (Tabs) that should be listed in a specific order.
+      * All other available tabs will be listed after the ones specified below.
+      */
+-    'taborder' => ['norway'],
++    'taborder' => [
++            'preferred',
++            'edugain',
++            'er_infras',
++            'belgium',
++            'czech',
++            'denmark',
++            'france',
++            'germany',
++            'greece',
++            'ireland',
++            'italy',
++            'lithuania',
++            'netherlands',
++            'spain',
++            'sweden',
++            'switzerland',
++            'uk',
++            'australia',
++            'brazil',
++            'canada',
++            'incommon',
++            'oman',
++            'southafrica',
++            'south-korea',
++            'other',
++            'misc',
++    ],
+ 
+     /*
+      * the 'tab' parameter allows you to limit the tabs to a specific list. (excluding unlisted tags)

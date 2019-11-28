@@ -1,0 +1,61 @@
+#
+# Network definitions (trusted, local, backupservice, dnssrc)
+#
+# nft-networks.nft
+
+  set net_trusted4 { type ipv4_addr; flags interval;
+    elements = {
+{% for trusted_net in trusted_nets %}
+      {{ trusted_net }},
+{% endfor %}
+    };
+  }
+  set net_trusted6 { type ipv6_addr; flags interval;
+    elements = {
+{% for trusted_net_v6 in trusted_nets_v6 %}
+      {{ trusted_net_v6 }},
+{% endfor %}
+    };
+  }
+
+  set net_local4 { type ipv4_addr; flags interval;
+    elements = {
+{% for local_net in local_nets %}
+      {{ local_net }},
+{% endfor %}
+    };
+  }
+  set net_local6 { type ipv6_addr; flags interval;
+    elements = {
+{% for local_net_v6 in local_nets_v6 %}
+      {{ local_net_v6 }},
+{% endfor %}
+    };
+  }
+
+  set net_backupservice4 { type ipv4_addr; flags interval;
+{% if rsync_hosts is defined %}
+    elements = {
+{% for rsync_host in rsync_hosts %}
+      {{ rsync_host }},
+{% endfor %}
+    };
+{% endif %}
+  }
+  set net_backupservice6 { type ipv6_addr; flags interval;
+{% if rsync_hosts_v6 is defined %}
+    elements = {
+{% for rsync_host_v6 in rsync_hosts_v6 %}
+      {{ rsync_host_v6 }},
+{% endfor %}
+    };
+{% endif %}
+  }
+  
+  set net_dnssrc6 { type ipv6_addr; flags interval;
+    elements = {
+{% for dns_src_net_v6 in dns_src_nets_v6 %}
+      {{ dns_src_net_v6 }},
+{% endfor %}
+    };
+  }

@@ -1,0 +1,121 @@
+<?php
+ $metadata['https://aai.egi.eu/proxy/saml2/idp/metadata.php'] = array (
+  'metadata-set' => 'saml20-idp-remote',
+  'entityid' => 'https://aai.egi.eu/proxy/saml2/idp/metadata.php',
+  'SingleSignOnService' => 
+  array (
+    0 => 
+    array (
+      'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect',
+      'Location' => 'https://aai.egi.eu/proxy/saml2/idp/SSOService.php',
+    ),
+  ),
+  'SingleLogoutService' => 
+  array (
+    0 => 
+    array (
+      'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect',
+      'Location' => 'https://aai.egi.eu/proxy/saml2/idp/SingleLogoutService.php',
+    ),
+  ),
+  'certData' => 'MIIC/TCCAeWgAwIBAgIJAL28js4M2RlTMA0GCSqGSIb3DQEBCwUAMBUxEzARBgNVBAMMCmFhaS5lZ2kuZXUwHhcNMTYwMjE4MDIwNzIzWhcNMjYwMjE3MDIwNzIzWjAVMRMwEQYDVQQDDAphYWkuZWdpLmV1MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAvJCZ7qhzee4A/Yp2ov+spIlEZV4s+JMGa5UySjS4TcnVBS3NSsypASdoW4vpZqQxi2Jxnady+SwGbmxW2Q9Ul239LXCxXbkoWpOJBuin69NJ9j5qc2Se7T811TfY7+VBac9vjyw2cu2Qw6QAXqQB+VyAxVqZE72nzrxf/1Sgwmfsm8ivE0/u+6HfVwfZyDz+wTzHsMYHzCx7P9LWTrIjEDCdY2Y/4RzciYyyhZtGXI6vDgKV+mAsNKKyHdhxxbuOWaMUK+nnd+365hjAghNUo8TCgkaYPUYt7/STR4k4vC1d0hDvwU2mDHFnG3lxZxhGPU6Iq6DAno+RA/E/dw9/fwIDAQABo1AwTjAdBgNVHQ4EFgQUPGAz+p6tMaY+gLJT7SXXTVWmmocwHwYDVR0jBBgwFoAUPGAz+p6tMaY+gLJT7SXXTVWmmocwDAYDVR0TBAUwAwEB/zANBgkqhkiG9w0BAQsFAAOCAQEAIhPJxL9gkrzF1LzjKOfUj46inB7C+exy9paChDWl3UwRan3+iq2fTJ8mJp5olWWhO+EINuBL7s0lHfmaud365Vs2/E9+4KBg0xrtJt4Ipa15Io1KDf2ZQf1sGQTGakJ3HMsXdvKJPFp1+uqAumABKfG9PukHSxRarhmzMy8tDR09dIB1FYwB5l0Wnhwj6Xyr404cI3y8Q7vi7CoDOzjPPss5IbZeGbX9WvoVgZi6L7hSlfV1fN5TqURkB4n5YVlpIEI+h1snU/WJSq0zGcSzlYNqoj6PFvrLiuKB2vc1eqNXBdS+9DeoaI9RyfA4LTaswIGms8R7YZZp9fYvFRn8Cg==',
+  'NameIDFormat' => 'urn:oasis:names:tc:SAML:2.0:nameid-format:persistent',
+  'OrganizationName' => 
+  array (
+    'en' => 'EGI Foundation',
+  ),
+  'OrganizationDisplayName' => 
+  array (
+    'en' => 'EGI Foundation',
+  ),
+  'OrganizationURL' => 
+  array (
+    'en' => 'https://www.egi.eu/',
+  ),
+  'scope' => 
+  array (
+    0 => 'egi.eu',
+  ),
+  'EntityAttributes' => 
+  array (
+    'http://macedir.org/entity-category-support' => 
+    array (
+      0 => 'http://refeds.org/category/research-and-scholarship',
+    ),
+    'urn:oasis:names:tc:SAML:attribute:assurance-certification' => 
+    array (
+      0 => 'https://aai.egi.eu/LoA#Low',
+      1 => 'https://aai.egi.eu/LoA#Substantial',
+      2 => 'https://aai.egi.eu/LoA#High',
+      3 => 'https://refeds.org/sirtfi',
+    ),
+  ),
+  'UIInfo' => 
+  array (
+    'DisplayName' => 
+    array (
+      'en' => 'EGI AAI CheckIn',
+    ),
+    'Description' => 
+    array (
+      'en' => 'EGI AAI CheckIn Identity Provider Proxy',
+    ),
+    'Logo' => 
+    array (
+      0 => 
+      array (
+        'url' => 'https://aai.egi.eu/proxy/module.php/egi/resources/EGI_Logo-80x60.png',
+        'height' => 60,
+        'width' => 80,
+      ),
+      1 => 
+      array (
+        'url' => 'https://aai.egi.eu/proxy/module.php/egi/resources/EGI_Logo-50x50.png',
+        'height' => 50,
+        'width' => 50,
+      ),
+    ),
+    'InformationURL' => 
+    array (
+      'en' => 'https://wiki.egi.eu/wiki/AAI',
+    ),
+  ),
+  'DiscoHints' => 
+  array (
+    'DomainHint' => 
+    array (
+      0 => 'egi.eu',
+    ),
+  ),
+  'redirect.sign' => true,
+  'contacts' => 
+  array (
+    0 => 
+    array (
+      'contactType' => 'administrative',
+      'company' => 'Greek Research and Technology Network',
+      'givenName' => 'Christos',
+      'surName' => 'Kanellopoulos',
+      'emailAddress' => 'mailto:skanct@admin.grnet.gr',
+    ),
+    1 => 
+    array (
+      'contactType' => 'other',
+      'emailAddress' => 'mailto:abuse@egi.eu',
+      'givenName' => 'EGI Computer Security and Incident Response Team',
+      'company' => 'EGI Foundation',
+      'attributes' => 
+      array (
+        'xmlns:remd' => 'http://refeds.org/metadata',
+        'remd:contactType' => 'http://refeds.org/metadata/contactType/security',
+      ),
+    ),
+    2 => 
+    array (
+      'emailAddress' => 'mailto:nliam@grnet.gr',
+      'contactType' => 'technical',
+      'givenName' => 'Nicolas',
+      'surName' => 'Liampotis',
+    ),
+  ),
+);

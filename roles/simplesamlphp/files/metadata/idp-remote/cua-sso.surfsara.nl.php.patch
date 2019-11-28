@@ -1,0 +1,34 @@
+--- cua-sso.surfsara.nl.php.orig	2017-07-25 10:20:16.000000000 +0200
++++ cua-sso.surfsara.nl.php	2017-07-25 13:52:52.975644518 +0200
+@@ -115,4 +115,31 @@
+     'en' => 'SURFsara CUA IdP',
+     'nl' => 'SURFsara CUA IdP',
+   ),
++  'tags' =>
++  array (
++    0 => 'netherlands',
++    1 => 'er_infras'
++  ),
++  'scope' => 
++  array (
++    0 => 'surfsara.nl',
++  ),
++  'authproc' =>
++  array(
++    10 => array(
++       'class' => 'authorize:Authorize',
++       'urn:oid:1.3.6.1.4.1.5923.1.1.1.7' =>
++       array(
++           '@^urn:x-surfsara:surf.nl:rcauth.eu:user$@'
++       ),
++       'eduPersonEntitlement' =>
++       array(
++           '@^urn:x-surfsara:surf.nl:rcauth.eu:user$@'
++       ),
++       'urn:mace:dir:attribute-def:eduPersonEntitlement' =>
++       array(
++           '@^urn:x-surfsara:surf.nl:rcauth.eu:user$@'
++       ),
++    ),
++  ),
+ );

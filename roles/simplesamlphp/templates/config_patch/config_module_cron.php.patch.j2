@@ -1,0 +1,18 @@
+Description: cron configuration
+ Based on modules/cron/config-templates/module_cron.php this sets
+ the local configuration of the cron module.
+Author: Mischa Sallé <msalle@nikhef.nl>
+--- a/config/module_cron.php	2019-11-06 14:29:31.000000000 +0100
++++ b/config/module_cron.php	2019-11-07 15:11:23.000000000 +0100
+@@ -4,8 +4,8 @@
+  */
+ 
+ $config = [
+-    'key' => 'secret',
++    'key' => '{{ cron_key }}',
+     'allowed_tags' => ['daily', 'hourly', 'frequent'],
+-    'debug_message' => true,
+-    'sendemail' => true,
++    'debug_message' => false,
++    'sendemail' => false,
+ ];

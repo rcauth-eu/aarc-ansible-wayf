@@ -1,0 +1,9 @@
+---
+
+- import_tasks: tarball.yml
+- import_tasks: patches.yml
+- import_tasks: rcauth_mod.yml
+- import_tasks: config.yml
+- import_tasks: modules.yml
+- import_tasks: metadata_creds.yml
+- import_tasks: metadata.yml

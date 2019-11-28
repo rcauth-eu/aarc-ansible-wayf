@@ -1,0 +1,29 @@
+---
+
+# main task includes all subtasks
+
+- import_tasks: hostname.yml
+- import_tasks: selinux.yml
+- import_tasks: sshd.yml
+
+- import_tasks: yum.yml
+
+- import_tasks: nftables.yml
+- import_tasks: access.yml
+- import_tasks: chronyd.yml
+- import_tasks: postfix.yml
+
+- import_tasks: php.yml
+- import_tasks: httpd.yml
+
+# list of disabled services
+
+- name: disable services
+  service: name={{ item }} state=stopped enabled=no
+  with_items: "{{ disabled_services }}"
+
+# list of enabled services
+
+- name: enable services
+  service: name={{ item }} state=started enabled=yes
+  with_items: "{{ enabled_services }}"

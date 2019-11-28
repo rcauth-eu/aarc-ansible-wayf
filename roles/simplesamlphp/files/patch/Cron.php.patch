@@ -1,0 +1,18 @@
+Description: PR#1181 was incorrectly rolled back
+ Due to incorrect rolling back in commit
+ https://github.com/simplesamlphp/simplesamlphp/commit/ef273bd031808a6fa4af4d3c19281847bc08be4b
+ the printed suggested URLs don't work. We roll back also those URLs. 
+Author: Mischa Sallé <msalle@nikhef.nl>
+--- a/modules/cron/lib/Controller/Cron.php	2019-11-26 13:03:44.000000000 +0100
++++ b/modules/cron/lib/Controller/Cron.php	2019-11-27 10:21:01.000000000 +0100
+@@ -78,8 +78,8 @@
+         $urls = [];
+         foreach ($tags as $tag) {
+             $urls[] = [
+-                'exec_href' => Module::getModuleURL('cron') . '/run/' . $tag . '/' . $key,
+-                'href' => Module::getModuleURL('cron') . '/run/' . $tag . '/' . $key . '/xhtml',
++                'exec_href' => \SimpleSAML\Module::getModuleURL('cron/cron.php', ['key' => $key, 'tag' => $tag]),
++                'href' => \SimpleSAML\Module::getModuleURL('cron/cron.php', ['key' => $key, 'tag' => $tag, 'output' => 'xhtml']),
+                 'tag' => $tag,
+                 'int' => (array_key_exists($tag, $def) ? $def[$tag] : $def['default']),
+             ];

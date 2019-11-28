@@ -1,0 +1,34 @@
+---
+### general packages that should be present
+
+general_packages:
+  # essential for our services
+  - tar
+  - patch
+  - chrony
+  - postfix
+  # useful:
+  - vim-enhanced
+  - mailx
+  - bind-utils
+#  - smartmontools
+
+extra_packages:
+  - httpd
+  - mod_ssl
+  - php
+  - php-mbstring
+  - php-dom
+  - php-json
+  # composer likes:
+  - php-pecl-zip
+  - git
+
+enabled_services:
+  - nftables
+  - chronyd
+  - postfix
+  - httpd
+
+disabled_services:
+  - firewalld

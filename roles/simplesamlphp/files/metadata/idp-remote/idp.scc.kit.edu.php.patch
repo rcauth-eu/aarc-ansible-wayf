@@ -1,0 +1,22 @@
+--- idp.scc.kit.edu.php.orig	2017-12-18 15:43:12.439001359 +0100
++++ idp.scc.kit.edu.php	2017-12-18 15:45:54.877264722 +0100
+@@ -248,4 +248,19 @@
+       ),
+     ),
+   ),
++  'tags' =>
++  array (
++    0 => 'germany',
++  ),
++  'authproc' =>
++  array(
++    10 => array(
++        'class' => 'authorize:Authorize',
++        'urn:oid:1.3.6.1.4.1.5923.1.1.1.9' =>
++        array(
++            '@^.*$@'
++        ),
++    ),
++  ),
++
+ );

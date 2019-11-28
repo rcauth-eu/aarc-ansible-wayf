@@ -1,0 +1,21 @@
+---
+
+# sshd setup
+
+- name: raise sshd log level
+  lineinfile:
+    dest: /etc/ssh/sshd_config
+    regexp: "^LogLevel.*$"
+    insertafter: "^#LogLevel.*$"
+    line: "LogLevel VERBOSE"
+    backup: yes
+  notify: restart sshd
+
+- name: disable ssh password logins
+  lineinfile:
+    dest: /etc/ssh/sshd_config
+    regexp: "^PasswordAuthentication.*$"
+    insertafter: "^#PasswordAuthentication.*$"
+    line: "PasswordAuthentication no"
+    backup: yes
+  notify: restart sshd

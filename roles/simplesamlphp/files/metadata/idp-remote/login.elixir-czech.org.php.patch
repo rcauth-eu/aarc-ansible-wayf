@@ -1,0 +1,21 @@
+--- login.elixir-czech.org.php.orig	2017-03-20 15:03:05.430129923 +0100
++++ login.elixir-czech.org.php	2018-04-12 16:18:33.857311633 +0200
+@@ -85,4 +85,18 @@
+       'surName' => 'AAI',
+     ),
+   ),
++  'tags' =>
++  array (
++    0 => 'er_infras',
++  ),
++  'authproc' =>
++  array(
++    21 => array(
++        'class' => 'authorize:Authorize',
++        'urn:oid:1.3.6.1.4.1.5923.1.1.1.7' =>
++        array(
++            '%^urn:geant:elixir-europe.org:group:elixir:EGI:.+#perun.elixir-czech.cz$%'
++        ),
++    ),
++  ),
+ );

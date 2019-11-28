@@ -1,0 +1,33 @@
+/* @(#)$Id$ 
+ * CSS RCauth WAYF service re-designed 2019
+ * fonts also get set and reset by default Pure SSHPH templates 
+ */
+
+*				{ font-family:Verdana,Arial,Helvetica,Sans-Serif;  font-size : 12pt;}
+html body			{ margin:3px 0px;  padding:0px;  text-align:left; background: #fff;}
+img				{ border:0px; }
+
+#content 			{ font-family:Verdana,Arial,Helvetica,Sans-Serif;  font-size : 12pt;}
+#header 			{ font-family:Verdana,Arial,Helvetica,Sans-Serif;  font-size : 12pt; background: transparent; }
+#footer				{ color: #000000; font-size: 12pt; background: transparent; padding: 6pt 0px 0px 0px; }
+#languagebar 			{ padding-left: 10px; padding-right: 10px; }
+#table_with_attributes		{ text-align: left; }
+#push				{ padding: 0px 0px 0px 0px; -height; }
+
+// enable the first one for attention-grabbing messages
+//.warningbox			{ clear: both; border: 3px; border-style: solid; border-color: #c00000; background: #fee; width: 100%; margin: 0px; padding: 5px; }
+.warningbox			{ clear: both; border: 3px; border-style: solid; border-color: #00a000; background: #eee; width: 100%; margin: 0px; padding: 5px; }
+.topLogo			{ padding-top:6px; padding-left:10%; float:left;}
+.topLogoBranding		{ vertical-align: top; padding-top:6px; padding-left:0%; font-weight:bold; font-size:22px; margin-left:5px; margin-top:30px;  text-align:center;}
+.topLogoAlign			{ vertical-align:middle; padding-right: 2em; }
+.topLogoAlignC			{ vertical-align:middle; margin-top: 0px; padding-bottom: 0px; }
+.logininfo-small		{ position: relative; margin: 0px 0px 0px 1em; padding: 0px 0px 0px 0px; clear: both; }
+.rcauth-branding		{ color: #666; font-size: 80%; }
+.optional-label-text		{ color: #666; font-size: 80%; }
+.code-box-content		{ text-align: left; }
+.fancyfieldset			{ text-align: left; }
+.clear				{ clear:both;}
+.boxisolation			{ padding-left: 5px; padding-right: 5px; }
+
+.searchButton			{ width : 50px;  border:1px solid black;cursor:pointer;}
+

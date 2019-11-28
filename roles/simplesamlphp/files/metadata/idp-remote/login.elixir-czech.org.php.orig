@@ -1,0 +1,88 @@
+<?php
+$metadata['https://login.elixir-czech.org/idp/'] = array (
+  'metadata-set' => 'saml20-idp-remote',
+  'entityid' => 'https://login.elixir-czech.org/idp/',
+  'SingleSignOnService' => 
+  array (
+    0 => 
+    array (
+      'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect',
+      'Location' => 'https://login.elixir-czech.org/proxy/saml2/idp/SSOService.php',
+    ),
+  ),
+  'SingleLogoutService' => 
+  array (
+    0 => 
+    array (
+      'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect',
+      'Location' => 'https://login.elixir-czech.org/proxy/saml2/idp/SingleLogoutService.php',
+    ),
+  ),
+  'certData' => 'MIIEUTCCAzmgAwIBAgIJALuWjo0j1/fcMA0GCSqGSIb3DQEBCwUAMIG+MQswCQYDVQQGEwJDWjEQMA4GA1UECAwHTW9yYXZpYTENMAsGA1UEBwwEQnJubzEbMBkGA1UECgwSTWFzYXJ5ayBVbml2ZXJzaXR5MSYwJAYDVQQLDB1JbnN0aXR1dGUgb2YgQ29tcHV0ZXIgU2NpZW5jZTEbMBkGA1UEAwwSKi5lbGl4aXItY3plY2gub3JnMSwwKgYJKoZIhvcNAQkBFh1hYWktY29udGFjdEBlbGl4aXItZXVyb3BlLm9yZzAeFw0xNjA4MTAwODA5MTNaFw0yNjA4MDgwODA5MTNaMIG+MQswCQYDVQQGEwJDWjEQMA4GA1UECAwHTW9yYXZpYTENMAsGA1UEBwwEQnJubzEbMBkGA1UECgwSTWFzYXJ5ayBVbml2ZXJzaXR5MSYwJAYDVQQLDB1JbnN0aXR1dGUgb2YgQ29tcHV0ZXIgU2NpZW5jZTEbMBkGA1UEAwwSKi5lbGl4aXItY3plY2gub3JnMSwwKgYJKoZIhvcNAQkBFh1hYWktY29udGFjdEBlbGl4aXItZXVyb3BlLm9yZzCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMvZy0XHUJ/NW/ffIuSMzcpWJp+6gL3OXhl7oG8MPZHe1JmzgBrxQ9sLzFhRl34NVfSA8flN+nKbcekp8jpeoTY/hnr/IWIWNDYfg3xLCQxCSoN/QiSqrr8FizSam8IT2vTu+BUvnCngrwia/upGCHb7hivsEDfTroQcAEPDe/S9uVWCvv5ERGwfBKgH3+06xjrdGVpFNzoy+9m+/ZLkdqmPHVc6E87o2hy0jLrV+g55nCxwJ79Z5LTLPcn2WHkg0nWoh1BITYoyfg503OpUL1ja+IL7FlofIb0s6YfV0a1duSrwc7nG/V7KFjrWJS5RCh74SfWTaGiSN5XcqdwJsgECAwEAAaNQME4wHQYDVR0OBBYEFN/3g/caCmGJG1w+35mgGhAzryLnMB8GA1UdIwQYMBaAFN/3g/caCmGJG1w+35mgGhAzryLnMAwGA1UdEwQFMAMBAf8wDQYJKoZIhvcNAQELBQADggEBAGlWHgjzeZ7VLn7ajPRr36aK/oXTOTetvzI7XcepAhDB/8suLabq55rV6ydtmuzA18ZJ/cdcb+LoIp/rqyY24siGYrNjwbjTgz9ai3legz5lFq7qnjYuAbGhc2OX4uJmzk/+jL5npKuMxkQSjgSqscYoBXsbNyJ/ou7PTXmalGkbFsr2ch0q1/McWSpDLAVzWTf1yZ85h3UYdxRyK0Evt4MWHYJ3DITK7xELYqNDg/Nrlr9So1sojSd1QIJ2yvOl8l9McMWlDwd31rPdNiT589F/UrryPEG2Xiapo75DgSyshNUOYxHKub4FYvDAZLjStjcmvhzeZo1v35jqLINp/bg=',
+  'NameIDFormat' => 'urn:oasis:names:tc:SAML:2.0:nameid-format:persistent',
+  'OrganizationName' => 
+  array (
+    'en' => 'ELIXIR',
+  ),
+  'OrganizationDisplayName' => 
+  array (
+    'en' => 'ELIXIR',
+  ),
+  'OrganizationURL' => 
+  array (
+    'en' => 'https://www.elixir-europe.org',
+  ),
+  'scope' => 
+  array (
+    0 => 'elixir-europe.org',
+  ),
+  'UIInfo' => 
+  array (
+    'DisplayName' => 
+    array (
+      'en' => 'ELIXIR research infrastructure AAI',
+    ),
+    'Description' => 
+    array (
+      'en' => 'This service is identity provider for ELIXIR community.',
+    ),
+    'InformationURL' => 
+    array (
+      'en' => 'https://www.elixir-europe.org',
+    ),
+    'PrivacyStatementURL' => 
+    array (
+      'en' => 'http://www.elixir-europe.org/services/compute/aai',
+    ),
+    'Keywords' => 
+    array (
+      'en' => 
+      array (
+        0 => 'ELIXIR',
+        1 => 'proxy',
+        2 => 'biology',
+        3 => 'life',
+        4 => 'sciences',
+      ),
+    ),
+    'Logo' => 
+    array (
+      0 => 
+      array (
+        'url' => 'https://login.elixir-czech.org/media/elixir-96x96.jpg',
+        'height' => 96,
+        'width' => 96,
+      ),
+    ),
+  ),
+  'contacts' => 
+  array (
+    0 => 
+    array (
+      'emailAddress' => 'mailto:aai-contact@elixir-europe.org',
+      'contactType' => 'technical',
+      'givenName' => 'ELIXIR',
+      'surName' => 'AAI',
+    ),
+  ),
+);

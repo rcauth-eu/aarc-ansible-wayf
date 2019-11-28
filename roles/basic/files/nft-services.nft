@@ -1,0 +1,74 @@
+#
+# Services by accessibility set (trusted, local, global)
+# 
+# nft-services.nft
+#
+
+  # TCP non-logged permitted services
+
+  set tcp_services_from_trusted {
+    type inet_service; flags interval;
+    elements = { ssh }
+  }
+
+  set tcp_services_from_local {
+    type inet_service; flags interval;
+    #elements = { }
+  }
+
+  set tcp_services_from_global {
+    type inet_service; flags interval;
+    elements = { http, https }
+  }
+
+  # logged permitted services 
+
+  set tcp_logging_from_trusted {
+    type inet_service; flags interval;
+    elements = { ssh }
+  }
+
+  set tcp_logging_from_local {
+    type inet_service; flags interval;
+    #elements = { }
+  }
+
+  set tcp_logging_from_global {
+    type inet_service; flags interval;
+    elements = { http, https }
+  }
+
+  # UDP non-logged permitted services
+
+  set udp_services_from_trusted {
+    type inet_service; flags interval;
+    #elements = { }
+  }
+
+  set udp_services_from_local {
+    type inet_service; flags interval;
+    #elements = { }
+  }
+
+  set udp_services_from_global {
+    type inet_service; flags interval;
+    #elements = { }
+  }
+
+  # logged permitted UDP destinations
+
+  set udp_logging_from_trusted {
+    type inet_service; flags interval;
+    #elements = { }
+  }
+
+  set udp_logging_from_local {
+    type inet_service; flags interval;
+    #elements = { }
+  }
+
+  set udp_logging_from_global {
+    type inet_service; flags interval;
+    #elements = { }
+  }
+

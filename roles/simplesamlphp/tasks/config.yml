@@ -1,0 +1,82 @@
+---
+
+- name: create configuration directory
+  file:
+    state: directory
+    path: "{{ ssp_confdir }}-{{ ssp_version }}"
+    owner: root
+    group: root
+    
+- name: make config symlink
+  file:
+    state: link
+    src: "config-{{ ssp_version }}"
+    path: "{{ ssp_confdir }}"
+
+# First copy the original config files into a temporary directory
+
+- name: create config tempdir
+  tempfile:
+    state: directory
+    suffix: .config
+  register: configtmp
+
+- name: copy configuration templates
+  copy:
+    remote_src: true
+    src: "{{ ssp_dir }}/{{ item }}"
+    dest: "{{ configtmp.path}}/"
+  with_items:
+    - config-templates/authsources.php
+    - config-templates/config.php
+    - modules/metarefresh/config-templates/config-metarefresh.php
+    - modules/cron/config-templates/module_cron.php
+    - modules/discopower/config-templates/module_discopower.php
+
+- name: copy configuration template patches
+  template:
+    src: "config_patch/{{ item }}.j2"
+    dest: "{{ configtmp.path }}/{{ item }}"
+  with_items:
+    - config_authsources.php.patch
+    - config_config.php.patch
+    - config_config-metarefresh.php.patch
+    - config_module_cron.php.patch
+
+- name: apply templated configuration patches
+  patch:
+    remote_src: true
+    src: "{{ configtmp.path }}/{{ item }}"
+    basedir: "{{ configtmp.path }}"
+    strip: 2
+  with_items:
+    - config_authsources.php.patch
+    - config_config.php.patch
+    - config_config-metarefresh.php.patch
+    - config_module_cron.php.patch
+
+- name: apply non-templated configuration patches
+  patch:
+    src: "config_patch/{{ item }}"
+    basedir: "{{ configtmp.path }}"
+    strip: 2
+  with_items:
+    - config_module_discopower.php.patch
+
+- name: copy config files
+  copy:
+    remote_src: true
+    src: "{{ configtmp.path }}/{{ item }}"
+    dest: "{{ ssp_confdir }}"
+    backup: true
+  with_items:
+    - authsources.php
+    - config.php
+    - config-metarefresh.php
+    - module_cron.php
+    - module_discopower.php
+
+- name: remove config tempdir
+  file:
+    path: "{{ configtmp.path }}"
+    state: absent

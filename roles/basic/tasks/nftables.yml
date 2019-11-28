@@ -1,0 +1,31 @@
+---
+
+# setup nftables
+
+- name: add nftables config files
+  copy:
+    src: "{{ item }}"
+    dest: /etc/nftables/
+    backup: true
+  notify: restart nftables
+  with_items:
+    - nft-services.nft
+    - nft-filter.nft
+    
+- name: copy network.nft template
+  template:
+    src: "{{ item }}.j2"
+    dest: "/etc/nftables/{{ item }}"
+    backup: true
+  notify: restart nftables
+  with_items:
+    - nft-networks.nft
+
+- name: add nftables configuration
+  blockinfile:
+    path: /etc/sysconfig/nftables.conf
+    marker: "# {mark} LOCAL NFTABLES CONFIGURATION"
+    backup: true
+    block: |
+      include "/etc/nftables/nft-filter.nft"
+  notify: restart nftables

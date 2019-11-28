@@ -1,0 +1,12 @@
+# Skip the .retry files
+/*.retry
+
+# Do not accidentally add the created secrets_env.yml in any directory
+secrets_env.yml
+
+# Do not accidentally add the host cert/key
+/roles/basic/files/*.key
+/roles/basic/files/*.crt
+
+# Do not accidentally add the saml metadata cert/key
+/roles/simplesamlphp/files/saml*.pem

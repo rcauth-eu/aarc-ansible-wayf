@@ -1,0 +1,32 @@
+---
+
+# apache setup
+
+- name: copy hostcert
+  copy:
+    src: "{{ inventory_hostname }}.crt"
+    dest: "{{ hostcert }}"
+    owner: root
+    group: root
+    mode: 0644
+  notify: restart httpd
+
+- name: copy hostkey
+  copy:
+    src: "{{ inventory_hostname }}.key"
+    dest: "{{ hostkey }}"
+    owner: root
+    group: root
+    mode: 0400
+  notify: restart httpd
+
+# All configuration is in ssl.conf
+- name: configure httpd
+  template:
+    src: ssl.conf.j2
+    dest: /etc/httpd/conf.d/ssl.conf
+    owner: root
+    group: root
+    mode: 0644
+    backup: yes
+  notify: restart httpd

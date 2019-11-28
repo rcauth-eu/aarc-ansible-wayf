@@ -1,0 +1,123 @@
+Description: metarefresh configuration
+ Based on modules/metarefresh/config-templates/config-metarefresh.php this sets
+ the local configuration of the metarefresh module that is run (via the cron
+ module) daily to refresh and filter the eduGAIN metadata. It is filtered using
+ our custom patches to the metarefresh module providing an attributewhitelist
+ filter.
+Author: Mischa Sallé <msalle@nikhef.nl>
+Author: Tamas Balogh <tamasb@nikhef.nl>
+--- a/config/config-metarefresh.php	2019-10-04 23:12:31.000000000 +0200
++++ b/config/config-metarefresh.php	2019-11-27 12:08:31.000000000 +0100
+@@ -18,8 +18,8 @@
+ 
+     'sets' => [
+ 
+-        'kalmar' => [
+-            'cron' => ['hourly'],
++        'edugain' => [
++            'cron' => ['daily'],
+             'sources' => [
+                 [
+                     /*
+@@ -37,19 +37,69 @@
+                     #    'http://some.other.uni/idp',
+                     #),
+ 
++                    /*
++                     * Attribute whitelist: keys and values
++                     * must be PCRE regexp, keys may also
++                     * be int. Each specified key/value pair
++                     * must match at least once */
++                    'attributewhitelist' => [
++                        [
++                            '#EntityAttributes#' => [
++                                '#urn:oasis:names:tc:SAML:attribute:assurance-certification#'
++                                 => ['#https://refeds.org/sirtfi#'],
++                                '#http://macedir.org/entity-category-support#'
++                                 => ['#http://refeds.org/category/research-and-scholarship#'],
++                            ],
++                        ],
++                        [
++                            '#RegistrationInfo#' => [
++                                '#registrationAuthority#'
++                                => '#http://www.surfconext.nl/#',
++                            ],
++                            '#EntityAttributes#' => [
++                                '#urn:oasis:names:tc:SAML:attribute:assurance-certification#'
++                                => ['#https://refeds.org/sirtfi#'],
++                            ],
++                        ],
++                    ],
++
+                     #'conditionalGET' => true,
+-                    'src' => 'https://kalmar2.org/simplesaml/module.php/aggregator/?id=kalmarcentral&set=saml2&exclude=norway',
++                    'src' => '{{ edugain_url }}',
+                     'certificates' => [
+-                        'current.crt',
+-                        'rollover.crt',
++                        '{{ edugain_cert }}',
+                     ],
+-                    'validateFingerprint' => '59:1D:4B:46:70:46:3E:ED:A9:1F:CC:81:6D:C0:AF:2A:09:2A:A8:01',
+                     #'validateFingerprintAlgorithm' => RobRichards\XMLSecLibs\XMLSecurityDSig::SHA1,
+                     'template' => [
+-                        'tags' => ['kalmar'],
+-                        'authproc' => [
+-                            51 => ['class' => 'core:AttributeMap', 'oid2name'],
+-                        ],
++                        'tags' => ['edugain'],
++                    ],
++
++                    /* Define mapping used by Metaloader.php to add country tags
++                     * for IdPs of specified federations.
++                     * The tags are mapped onto strings via our 'tabnamemap'
++                     * config in module_discopower.php */
++                    'tagmapping' => [
++                            'https://aaf.edu.au' => 'australia',
++                            'http://federation.belnet.be/' => 'belgium',
++                            'http://cafe.rnp.br' => 'brazil',
++                            'http://www.canarie.ca' => 'canada',
++                            'http://www.eduid.cz/' => 'czech',
++                            'https://www.wayf.dk' => 'denmark',
++                            'https://federation.renater.fr/' => 'france',
++                            'https://www.aai.dfn.de' => 'germany',
++                            'http://aai.grnet.gr/' => 'greece',
++                            'https://incommon.org' => 'incommon',
++                            'http://www.heanet.ie' => 'ireland',
++                            'http://www.idem.garr.it/' => 'italy',
++                            'https://fedi.litnet.lt' => 'lithuania',
++                            'http://www.surfconext.nl/' => 'netherlands',
++                            'http://www.omren.om' => 'oman',
++                            'https://safire.ac.za' => 'southafrica',
++                            'http://kafe.kreonet.net' => 'south-korea',
++                            'http://www.rediris.es/' => 'spain',
++                            'http://www.swamid.se/' => 'sweden',
++                            'http://rr.aai.switch.ch/' => 'switzerland',
++                            'http://ukfederation.org.uk' => 'uk',
++                            '*' => 'other',
+                     ],
+ 
+                     /*
+@@ -64,12 +114,12 @@
+                      *
+                      * This option takes precedence over the same option per metadata set.
+                      */
+-                    //'types' => [],
++                    'types' => ['saml20-idp-remote'],
+                 ],
+             ],
+ 
+             'expireAfter' => 34560060, // Maximum 4 days cache time (3600*24*4)
+-            'outputDir' => 'metadata/metadata-kalmar-consuming/',
++            'outputDir' => 'metadata-generated/edugain/',
+ 
+             /*
+              * Which output format the metadata should be saved as.
+@@ -87,7 +137,7 @@
+              *
+              * All of them will be used by default.
+              */
+-            //'types' => [],
++            'types' => ['saml20-idp-remote'],
+         ],
+     ],
+ ];

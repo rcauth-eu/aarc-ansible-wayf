@@ -1,0 +1,41 @@
+---
+
+# PHP setup
+
+- name: increase execution time
+  lineinfile:
+    path: "/etc/php.ini"
+    regexp: 'max_execution_time\s+=.*$'
+    insertafter: '^;max_execution_time\s+='
+    line: 'max_execution_time = 300'
+    backup: yes
+  register: php_config
+
+- name: increase memory limit
+  lineinfile:
+    path: "/etc/php.ini"
+    regexp: 'memory_limit\s+=.*$'
+    insertafter: '^;memory_limit\s+='
+    line: 'memory_limit = 1G'
+    backup: yes
+  register: php_config
+
+- name: enable display errors
+  lineinfile:
+    path: "/etc/php.ini"
+    regexp: '^display_errors\s+=.*$'
+    insertafter: '^;display_errors\s+='
+    line: 'display_errors = On'
+    backup: yes
+  when: phpdebug == true
+  register: php_config
+
+- name: enable display startup errors
+  lineinfile:
+    path: "/etc/php.ini"
+    regexp: '^display_startup_errors\s+=.*$'
+    insertafter: '^;display_startup_errors\s+='
+    line: 'display_startup_errors = On'
+    backup: yes
+  when: phpdebug == true
+  register: php_config

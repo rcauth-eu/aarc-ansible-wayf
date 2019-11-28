@@ -1,0 +1,13 @@
+---
+########################################################################
+### DEFAULT VALUES FOR THE common ROLE
+########################################################################
+
+### PHP debug defaults to false
+phpdebug: false
+
+### Root for simplesamlphp
+ssp_dir: /var/simplesamlphp
+
+### context prefix
+ssp_ctx_pfx: wayf

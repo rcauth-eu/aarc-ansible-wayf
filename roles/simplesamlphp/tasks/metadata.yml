@@ -1,0 +1,85 @@
+---
+
+# First make local metadata files from the original and patches
+
+- name: create metadata tempdir
+  tempfile:
+    state: directory
+    suffix: .metadata
+  register: metadatatmp
+
+- name: copy input metadata
+  copy:
+    src: "metadata/idp-remote/{{ item }}.orig"
+    dest: "{{ metadatatmp.path }}/{{ item }}"
+  with_flattened:
+    - "{{ prod_idp_remotes }}"
+    - "{{ test_idp_remotes }}"
+
+- name: patch metadata
+  patch:
+    src: "metadata/idp-remote/{{ item }}.patch"
+    basedir: "{{ metadatatmp.path }}"
+  with_flattened:
+    - "{{ prod_idp_remotes }}"
+    - "{{ test_idp_remotes }}"
+
+# Now we can copy our locally patched metadata
+
+- name: copy idp-remote metadata
+  copy:
+    remote_src: true
+    src: "{{ metadatatmp.path }}/{{ item }}"
+    dest: "{{ ssp_dir }}/metadata/idp-remote/"
+    backup: true
+  with_flattened:
+    - "{{ prod_idp_remotes }}"
+    - "{{ test_idp_remotes }}"
+
+# Remove the tempdir
+- name: remove metadata tempdir
+  file:
+    path: "{{ metadatatmp.path }}"
+    state: absent
+
+# Now continue with the sp-remote metadata
+
+- name: copy sp-remote metadata
+  copy:
+    src: "metadata/sp-remote/{{ item }}"
+    dest: "{{ ssp_dir }}/metadata/sp-remote/"
+    backup: true
+  with_flattened:
+    - "{{ prod_sp_remotes }}"
+    - "{{ test_sp_remotes }}"
+
+- name: create metadata-generated directory
+  file:
+    path: "{{ ssp_dir }}/metadata-generated"
+    state: directory
+    owner: root
+    group: apache
+    mode: 0775
+
+- name: create metadata-generated symlink
+  file:
+    path: "{{ ssp_dir }}/metadata/metadata-generated"
+    src: "../metadata-generated"
+    state: link
+
+- name: add cronjob for edugain refresh
+  template:
+    src: edugain-refresh.j2
+    dest: /etc/cron.daily/edugain-refresh
+    owner: root
+    group: root
+    mode: 0755
+
+- name: check edugain metadata is present
+  stat:
+    path: "{{ ssp_dir }}/metadata-generated/edugain/saml20-idp-remote.php"
+  register: edugain_stat
+
+- name: run edugain cronjob
+  command: /etc/cron.daily/edugain-refresh
+  when: edugain_stat.stat.exists == False

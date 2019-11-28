@@ -1,0 +1,32 @@
+---
+
+- name: create metadata pki directory
+  file:
+    state: directory
+    path: "{{ ssp_pkidir }}"
+    owner: root
+    group: root
+
+- name: copy saml certificate
+  copy:
+    src: "{{ ssp_cert }}"
+    dest:  "{{ ssp_pkidir }}"
+    owner: root
+    group: apache
+    mode: 0644
+
+- name: copy saml key
+  copy:
+    src: "{{ ssp_key }}"
+    dest:  "{{ ssp_pkidir }}"
+    owner: root
+    group: apache
+    mode: 0440
+
+- name: copy eduGAIN certificate
+  copy:
+    src: "{{ edugain_cert }}"
+    dest: "{{ ssp_pkidir }}"
+    owner: root
+    group: root
+    mode: 0644

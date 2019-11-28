@@ -1,0 +1,118 @@
+<?php
+$metadata['https://cua-sso.surfsara.nl/saml/saml2/idp/metadata.php'] = array (
+  'entityid' => 'https://cua-sso.surfsara.nl/saml/saml2/idp/metadata.php',
+  'contacts' => 
+  array (
+    0 => 
+    array (
+      'contactType' => 'other',
+      'company' => 'SURFsara',
+      'givenName' => 'Cert',
+      'surName' => 'Team',
+      'emailAddress' => 
+      array (
+        0 => 'mailto:abuse@surfsara.nl',
+      ),
+      'telephoneNumber' => 
+      array (
+        0 => '+31(0)208001300',
+      ),
+    ),
+    1 => 
+    array (
+      'contactType' => 'technical',
+      'givenName' => 'SAMLphp',
+      'surName' => 'Administrator',
+      'emailAddress' => 
+      array (
+        0 => 'is@surfsara.nl',
+      ),
+    ),
+  ),
+  'metadata-set' => 'saml20-idp-remote',
+  'SingleSignOnService' => 
+  array (
+    0 => 
+    array (
+      'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect',
+      'Location' => 'https://cua-sso.surfsara.nl/saml/saml2/idp/SSOService.php',
+    ),
+  ),
+  'SingleLogoutService' => 
+  array (
+    0 => 
+    array (
+      'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect',
+      'Location' => 'https://cua-sso.surfsara.nl/saml/saml2/idp/SingleLogoutService.php',
+    ),
+  ),
+  'ArtifactResolutionService' => 
+  array (
+  ),
+  'NameIDFormats' => 
+  array (
+    0 => 'urn:oasis:names:tc:SAML:2.0:nameid-format:transient',
+  ),
+  'keys' => 
+  array (
+    0 => 
+    array (
+      'encryption' => false,
+      'signing' => true,
+      'type' => 'X509Certificate',
+      'X509Certificate' => 'MIID6TCCAtGgAwIBAgIJAJqWvZ80gTQOMA0GCSqGSIb3DQEBCwUAMIGKMQswCQYDVQQGEwJOTDEWMBQGA1UECAwNTm9vcmQtSG9sbGFuZDESMBAGA1UEBwwJQW1zdGVyZGFtMREwDwYDVQQKDAhTVVJGc2FyYTEdMBsGA1UEAwwUc3NvMi5vc2Quc3VyZnNhcmEubmwxHTAbBgkqhkiG9w0BCQEWDmlzQHN1cmZzYXJhLm5sMB4XDTE3MDYyMzEzNDAzN1oXDTI3MDYyMzEzNDAzN1owgYoxCzAJBgNVBAYTAk5MMRYwFAYDVQQIDA1Ob29yZC1Ib2xsYW5kMRIwEAYDVQQHDAlBbXN0ZXJkYW0xETAPBgNVBAoMCFNVUkZzYXJhMR0wGwYDVQQDDBRzc28yLm9zZC5zdXJmc2FyYS5ubDEdMBsGCSqGSIb3DQEJARYOaXNAc3VyZnNhcmEubmwwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCgjFmZ2QqzeQGAVcYWQInFWVhTZz/ccJYgIEv1ni0ZkoHpqTN/qJA0HKoY3kgSEZN4sQRZUviRKyFO7WJdTrcPnII+9UsvqRcWrpssrZzU35rpfq0fxi9+do9KTjr9a9X9r08GUnm+RQx8Yj3yWpVFYFUWS9z3t4KqPpO8bJLjhw8YqIaJG8uQ1RaBSvrpaaUkpu0hY7G9YIEA6oJ6FU7CCUIv1HNHtRebebIRBh5XU7GhrbDsaom/adv55JJN23HXbiq/AskBsVwoXHoILLHJWklxMGGMrVFKuUQLGRniGta0Nd8dwppllOwZ49dNI5P37s0rVPic0eQBnIUJ2x5ZAgMBAAGjUDBOMB0GA1UdDgQWBBTun+yArqQEvRRYxLGlYohOz4CbizAfBgNVHSMEGDAWgBTun+yArqQEvRRYxLGlYohOz4CbizAMBgNVHRMEBTADAQH/MA0GCSqGSIb3DQEBCwUAA4IBAQCA49MZWjw3+8yHCghW/umR+uTeizez7ZBpmVMdm4yilHoi4Dcx0IfgubktXwc91LMTM9mL/B4L8hnvZ4vI8Gc+z/0/Y0pHT6ZWEko+ybgmBGLymMH/JSql7WhvqnC42rSWW2DgFKvTBXvkHZOuAwIuuQeZq/yH3N+CDAirtx0Bwsn12ZDcmhwodHUZMVrYXCDRPS5bSKKR6B4sn877w/VVX8tC0l9Fm++3ryanVtc1KfXbMSy7CPhAH1fqkbvgkxahi8aPqoZdQ3lxqS/iWhcVKqvfaOAwqBV9eSxnAxROToCrooNGKukLWYaiUY22M3uJoK5jtGmRQaT6lk+VRcDD',
+    ),
+    1 => 
+    array (
+      'encryption' => true,
+      'signing' => false,
+      'type' => 'X509Certificate',
+      'X509Certificate' => 'MIID6TCCAtGgAwIBAgIJAJqWvZ80gTQOMA0GCSqGSIb3DQEBCwUAMIGKMQswCQYDVQQGEwJOTDEWMBQGA1UECAwNTm9vcmQtSG9sbGFuZDESMBAGA1UEBwwJQW1zdGVyZGFtMREwDwYDVQQKDAhTVVJGc2FyYTEdMBsGA1UEAwwUc3NvMi5vc2Quc3VyZnNhcmEubmwxHTAbBgkqhkiG9w0BCQEWDmlzQHN1cmZzYXJhLm5sMB4XDTE3MDYyMzEzNDAzN1oXDTI3MDYyMzEzNDAzN1owgYoxCzAJBgNVBAYTAk5MMRYwFAYDVQQIDA1Ob29yZC1Ib2xsYW5kMRIwEAYDVQQHDAlBbXN0ZXJkYW0xETAPBgNVBAoMCFNVUkZzYXJhMR0wGwYDVQQDDBRzc28yLm9zZC5zdXJmc2FyYS5ubDEdMBsGCSqGSIb3DQEJARYOaXNAc3VyZnNhcmEubmwwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCgjFmZ2QqzeQGAVcYWQInFWVhTZz/ccJYgIEv1ni0ZkoHpqTN/qJA0HKoY3kgSEZN4sQRZUviRKyFO7WJdTrcPnII+9UsvqRcWrpssrZzU35rpfq0fxi9+do9KTjr9a9X9r08GUnm+RQx8Yj3yWpVFYFUWS9z3t4KqPpO8bJLjhw8YqIaJG8uQ1RaBSvrpaaUkpu0hY7G9YIEA6oJ6FU7CCUIv1HNHtRebebIRBh5XU7GhrbDsaom/adv55JJN23HXbiq/AskBsVwoXHoILLHJWklxMGGMrVFKuUQLGRniGta0Nd8dwppllOwZ49dNI5P37s0rVPic0eQBnIUJ2x5ZAgMBAAGjUDBOMB0GA1UdDgQWBBTun+yArqQEvRRYxLGlYohOz4CbizAfBgNVHSMEGDAWgBTun+yArqQEvRRYxLGlYohOz4CbizAMBgNVHRMEBTADAQH/MA0GCSqGSIb3DQEBCwUAA4IBAQCA49MZWjw3+8yHCghW/umR+uTeizez7ZBpmVMdm4yilHoi4Dcx0IfgubktXwc91LMTM9mL/B4L8hnvZ4vI8Gc+z/0/Y0pHT6ZWEko+ybgmBGLymMH/JSql7WhvqnC42rSWW2DgFKvTBXvkHZOuAwIuuQeZq/yH3N+CDAirtx0Bwsn12ZDcmhwodHUZMVrYXCDRPS5bSKKR6B4sn877w/VVX8tC0l9Fm++3ryanVtc1KfXbMSy7CPhAH1fqkbvgkxahi8aPqoZdQ3lxqS/iWhcVKqvfaOAwqBV9eSxnAxROToCrooNGKukLWYaiUY22M3uJoK5jtGmRQaT6lk+VRcDD',
+    ),
+  ),
+  'UIInfo' => 
+  array (
+    'DisplayName' => 
+    array (
+      'en' => 'SURFsara CUA IdP',
+      'nl' => 'SURFsara CUA IdP',
+    ),
+    'Description' => 
+    array (
+      'en' => 'An CUA-IdP operated by SURFsara',
+    ),
+    'InformationURL' => 
+    array (
+    ),
+    'PrivacyStatementURL' => 
+    array (
+    ),
+    'Keywords' => 
+    array (
+      'en' => 
+      array (
+        0 => 'computing center',
+        1 => 'surfsara',
+      ),
+      'nl' => 
+      array (
+        0 => 'rekencentrum',
+        1 => 'surfsara',
+      ),
+    ),
+    'Logo' => 
+    array (
+      0 => 
+      array (
+        'url' => 'https://cua-sso.surfsara.nl/surfsara_idp.png',
+        'height' => 87,
+        'width' => 128,
+      ),
+    ),
+  ),
+  'name' => 
+  array (
+    'en' => 'SURFsara CUA IdP',
+    'nl' => 'SURFsara CUA IdP',
+  ),
+);

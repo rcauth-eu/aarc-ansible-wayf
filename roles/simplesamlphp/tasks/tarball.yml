@@ -1,0 +1,32 @@
+---
+
+- name: unpack distribution tarball
+  unarchive:
+    remote_src: yes
+    src: "https://github.com/simplesamlphp/simplesamlphp/releases/download/v{{ ssp_version }}/simplesamlphp-{{ ssp_version }}.tar.gz"
+    dest: /var
+    creates: "{{ ssp_dir }}-{{ ssp_version }}"
+
+- name: make main symlink
+  file:
+    state: link
+    src: "simplesamlphp-{{ ssp_version }}"
+    path: "{{ ssp_dir }}"
+
+- name: rename config directory
+  copy:
+    force: false
+    remote_src: yes
+    src: "{{ ssp_dir }}/config"
+    dest: "{{ ssp_dir }}/config.dist"
+
+- name: remove old config directory
+  file:
+    path: "{{ ssp_dir }}/config"
+    state: absent
+
+- name: create symlink to config dir
+  file:
+    state: link
+    src: "{{ ssp_confdir }}"
+    path: "{{ ssp_dir }}/config"
