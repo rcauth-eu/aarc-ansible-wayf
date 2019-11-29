@@ -12,6 +12,7 @@
     - frontpage_config.php.patch
     - frontpage_federation.twig.patch
     - _frontpage_menu.twig.patch
+    - PowerIdPDisco.php.patch
     - disco.twig.patch
     - en_discopower.po.patch
     - nl_discopower.po.patch

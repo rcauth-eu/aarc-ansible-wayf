@@ -18,22 +18,18 @@ Define  servername {{ inventory_hostname }}
 
 <VirtualHost *:80>
     ServerName ${servername}:443 
-    Redirect / https://${servername}/
 
-    RewriteEngine   on
-    RewriteCond	    %{SERVER_PORT}  ^80$
-    RewriteCond	    %{REQUEST_URI}  !^/status
-    RewriteRule	    ^(.*)	    https://%{SERVER_NAME}$1 [L,R]
+    Redirect / https://${servername}/
 
     Alias   ${root}     {{ ssp_dir }}/www
 </VirtualHost>
 
 <VirtualHost _default_:443>
-    ErrorLog 		logs/ssl_error_log
-    TransferLog 	logs/ssl_access_log
-    LogLevel 		debug
-    ServerName		${servername}:443
-    UseCanonicalName	on
+    ErrorLog            logs/ssl_error_log
+    TransferLog         logs/ssl_access_log
+    LogLevel            debug
+    ServerName          ${servername}:443
+    UseCanonicalName    on
 {% if server_aliases is defined %}
 {% for server_alias in server_aliases %}
     ServerAlias {{ server_alias }}
@@ -41,8 +37,8 @@ Define  servername {{ inventory_hostname }}
 {% endif %}
 
     <IfModule mod_expires.c>
-	ExpiresActive On
-	ExpiresDefault now
+        ExpiresActive On
+        ExpiresDefault now
     </IfModule>
 
 
@@ -93,8 +89,8 @@ Define  servername {{ inventory_hostname }}
     Alias   ${root}     {{ ssp_dir }}/www
 
     # Adding redirect to actual wayf "home"
-    Redirect permanent /index.html ${root}
-    Redirect 301 /index.html ${root}
+    Redirect permanent /index.html ${root}/
+    Redirect 301 /index.html ${root}/
 
 </VirtualHost>
 

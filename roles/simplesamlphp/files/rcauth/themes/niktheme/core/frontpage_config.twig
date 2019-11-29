@@ -30,7 +30,7 @@
         {% for key, link in links_config %}
         <li><a href="{{ link.href|escape('html') }}">{{ link.text|trans|escape('html') }}</a></li>
         {% endfor %}
-        <li><a href="/wayf/admin/metadata-converter.php">{{ 'Metadata converter'|trans }}</a></li>
+        <li><a href="/{{ baseurlpath }}admin/metadata-converter.php">{{ 'Metadata converter'|trans }}</a></li>
     </ul>
 
     {% if warnings is defined and warnings is not empty %}
