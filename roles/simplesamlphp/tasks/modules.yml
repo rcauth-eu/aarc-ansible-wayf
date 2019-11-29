@@ -17,3 +17,5 @@
     - consentAdmin
     - memcacheMonitor
     - statistics
+    - oauth
+    - riak
