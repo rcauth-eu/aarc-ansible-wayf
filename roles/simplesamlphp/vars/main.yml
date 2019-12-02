@@ -1,0 +1,37 @@
+---
+
+# Modules to be explicitly enabled or disabled
+enabled_modules:
+  - discopower
+  - cron
+  - metarefresh
+
+disabled_modules:
+  - consentAdmin
+  - memcacheMonitor
+  - statistics
+  - oauth
+  - riak
+
+# List if source patches, applied by
+source_patches:
+  - frontpage_config.php.patch
+  - frontpage_federation.twig.patch
+  - _frontpage_menu.twig.patch
+  - PowerIdPDisco.php.patch
+  - disco.twig.patch
+  - en_discopower.po.patch
+  - nl_discopower.po.patch
+  - MetaLoader.php.patch
+  - MetaLoader.php_tagmapping.patch
+  - fetch.php.patch
+  - hook_cron.php.patch
+  - Cron.php.patch
+  - croninfo.twig.patch
+  - contrab.patch
+
+# List of metadata/* files to be installed and configured by saml20_config.yml
+saml20_items:
+  - saml20-idp-hosted.php
+  - saml20-idp-remote.php
+  - saml20-sp-remote.php

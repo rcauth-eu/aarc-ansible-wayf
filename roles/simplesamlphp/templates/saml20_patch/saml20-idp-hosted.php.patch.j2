@@ -2,8 +2,22 @@ Description: Set our own IdP metadata
 Author: Mischa Sallé <msalle@nikhef.nl>
 --- a/metadata/saml20-idp-hosted.php	2019-11-19 15:05:50.000000000 +0100
 +++ b/metadata/saml20-idp-hosted.php	2019-11-21 21:54:07.640186933 +0100
-@@ -15,38 +15,72 @@
-     'host' => '__DEFAULT__',
+@@ -6,47 +6,84 @@
+  * See: https://simplesamlphp.org/docs/stable/simplesamlphp-reference-idp-hosted
+  */
+ 
++/* Include our hostname, this sets $ssp_hostname */
++include("{{ ssp_confdir }}/config_hostname.php");
++
+-$metadata['__DYNAMIC:1__'] = [
++$metadata["https://$ssp_hostname/{{ ssp_ctx_pfx }}/saml2/idp/metadata.php"] = [
+     /*
+      * The hostname of the server (VHOST) that will use this SAML entity.
+      *
+      * Can be '__DEFAULT__', to use this entry by default.
+      */
+-    'host' => '__DEFAULT__',
++    'host' => "$ssp_hostname",
  
      // X.509 key and certificate. Relative to the cert directory.
 -    'privatekey' => 'server.pem',

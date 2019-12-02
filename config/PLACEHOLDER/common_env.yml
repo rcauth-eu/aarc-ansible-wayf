@@ -3,7 +3,11 @@
 ### OVERRIDDEN VALUES FOR THE common ROLE
 ########################################################################
 
+### hostname used e.g. in entityID, metadata etc.
+ssp_hostname: "{{ inventory_hostname }}"
+
 ### PHP
 
-# Set to true to display errors etc.
+# Set to true to display errors.
+# Note that this also enables 'showerrors' for simplesamlphp
 #phpdebug: true

@@ -70,19 +70,21 @@ Author: Tamas Balogh <tamasb@nikhef.nl>
       * the error to 'technicalcontact_email'.
       */
 -    'showerrors' => true,
-+    'showerrors' => false,
++    'showerrors' => {{ phpdebug }},
      'errorreporting' => true,
  
      /*
-@@ -292,7 +294,7 @@
+@@ -292,8 +294,8 @@
       * Options: [syslog,file,errorlog,stderr]
       *
       */
 -    'logging.level' => SimpleSAML\Logger::NOTICE,
-+    'logging.level' => SimpleSAML\Logger::INFO,
-     'logging.handler' => 'syslog',
+-    'logging.handler' => 'syslog',
++    'logging.level' => SimpleSAML\Logger::{{ ssp_loglevel }},
++    'logging.handler' => '{{ ssp_loghandler }}',
  
      /*
+      * Specify the format of the logs. Its use varies depending on the log handler used (for instance, you cannot
 @@ -321,7 +323,7 @@
       * - %msg: the message to be logged.
       *

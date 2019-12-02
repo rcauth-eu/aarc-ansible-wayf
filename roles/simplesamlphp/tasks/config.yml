@@ -3,15 +3,21 @@
 - name: create configuration directory
   file:
     state: directory
-    path: "{{ ssp_confdir }}-{{ ssp_version }}"
+    path: "{{ ssp_confdir }}-{{ ssp_version }}-{{ ssp_suffix }}"
     owner: root
     group: root
     
 - name: make config symlink
   file:
     state: link
-    src: "config-{{ ssp_version }}"
+    src: "config-{{ ssp_version }}-{{ ssp_suffix }}"
     path: "{{ ssp_confdir }}"
+
+- name: create hostname config file
+  template:
+    src: "config_hostname.php.j2"
+    dest: "{{ ssp_confdir }}/config_hostname.php"
+    backup: true
 
 # First copy the original config files into a temporary directory
 
@@ -33,7 +39,7 @@
     - modules/cron/config-templates/module_cron.php
     - modules/discopower/config-templates/module_discopower.php
 
-- name: copy configuration template patches
+- name: copy configuration templated patches
   template:
     src: "config_patch/{{ item }}.j2"
     dest: "{{ configtmp.path }}/{{ item }}"
@@ -42,8 +48,9 @@
     - config_config.php.patch
     - config_config-metarefresh.php.patch
     - config_module_cron.php.patch
+    - config_module_discopower.php.patch
 
-- name: apply templated configuration patches
+- name: patch templated input configuration templates
   patch:
     remote_src: true
     src: "{{ configtmp.path }}/{{ item }}"
@@ -54,13 +61,6 @@
     - config_config.php.patch
     - config_config-metarefresh.php.patch
     - config_module_cron.php.patch
-
-- name: apply non-templated configuration patches
-  patch:
-    src: "config_patch/{{ item }}"
-    basedir: "{{ configtmp.path }}"
-    strip: 2
-  with_items:
     - config_module_discopower.php.patch
 
 - name: copy config files

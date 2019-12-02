@@ -3,11 +3,19 @@
 ### DEFAULT VALUES FOR THE common ROLE
 ########################################################################
 
-### PHP debug defaults to false
+### PHP debug defaults to false.
+### Setting to true also enables 'showerrors' for simplesamlphp.
 phpdebug: false
 
 ### Root for simplesamlphp
 ssp_dir: /var/simplesamlphp
+
+### hostname to use
+ssp_hostname: wayf.rcauth.eu
+
+### Apache user and group
+ssp_user: apache
+ssp_group: apache
 
 ### context prefix
 ssp_ctx_pfx: wayf

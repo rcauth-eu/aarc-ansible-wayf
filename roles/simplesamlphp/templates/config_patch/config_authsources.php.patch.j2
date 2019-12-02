@@ -7,9 +7,12 @@ Author: Mischa Sallé <msalle@nikhef.nl>
 Author: Tamas Balogh <tamasb@nikhef.nl>
 --- a/config/authsources.php	2019-11-19 15:02:43.000000000 +0100
 +++ b/config/authsources.php	2019-11-21 22:01:49.674334334 +0100
-@@ -1,5 +1,26 @@
+@@ -1,5 +1,29 @@
  <?php
- 
+
++/* Include our hostname, this sets $ssp_hostname */
++include("{{ ssp_confdir }}/config_hostname.php");
++
 +/**
 + * Needed to unset the cookie. Otherwise we could have just used isset() ? ... :
 + * returns value of the idphint cookie.
@@ -39,7 +42,7 @@ Author: Tamas Balogh <tamasb@nikhef.nl>
          // The entity ID of this SP.
          // Can be NULL/unset, in which case an entity ID is generated based on the metadata URL.
 -        'entityID' => null,
-+        'entityID' => '{{ entity_id }}',
++        'entityID' => "{{ entity_id }}",
 +
 +        // metadata cert and key, w.r.t. certdir set in config.php
 +        'privatekey' => '{{ ssp_key }}',

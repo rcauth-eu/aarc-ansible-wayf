@@ -9,8 +9,39 @@ ssp_confdir: /etc/simplesamlphp/config
 ### PKI directory for simplesamlphp
 ssp_pkidir: /etc/pki/simplesamlphp
 
+### metadata directory for simplesamlphp
+ssp_metadatadir: "{{ ssp_dir }}/metadata"
+
+### metadata-generated directory for edugain metadata
+ssp_metadata_generateddir: "{{ ssp_dir }}/metadata-generated"
+
+
+### simplesamlphp version
+#ssp_version: 1.2.3
+
+### simplesamlphp directory suffix, appended after the version
+ssp_suffix: devel
+
+
+### Some log configuration, more complete setting via config.php
+
 ### log directory for simplesamlphp
 ssp_logdir: /var/log/simplesamlphp/
+
+### log level for simplesamlphp. Valid values are
+### ERR WARNING NOTICE INFO DEBUG
+ssp_loglevel: "INFO"
+
+### log target for simplesamlphp. Valid values are syslog,file,errorlog,stderr
+ssp_loghandler: "syslog"
+
+
+### input tarball, you can use the ssp_version inside the name.
+### Note that it is currently assumed to be downloaded from a URL, otherwise
+### override also ssp_tarball_remote.
+ssp_tarball_remote: true
+ssp_tarball: "https://github.com/simplesamlphp/simplesamlphp/releases/download/v{{ ssp_version }}/simplesamlphp-{{ ssp_version }}.tar.gz"
+
 
 ### tech contact for the service (not metadata), email is address, not href,
 ### it is used for sending error reports to.
@@ -20,15 +51,17 @@ ssp_logdir: /var/log/simplesamlphp/
 ### timezone: either null or name including single quotes
 timezone: "null"
 
+
 ### saml metadata signing certificate and key
-ssp_cert: saml-cert-{{ inventory_hostname }}.pem
-ssp_key: saml-key-{{ inventory_hostname }}.pem
+ssp_cert: "saml-cert-{{ inventory_hostname }}.pem"
+ssp_key: "saml-key-{{ inventory_hostname }}.pem"
 
 ### eduGAIN metadata signing certificate
 #edugain_cert: edugain-metadata-signer.pem
 
 ### eduGAIN metadata feed URL
 #edugain_url: https://edugain/feed.xml
+
 
 ### idp_remote metadata files to include, split in prod & test
 prod_idp_remotes: []
@@ -38,8 +71,9 @@ test_idp_remotes: []
 prod_sp_remotes: []
 test_sp_remotes: []
 
+
 ### entityID
-entity_id: https://{{ inventory_hostname }}/{{ ssp_ctx_pfx }}/
+entity_id: "https://$ssp_hostname/{{ ssp_ctx_pfx }}/"
 
 ### our own metadata
 #meta_org_name: "WAYF"
@@ -66,3 +100,35 @@ entity_id: https://{{ inventory_hostname }}/{{ ssp_ctx_pfx }}/
 #meta_service_privacy: "https://ca.example.org/privacy"
 #meta_service_logo: "https://ca.example.org/images/logo.gif"
 #meta_service_logo_small: "https://ca.example.org/images/logo-150.gif"
+
+
+### Order of the tabs. The mapping to tabs is done via the metadata, and
+### typically via config-metarefresh.php for the eduGAIN metadata.
+### The actual names of the tabs are determined via the discopower.po files
+tab_order:
+  - "preferred"
+  - "edugain"
+  - "er_infras"
+  - "belgium"
+  - "czech"
+  - "denmark"
+  - "france"
+  - "germany"
+  - "greece"
+  - "ireland"
+  - "italy"
+  - "lithuania"
+  - "netherlands"
+  - "spain"
+  - "sweden"
+  - "switzerland"
+  - "uk"
+  - "australia"
+  - "brazil"
+  - "canada"
+  - "incommon"
+  - "oman"
+  - "southafrica"
+  - "south-korea"
+  - "other"
+  - "misc"

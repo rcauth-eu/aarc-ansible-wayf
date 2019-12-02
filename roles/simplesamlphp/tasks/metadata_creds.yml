@@ -12,7 +12,7 @@
     src: "{{ ssp_cert }}"
     dest:  "{{ ssp_pkidir }}"
     owner: root
-    group: apache
+    group: "{{ ssp_group }}"
     mode: 0644
 
 - name: copy saml key
@@ -20,7 +20,7 @@
     src: "{{ ssp_key }}"
     dest:  "{{ ssp_pkidir }}"
     owner: root
-    group: apache
+    group: "{{ ssp_group }}"
     mode: 0440
 
 - name: copy eduGAIN certificate

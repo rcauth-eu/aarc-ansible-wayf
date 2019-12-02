@@ -4,18 +4,10 @@
   file:
     path: "{{ ssp_dir }}/modules/{{ item }}/enable"
     state: touch
-  with_items:
-    - discopower
-    - cron
-    - metarefresh
+  with_items: "{{ enabled_modules }}"
 
 - name: disable modules
   file:
     path: "{{ ssp_dir }}/modules/{{ item }}/disable"
     state: touch
-  with_items:
-    - consentAdmin
-    - memcacheMonitor
-    - statistics
-    - oauth
-    - riak
+  with_items: "{{ disabled_modules }}"

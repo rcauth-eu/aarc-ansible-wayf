@@ -6,6 +6,23 @@
 ### SimpleSAMLPHP version
 ssp_version: 1.18.2
 
+### Suffix to append after the version, defaults to devel
+ssp_suffix: devel
+
+
+### Some log configuration, more complete setting via config.php
+
+### log directory for simplesamlphp
+#ssp_logdir: /var/log/simplesamlphp/
+
+### log level for simplesamlphp. Valid values are
+### ERR WARNING NOTICE INFO DEBUG
+#ssp_loglevel: "INFO"
+
+### log target for simplesamlphp. Valid values are syslog,file,errorlog,stderr
+#ssp_loghandler: "syslog"
+
+
 ### tech contact for the service (not metadata), email is address, not href,
 ### it is used for sending error reports to.
 tech_name: Operator
@@ -35,8 +52,10 @@ prod_sp_remotes:
 test_sp_remotes:
  - ds.example.org.php
 
-### entityID
-#entity_id: https://{{ inventory_hostname }}/{{ ssp_ctx_pfx }}/
+### entityID:
+### Can hardcode, but can also use e.g. $ssp_hostname set via {{ ssp_hostname }}
+### in ssp_confdir/config_hostname.php or {{ inventory_hostname }}.
+#entity_id: entity_id: "https://$ssp_hostname/{{ ssp_ctx_pfx }}/"
 
 ### our own metadata
 meta_org_name: "WAYF"
