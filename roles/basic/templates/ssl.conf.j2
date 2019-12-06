@@ -4,6 +4,7 @@ Listen 443
 # just publish Apache as server
 ServerTokens Prod
 
+# SSL/TLS related options, actual engine is switched on per VirtualHost
 SSLPassPhraseDialog  builtin
 SSLSessionCache         shmcb:/var/cache/mod_ssl/scache(512000)
 SSLSessionCacheTimeout  300
@@ -12,35 +13,79 @@ SSLRandomSeed startup file:/dev/urandom  256
 SSLRandomSeed connect builtin
 SSLCryptoDevice builtin
 
-Define  root /{{ ssp_ctx_pfx }}
-Define  servername {{ inventory_hostname }}
+SSLProtocol all -SSLv2 -SSLv3 +TLSv1
+SSLHonorCipherOrder On
+SSLCipherSuite "EECDH+ECDSA+AESGCM EECDH+aRSA+AESGCM EECDH+ECDSA+SHA384 EECDH+ECDSA+SHA256 EECDH+aRSA+SHA384 EECDH+aRSA+SHA256 EECDH EDH+aRSA !aNULL !eNULL !MEDIUM !LOW !3DES !MD5 !EXP !PSK !SRP !DSS"
 
+SSLCertificateFile      {{ hostcert }}
+SSLCertificateKeyFile   {{ hostkey }}
+{% if hostcert_intermediate is defined %}
+# Note: from Apache 2.4.8 SSLCertificateChainFile is obsolete. Probably can
+# better use SSLCACertificatePath in that case or put the whole chain in
+# SSLCertificateFile
+SSLCertificateChainFile {{ hostcert_intermediate }}
+{% endif %}
 
+# Create useful variables
+Define root       /{{ ssp_ctx_pfx }}
+Define servername {{ ssp_hostname }}
+Define webroot    {{ ssp_dir }}/www/
+
+# Redirect http requests to https
 <VirtualHost *:80>
-    ServerName ${servername}:443 
-
+    ServerName  ${servername}
     Redirect / https://${servername}/
-
-    Alias   ${root}     {{ ssp_dir }}/www
 </VirtualHost>
 
-<VirtualHost _default_:443>
-    ErrorLog            logs/ssl_error_log
-    TransferLog         logs/ssl_access_log
-    LogLevel            debug
-    ServerName          ${servername}:443
-    UseCanonicalName    on
+# We want to redirect all not-to-be-handled hostnames to the $servername. By not
+# specifying them in any VirtualHost block as ServerName or ServerAlias, they
+# will use the default VirtualHost block, i.e. is the first one. We must however
+# still explicitly set a ServerName there, since an empty ServerName is
+# interpreted as the FQDN which we might not want to treat as not-to-be-handled
+# (and setting it explicitly in a later block would still let it use the first
+# match, i.e. the first VirtualHost block). Hence by setting the default block
+# ServerName to a guaranteed non-existing hostname, it will be the default
+# *only* for all not-to-be-handled hostnames. See also
+# https://httpd.apache.org/docs/2.4/vhosts/name-based.html
+<VirtualHost *:443>
+    SSLEngine on
+    ServerName  non-existing-hostname
+
+    CustomLog logs/ssl_request_log \
+              "%t %h Redirecting from %{SERVER_NAME}x to ${servername}"
+
+    Redirect / https://${servername}/
+</VirtualHost>
+
+<VirtualHost *:443>
+    # SSLEngine on is not per se needed here: only first matching VirtualHost
+    # (i.e. default) needs to switch it on, but it doesn't harm.
+    SSLEngine on
+    ServerName  ${servername}
+
 {% if server_aliases is defined %}
 {% for server_alias in server_aliases %}
     ServerAlias {{ server_alias }}
 {% endfor %}
+{% else %}
+{# We only want UseCanonicalName if we don't have ServerAlias, since it
+   would redirect / to the root at ServerName, not at ServerAlias #}
+    # UseCanonicalName ensures that SERVER_NAME etc. are set to ServerName.
+    # Not per se needed, since in principle our VirtualHost configs already
+    # ensure that we only get here when we're already using the ServerName.
+    UseCanonicalName on
 {% endif %}
 
+    # Logging configuration
+    ErrorLog    logs/ssl_error_log
+    TransferLog logs/ssl_access_log
+    LogLevel    {{ httpd_loglevel }}
+
+    # Set Expires: header to now
     <IfModule mod_expires.c>
         ExpiresActive On
         ExpiresDefault now
     </IfModule>
-
 
     # see https://securityheaders.com/ (retrieved 2018-09-05)
     # Enable HSTS (was 182 days, see below, now set to 30 days)
@@ -59,38 +104,23 @@ Define  servername {{ inventory_hostname }}
     # Only allow content from ourselves
     Header always set Content-Security-Policy "default-src 'self'; font-src 'self'; style-src 'self' 'unsafe-inline'; frame-ancestors 'self'; script-src 'self' 'unsafe-inline'"
 
-
-    SSLEngine on
-    SSLProtocol all -SSLv2 -SSLv3 +TLSv1
-    SSLHonorCipherOrder On
-    SSLCipherSuite "EECDH+ECDSA+AESGCM EECDH+aRSA+AESGCM EECDH+ECDSA+SHA384 EECDH+ECDSA+SHA256 EECDH+aRSA+SHA384 EECDH+aRSA+SHA256 EECDH EDH+aRSA !aNULL !eNULL !MEDIUM !LOW !3DES !MD5 !EXP !PSK !SRP !DSS"
-
-    SSLCertificateFile {{ hostcert }}
-    SSLCertificateKeyFile {{ hostkey }}
-{% if hostcert_intermediate is defined %}
-    # Note: from Apache 2.4.8 SSLCertificateChainFile is obsolete. Probably can
-    # better use SSLCACertificatePath in that case or put the whole chain in
-    # SSLCertificateFile
-    SSLCertificateChainFile {{ hostcert_intermediate }}
-{% endif %}
-
-
     SetEnvIf User-Agent ".*MSIE.*" \
              nokeepalive ssl-unclean-shutdown \
              downgrade-1.0 force-response-1.0
     CustomLog logs/ssl_request_log \
               "%t %h %{SSL_PROTOCOL}x %{SSL_CIPHER}x \"%r\" %b"
 
-    <Directory "{{ ssp_dir }}/www/">
+    # Set permissions on SimpleSAMLphp root
+    <Directory "${webroot}">
         AllowOverride AuthConfig
         Require all granted
     </Directory>
 
-    Alias   ${root}     {{ ssp_dir }}/www
+    # Point ${root} to the SimpleSAMLphp root
+    Alias ${root} ${webroot}
 
     # Adding redirect to actual wayf "home"
     Redirect permanent /index.html ${root}/
     Redirect 301 /index.html ${root}/
 
 </VirtualHost>
-

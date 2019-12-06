@@ -16,10 +16,10 @@ ssp_metadatadir: "{{ ssp_dir }}/metadata"
 ssp_metadata_generateddir: "{{ ssp_dir }}/metadata-generated"
 
 
-### simplesamlphp version
+### SimpleSAMLphp version
 #ssp_version: 1.2.3
 
-### simplesamlphp directory suffix, appended after the version
+### SimpleSAMLphp directory suffix, appended after the version
 ssp_suffix: devel
 
 
@@ -53,6 +53,9 @@ timezone: "null"
 
 
 ### saml metadata signing certificate and key
+### You can create these using e.g.
+###  openssl req -newkey rsa:3072 -new -x509 -days 3652 -nodes \
+###   -out saml-cert-<FQDN>.pem -keyout saml-key-<FQDN>.pem -subj "/CN=<FQDN>"
 ssp_cert: "saml-cert-{{ inventory_hostname }}.pem"
 ssp_key: "saml-key-{{ inventory_hostname }}.pem"
 
@@ -67,12 +70,16 @@ ssp_key: "saml-key-{{ inventory_hostname }}.pem"
 prod_idp_remotes: []
 test_idp_remotes: []
 
-### sp_remote metadata files to include, split in prod & test
+
+### sp_remote metadata files to include, split in prod & test.
+### This is typically the Delegation Servers
 prod_sp_remotes: []
 test_sp_remotes: []
 
 
 ### entityID
+### Can hardcode, but can also use e.g. $ssp_hostname set via {{ ssp_hostname }}
+### in ssp_confdir/config_hostname.php or {{ inventory_hostname }}.
 entity_id: "https://$ssp_hostname/{{ ssp_ctx_pfx }}/"
 
 ### our own metadata
