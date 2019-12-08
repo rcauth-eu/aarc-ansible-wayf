@@ -6,6 +6,12 @@
     state: restarted
     enabled: yes
 
+- name: restart php-fpm
+  service:
+    name: php-fpm
+    state: restarted
+    enabled: yes
+
 - name: restart sshd
   service:
     name: sshd
