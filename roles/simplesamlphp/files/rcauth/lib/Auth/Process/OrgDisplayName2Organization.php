@@ -19,7 +19,7 @@ class OrgDisplayName2Organization extends \SimpleSAML\Auth\ProcessingFilter
      *
      * This function saves the state, and redirects the user to the page where
      * the user can authorize the release of the attributes.
-     * If storage is used and the consent has already been given the user is 
+     * If storage is used and the consent has already been given the user is
      * passed on.
      *
      * @param array &$state The state of the response.
@@ -34,9 +34,9 @@ class OrgDisplayName2Organization extends \SimpleSAML\Auth\ProcessingFilter
 
         $idpEntityId = $state['Source']['entityid'];
 
-	$metadata = \SimpleSAML\Metadata\MetaDataStorageHandler::getMetadataHandler();
+        $metadata = \SimpleSAML\Metadata\MetaDataStorageHandler::getMetadataHandler();
 
-        if (!isset($metadata))	{
+        if (!isset($metadata)) {
             \SimpleSAML\Logger::warning('$metadata is NOT set');
             return;
         }
@@ -50,15 +50,15 @@ class OrgDisplayName2Organization extends \SimpleSAML\Auth\ProcessingFilter
         if (isset($state['saml:sp:IdP'])) {
             $idpEntityId = $state['saml:sp:IdP'];
             $idpmeta     = $metadata->getMetaData($idpEntityId, 'saml20-idp-remote');
-	    if (array_key_exists("OrganizationDisplayName", $idpmeta) &&
-		array_key_exists("en", $idpmeta['OrganizationDisplayName']))
-	    {
-		$organization = $idpmeta['OrganizationDisplayName']['en'];
+            if (array_key_exists("OrganizationDisplayName", $idpmeta) &&
+                array_key_exists("en", $idpmeta['OrganizationDisplayName']))
+            {
+                $organization = $idpmeta['OrganizationDisplayName']['en'];
             } else {
                 \SimpleSAML\Logger::info('No English OrganizationDisplayName found, will use idpEntityId');
-		$organization = $idpEntityId;
-	    }
-	    $attributes =& $state['Attributes'];
+                $organization = $idpEntityId;
+            }
+            $attributes =& $state['Attributes'];
             $attributes[self::$ORGANIZATION_OID] = array($organization);
             \SimpleSAML\Logger::debug('Added attribute '.self::$ORGANIZATION_OID.' = '.$organization);
         }
