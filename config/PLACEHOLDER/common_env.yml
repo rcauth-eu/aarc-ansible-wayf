@@ -3,11 +3,28 @@
 ### OVERRIDDEN VALUES FOR THE common ROLE
 ########################################################################
 
-### hostname used e.g. in entityID, metadata etc.
-ssp_hostname: "{{ inventory_hostname }}"
+### PHP debug defaults to false.
+### Setting to true also enables 'showerrors' for SimpleSAMLphp.
+#phpdebug: false
 
-### PHP
+### Root for SimpleSAMLphp installation
+#ssp_dir: /var/simplesamlphp
 
-# Set to true to display errors.
-# Note that this also enables 'showerrors' for simplesamlphp
-#phpdebug: true
+### Hostname to use.
+### This is the primary hostname used by apache as ServerName, and by
+### SimpleSAMLphp in its metadata etc.
+#ssp_hostname: wayf.rcauth.eu
+
+### other hostnames the HTTP server is accepting. Note that these will
+### typically not fully work for SimpleSAMLphp, due to mismatching metadata.
+#server_aliases:
+#  - wayf-devel.rcauth.eu
+#  - {{ inventory_hostname }}
+
+### Apache user and group
+#ssp_user: apache
+#ssp_group: apache
+
+### context prefix
+### The base URL will be: https://{{ ssp_hostname }}/{{ ssp_ctx_pfx }}/
+#ssp_ctx_pfx: wayf
