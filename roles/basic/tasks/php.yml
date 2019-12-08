@@ -25,9 +25,8 @@
     path: "/etc/php.ini"
     regexp: '^display_errors\s+=.*$'
     insertafter: '^;display_errors\s+='
-    line: 'display_errors = On'
+    line: "display_errors = {{ 'On' if phpdebug else 'Off' }}"
     backup: yes
-  when: phpdebug == true
   notify: restart php-fpm
 
 - name: enable display startup errors
@@ -35,7 +34,6 @@
     path: "/etc/php.ini"
     regexp: '^display_startup_errors\s+=.*$'
     insertafter: '^;display_startup_errors\s+='
-    line: 'display_startup_errors = On'
+    line: "display_startup_errors = {{ 'On' if phpdebug else 'Off' }}"
     backup: yes
-  when: phpdebug == true
   notify: restart php-fpm
