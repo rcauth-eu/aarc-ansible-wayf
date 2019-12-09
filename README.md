@@ -31,9 +31,10 @@ There is only a single playbook, _wayf.yml_, that runs all the roles.
     the PEM formatted certificate and key file in the _roles/basic/files/_
     directory. If you don't have them yet, you can create one using e.g.
 
+        FQDN=<ssp_hostname>
         openssl req -newkey rsa:3072 -new -x509 -days 3652 -nodes \
-          -out saml-cert-<FQDN>.pem -keyout saml-key-<FQDN>.pem \
-          -subj "/CN=<FQDN>"`
+          -out saml-cert-${FQDN}.pem -keyout saml-key-${FQDN}.pem \
+          -subj "/CN=${FQDN}"`
 
  3. Create a directory under _config/_ with the files as indicated in
     the example _config/PLACEHOLDER/_ directory. You will need to

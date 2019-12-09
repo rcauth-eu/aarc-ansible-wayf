@@ -54,10 +54,12 @@ timezone: "null"
 
 ### saml metadata signing certificate and key
 ### You can create these using e.g.
+###  FQDN=<ssp_hostname>
 ###  openssl req -newkey rsa:3072 -new -x509 -days 3652 -nodes \
-###   -out saml-cert-<FQDN>.pem -keyout saml-key-<FQDN>.pem -subj "/CN=<FQDN>"
-ssp_cert: "saml-cert-{{ inventory_hostname }}.pem"
-ssp_key: "saml-key-{{ inventory_hostname }}.pem"
+###    -out saml-cert-${FQDN}.pem -keyout saml-key-${FQDN}.pem \
+###    -subj "/CN=${FQDN}"
+ssp_cert: "saml-cert-{{ ssp_hostname }}.pem"
+ssp_key: "saml-key-{{ ssp_hostname }}.pem"
 
 ### eduGAIN metadata signing certificate
 #edugain_cert: edugain-metadata-signer.pem
