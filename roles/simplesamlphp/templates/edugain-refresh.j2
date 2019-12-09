@@ -1,2 +1,3 @@
 #!/bin/sh
-curl -k --silent "https://localhost/{{ ssp_ctx_pfx }}/module.php/cron/cron.php?key={{ cron_key }}&tag=daily"
+# follow redirects as we might not listen to localhost
+curl -k -L --silent "https://localhost/{{ ssp_ctx_pfx }}/module.php/cron/cron.php?key={{ cron_key }}&tag=daily"
