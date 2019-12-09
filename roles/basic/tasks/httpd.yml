@@ -1,7 +1,8 @@
 ---
 
-# apache setup
+### Configure Apache httpd
 
+# Copy over host credentials
 - name: copy hostcert
   copy:
     src: "{{ inventory_hostname }}.crt"
@@ -20,7 +21,7 @@
     mode: 0400
   notify: restart httpd
 
-# All configuration is in ssl.conf
+# Configure httpd, all configuration is in ssl.conf
 - name: configure httpd
   template:
     src: ssl.conf.j2

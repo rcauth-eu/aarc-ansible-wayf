@@ -1,12 +1,18 @@
 ---
 
+### Main task calling all the SimpleSAMLphp related tasks
+
+# Install the main tarball, create symlinks and directories. Then apply the
+# source patches and install our rcauth module.
 - import_tasks: tarball.yml
 - import_tasks: patches.yml
-- import_tasks: rcauth_mod.yml
+- import_tasks: rcauth_module.yml
 
+# Setup the config files and disable/enable the modules
 - import_tasks: config.yml
 - import_tasks: modules.yml
 
+# Setup all the metadata related configuration
 - import_tasks: saml20_config.yml
 - import_tasks: metadata_creds.yml
 - import_tasks: metadata.yml

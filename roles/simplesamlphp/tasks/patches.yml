@@ -1,5 +1,7 @@
 ---
 
+### Task patching upstream source code, see roles/simplesamlphp/vars/main.yml 
+
 - name: apply code patches
   patch:
     src: "patch/{{ item }}"

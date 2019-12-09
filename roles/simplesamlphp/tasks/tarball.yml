@@ -1,8 +1,10 @@
 ---
 
+### Task installing the upstream tarball, creating symlinks and directories
+
 # We unpack the tarball in two stages: first untar, then rename to add suffix.
-# We should only unpack the tarball when the -version-suffix directory doesn't
-# yet exist.
+# We only unpack the tarball when the -version-suffix directory doesn't yet
+# exist.
 - name: check whether basedir exists
   stat:
     path: "{{ ssp_dir }}-{{ ssp_version }}-{{ ssp_suffix }}"
@@ -32,7 +34,7 @@
     src: "simplesamlphp-{{ ssp_version }}-{{ ssp_suffix }}"
     path: "{{ ssp_dir }}"
 
-# Config directory
+# Setup the configuration directory: rename shipped, real one as symlink
 - name: rename config directory
   command:
     creates: "{{ ssp_dir }}/config.dist"

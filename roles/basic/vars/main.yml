@@ -1,6 +1,8 @@
 ---
-### general packages that should be present
 
+### Definition of several lists, not intended to be overridden
+
+# List of general packages
 general_packages:
   # essential for our services
   - tar
@@ -12,6 +14,7 @@ general_packages:
   - mailx
   - bind-utils
 
+# List of packages specific for SimpleSAMLphp installation
 extra_packages:
   - httpd
   - mod_ssl
@@ -19,15 +22,17 @@ extra_packages:
   - php-mbstring
   - php-dom
   - php-json
-  # composer likes:
+  # composer related packages:
   - php-pecl-zip
   - git
 
+# List of enabled services
 enabled_services:
   - nftables
   - chronyd
   - postfix
   - httpd
 
+# List of disabled services
 disabled_services:
   - firewalld

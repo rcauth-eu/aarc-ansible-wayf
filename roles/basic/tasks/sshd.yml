@@ -1,6 +1,6 @@
 ---
 
-# sshd setup
+### Setup sshd: raise loglevel for printing ssh key, disable password login
 
 - name: raise sshd log level
   lineinfile:

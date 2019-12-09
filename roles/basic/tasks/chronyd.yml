@@ -1,7 +1,8 @@
 ---
 
-# chronyd Setup
+### Configure NTP using chronyd
 
+# Add our own NTP servers to the config, will be at the EOF
 - name: add our ntp servers config
   blockinfile:
     path: /etc/chrony.conf
@@ -16,7 +17,7 @@
       {% endfor %}
   notify: restart chronyd
 
-# Since we now guaranteed have our block, we can safely remove the existing ones
+# Since we now have our block at EOF, we can remove existing ones before that
 - name: remove existing ntp servers
   replace:
     path: /etc/chrony.conf

@@ -1,4 +1,7 @@
 ---
+
+### playbook installing the complete SimpleSAMLphp-based WAYF
+
 - hosts: wayf
   remote_user: root
   vars_files:

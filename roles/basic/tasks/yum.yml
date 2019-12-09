@@ -1,12 +1,13 @@
 ---
 
-# yum updating and setup
+### Update packages, install general and extra packages, disable auto update
 
 - name: yum update machine
   yum:
     name: '*'
     state: latest
 
+# install our the require packages
 - name: install general packages
   yum:
     name: "{{ general_packages }}"

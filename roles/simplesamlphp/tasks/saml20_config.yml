@@ -1,7 +1,8 @@
 ---
 
-# First copy the original saml20-*p-*.php config files into a temp directory
-# The list of files is defined in vars/main.yml as {{ saml20_items }}.
+### Task setting up the different saml20-{idp,sp}-*.php config files
+
+# Create the saml20-* files from input config files + our patches
 
 - name: create saml20 config tempdir
   tempfile:
@@ -29,6 +30,8 @@
     basedir: "{{ saml20tmp.path }}"
     strip: 2
   with_items: "{{ saml20_items }}"
+
+# Copy over our patched saml20-* config files
 
 - name: copy saml20 config files
   copy:

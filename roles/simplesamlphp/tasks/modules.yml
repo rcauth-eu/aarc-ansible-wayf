@@ -1,5 +1,7 @@
 ---
 
+### Task enabling/disabling modules, see roles/simplesamlphp/vars/main.yml
+
 - name: enable modules
   file:
     path: "{{ ssp_dir }}/modules/{{ item }}/enable"

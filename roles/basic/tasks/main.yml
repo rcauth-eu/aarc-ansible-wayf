@@ -1,29 +1,32 @@
 ---
 
-# main task includes all subtasks
+### Main task calling all the basic host related tasks
 
 - import_tasks: hostname.yml
 - import_tasks: selinux.yml
-- import_tasks: sshd.yml
 
+# lock down ssh access
+- import_tasks: sshd.yml
+- import_tasks: access.yml
+
+# install packages and update (needs to run before nftables)
 - import_tasks: yum.yml
 
+# setup services
 - import_tasks: nftables.yml
-- import_tasks: access.yml
 - import_tasks: chronyd.yml
 - import_tasks: postfix.yml
 
+# Setup apache and php
 - import_tasks: php.yml
 - import_tasks: httpd.yml
 
-# list of disabled services
-
+# disable services
 - name: disable services
   service: name={{ item }} state=stopped enabled=no
   with_items: "{{ disabled_services }}"
 
-# list of enabled services
-
+# enable services
 - name: enable services
   service: name={{ item }} state=started enabled=yes
   with_items: "{{ enabled_services }}"

@@ -1,5 +1,7 @@
 ---
 
+### Task setting up all the config files for SimpleSAMLphp
+
 - name: create configuration directory
   file:
     state: directory

@@ -1,6 +1,6 @@
 ---
 
-# ensure hostname is set correctly 
+### Configure our canonical hostname
 
 - name: set hostname
   hostname:

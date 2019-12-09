@@ -1,6 +1,8 @@
 ---
 
-# First make local metadata files from the original and patches
+### Task installing the IdP and SP metadata files
+
+# Create the IdP-remote metadata files from upstream + our patches
 
 - name: create metadata tempdir
   tempfile:
@@ -24,7 +26,7 @@
     - "{{ prod_idp_remotes }}"
     - "{{ test_idp_remotes }}"
 
-# Now we can copy our locally patched metadata
+# Copy over our patched IdP-remote metadata files
 
 - name: copy idp-remote metadata
   copy:
@@ -36,13 +38,14 @@
     - "{{ prod_idp_remotes }}"
     - "{{ test_idp_remotes }}"
 
-# Remove the tempdir
+# Remove the metadata tempdir
+
 - name: remove metadata tempdir
   file:
     path: "{{ metadatatmp.path }}"
     state: absent
 
-# Now continue with the sp-remote metadata
+# Copy over the sp-remote metadata files
 
 - name: copy sp-remote metadata
   copy:
@@ -52,6 +55,8 @@
   with_flattened:
     - "{{ prod_sp_remotes }}"
     - "{{ test_sp_remotes }}"
+
+# Setup edugain metadata configuration
 
 - name: create metadata-generated directory
   file:
@@ -80,6 +85,9 @@
     path: "{{ ssp_metadata_generateddir }}/edugain/saml20-idp-remote.php"
   register: edugain_stat
 
+# Run cronjob when edugain metadata is absent or older than 24 hours
+
 - name: run edugain cronjob
   command: /etc/cron.daily/edugain-refresh
-  when: edugain_stat.stat.exists == False
+  when: edugain_stat.stat.exists == False or
+        (ansible_date_time.epoch|int - edugain_stat.stat.mtime) > 86400

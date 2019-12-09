@@ -1,5 +1,7 @@
 ---
 
+### Task installing rcauth module, provides 2 authproc filters and theme
+
 - name: copy rcauth module
   copy:
     src: rcauth

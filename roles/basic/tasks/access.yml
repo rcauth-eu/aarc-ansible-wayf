@@ -1,6 +1,6 @@
 ---
 
-# Configure access to machine with authconfig
+### Configure PAM access module, using authselect
 
 - name: add only root user to access.conf file
   blockinfile:

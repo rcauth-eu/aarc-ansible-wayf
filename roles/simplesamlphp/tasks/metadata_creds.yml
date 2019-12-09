@@ -1,5 +1,7 @@
 ---
 
+### Task installing the metadata credentials
+
 - name: create metadata pki directory
   file:
     state: directory

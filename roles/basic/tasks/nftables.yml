@@ -1,6 +1,6 @@
 ---
 
-# setup nftables
+### Setup nftables: definitions of services, networks and actual filter table
 
 - name: add nftables config files
   copy:
@@ -21,7 +21,7 @@
   with_items:
     - nft-networks.nft
 
-- name: add nftables configuration
+- name: enable our nftables filter configuration
   blockinfile:
     path: /etc/sysconfig/nftables.conf
     marker: "# {mark} LOCAL NFTABLES CONFIGURATION"

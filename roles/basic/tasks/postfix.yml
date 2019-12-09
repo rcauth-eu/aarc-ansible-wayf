@@ -1,6 +1,6 @@
 ---
 
-# postfix setup
+### Configure postfix: hostname and relay host
 
 - name: ensure myhostname is set correctly
   lineinfile:

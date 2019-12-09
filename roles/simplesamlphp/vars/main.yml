@@ -1,6 +1,8 @@
 ---
 
-# Modules to be explicitly enabled or disabled
+### Definition of several lists, not intended to be overridden
+
+# SimpleSAMLphp modules to be explicitly enabled or disabled
 enabled_modules:
   - discopower
   - cron
@@ -13,7 +15,7 @@ disabled_modules:
   - oauth
   - riak
 
-# List if source patches, applied by
+# List if source patches, applied by task patches.yml
 source_patches:
   - frontpage_config.php.patch
   - frontpage_federation.twig.patch
@@ -30,7 +32,7 @@ source_patches:
   - croninfo.twig.patch
   - contrab.patch
 
-# List of metadata/* files to be installed and configured by saml20_config.yml
+# List of metadata/* files, installed and configured by task saml20_config.yml
 saml20_items:
   - saml20-idp-hosted.php
   - saml20-idp-remote.php
