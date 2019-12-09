@@ -1,0 +1,53 @@
+<?php
+ $metadata['https://wayf.rcauth.eu/wayf/saml2/idp/metadata.php'] = array (
+  'metadata-set' => 'saml20-idp-remote',
+  'entityid' => 'https://wayf.rcauth.eu/wayf/saml2/idp/metadata.php',
+  'SingleSignOnService' => 
+  array (
+    0 => 
+    array (
+      'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect',
+      'Location' => 'https://wayf.rcauth.eu/wayf/saml2/idp/SSOService.php',
+    ),
+  ),
+  'SingleLogoutService' => 
+  array (
+    0 => 
+    array (
+      'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect',
+      'Location' => 'https://wayf.rcauth.eu/wayf/saml2/idp/SingleLogoutService.php',
+    ),
+  ),
+  'certData' => 'MIIDXTCCAkWgAwIBAgIJALR+hWgxJuxKMA0GCSqGSIb3DQEBCwUAMEUxEjAQBgoJkiaJk/IsZAEZFgJldTEWMBQGCgmSJomT8ixkARkWBnJjYXV0aDEXMBUGA1UEAwwOd2F5Zi5yY2F1dGguZXUwHhcNMTYwNjA5MTgzOTM3WhcNMzYwNzA5MTgzOTM3WjBFMRIwEAYKCZImiZPyLGQBGRYCZXUxFjAUBgoJkiaJk/IsZAEZFgZyY2F1dGgxFzAVBgNVBAMMDndheWYucmNhdXRoLmV1MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAvkp3v+IvRB/XTYpjjemICUba6w7R8UL3lIk3FSoYs0v/JcztpajiCbHdExGPUTckbFO3GY4YcoPcQH2NPzN37FQs8JuYpv+CTim+g43CIMW1nnZDQWxpeRGTl7Ih3sTY40MgQRhNUGtnJBHBCUFs8Yq9IDuljxhLMgZljUnUll5xFQjnBOcWsvtr6Z4vALSp7QkB15VqTkIVHzSq/iAvIcYGwWFt93xcdNRGQbTZ6bubp1MEGJxSA3+frBPE1Ee7geXpizY/gRUdTO+kj2dgqR+Jp1djwUIdcKvGDQf8Af9HUEPxRJdDef7TtoVbQsOoPJflzK+3tuQ5NAYGXZ2KYwIDAQABo1AwTjAdBgNVHQ4EFgQULHuCZRg2SEtDnLGxnCCVK57lA7UwHwYDVR0jBBgwFoAULHuCZRg2SEtDnLGxnCCVK57lA7UwDAYDVR0TBAUwAwEB/zANBgkqhkiG9w0BAQsFAAOCAQEAQs8kXtotbAnEj1qZVls319nM1ES5cCY0e430HFJ7iF0mBDRyAGmuwnPrDcvHMFHALO2Gmj6WYcqNMSERjcACqTm700Qmz8RVnM2z1WoTQ0A65Xn4HKcy4lBppHtms5y/YaI9quBPynLIbd5jFLEakBidpoE/+kGwwov7067chebew61KArggd7SJnO5Y/35cdNF6PxilfXAdhSe5IZpKQptdYZ0mBS0mdcV6TDoH5pr2bVMJuggmRhQsSRW/H1x28krGyweGRFMohf5QEYogaEXig2QHcVT1pa3DIwgy9LJ803mEYYlf+ajnD/xXqyUV7qvZN8l6+p9Iob3SBEYOXQ==',
+  'NameIDFormat' => 'urn:oasis:names:tc:SAML:2.0:nameid-format:transient',
+  'EntityAttributes' => 
+  array (
+    'urn:oasis:names:tc:SAML:attribute:assurance-certification' => 
+    array (
+      0 => 'https://refeds.org/sirtfi',
+    ),
+  ),
+  'contacts' => 
+  array (
+    0 => 
+    array (
+      'contactType' => 'administrative',
+      'givenName' => 'Operator',
+      'surName' => 'RCAuth',
+      'emailAddress' => 'ca@rcauth.eu',
+    ),
+    1 => 
+    array (
+      'contactType' => 'security',
+      'givenName' => 'Operator',
+      'surName' => 'RCAuth',
+      'emailAddress' => 'ca@rcauth.eu',
+    ),
+    2 => 
+    array (
+      'emailAddress' => 'mailto:ca@rcauth.eu',
+      'contactType' => 'technical',
+      'givenName' => 'Operator',
+    ),
+  ),
+);

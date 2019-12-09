@@ -1,0 +1,143 @@
+<?php
+$metadata['https://sso.nikhef.nl/sso/saml2/idp/metadata.php'] = array (
+  'metadata-set' => 'saml20-idp-remote',
+  'entityid' => 'https://sso.nikhef.nl/sso/saml2/idp/metadata.php',
+  'SingleSignOnService' => 
+  array (
+    0 => 
+    array (
+      'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect',
+      'Location' => 'https://sso.nikhef.nl/sso/saml2/idp/SSOService.php',
+    ),
+  ),
+  'SingleLogoutService' => 
+  array (
+    0 => 
+    array (
+      'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect',
+      'Location' => 'https://sso.nikhef.nl/sso/saml2/idp/SingleLogoutService.php',
+    ),
+  ),
+  'certData' => 'MIIDHjCCAgYCCQCcnhg77CcIvDANBgkqhkiG9w0BAQUFADBRMRIwEAYKCZImiZPyLGQBGRYCbmwxFjAUBgoJkiaJk/IsZAEZFgZuaWtoZWYxCzAJBgNVBAsTAkNUMRYwFAYDVQQDEw1zc28ubmlraGVmLm5sMB4XDTEyMTAyMzEyMzk0N1oXDTIyMTAyMTEyMzk0N1owUTESMBAGCgmSJomT8ixkARkWAm5sMRYwFAYKCZImiZPyLGQBGRYGbmlraGVmMQswCQYDVQQLEwJDVDEWMBQGA1UEAxMNc3NvLm5pa2hlZi5ubDCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAL2/7Ijvd16yzYdUJkh9cQC3N7adnh5qTEfomVDBOFXAPIxv7Qb042Fy35lgZseAd1hbj2RbKHUpDrWj+q7u5u1/7BALa630O1xdRwIfb5twR5PuLxx1eGXs2Q6YQIeNIvdxVS0gMpXdDl7GMaZU+CMs82SSTz3KrX6wJvywzdv5ZflL7tOy4Ouo59NVFj2dGWEki86ekj7uDutjcp1SqolVLBhqECn4fTEHPju+fjz1h90MXez/LPQpMGXAJFSY97lm99b7PeKcFKlPfwZjYsEQ398eG48bgAeADIAqSI3ZOKz5392VWOxLcOx8lPnF5IjLF3rmOq9Lq+0NR8gsIdcCAwEAATANBgkqhkiG9w0BAQUFAAOCAQEAet+PrAdxBd4oQMfE2yxUzCG/oiD1YnsrKT2juwdCU/7INiMLrzYhibMWmV4fB/YbLd1HdH78qt6NIpYhr5NZtjLgiLa+4nl1TbAcnSRl9rNyHlIU4TLo6xpUbSqv7U44JsP/TJ2gRlMNnGGIhr6+4DnYlB/yPe2rkuZmNqBTI+0UzEGwkYYjtASL9HLga5YbVVyLCC85lYg7dDNzT+lPom0yWZlXXtERqBf1ahzw25Jvmfa3frtnh43YYGeY4Y7EUOots2nadkv8gBhd9m68NU2fdrNk+xd5/jbQpFm4cAdk1eNi2djTMQHr8es8sBvOfWJuhZ2IxLyVBXqBLKeQ8Q==',
+  'NameIDFormat' => 'urn:oasis:names:tc:SAML:2.0:nameid-format:transient',
+  'OrganizationName' => 
+  array (
+    'en' => 'Nikhef - Dutch National Institute for Subatomic Physics',
+  ),
+  'OrganizationDisplayName' => 
+  array (
+    'en' => 'Nikhef',
+  ),
+  'OrganizationURL' => 
+  array (
+    'en' => 'https://www.nikhef.nl/',
+  ),
+  'scope' => 
+  array (
+    0 => 'nikhef.nl',
+  ),
+  'EntityAttributes' => 
+  array (
+    'http://macedir.org/entity-category-support' => 
+    array (
+      0 => 'http://refeds.org/category/research-and-scholarship',
+    ),
+    'urn:oasis:names:tc:SAML:attribute:assurance-certification' => 
+    array (
+      0 => 'https://refeds.org/sirtfi',
+    ),
+  ),
+  'UIInfo' => 
+  array (
+    'DisplayName' => 
+    array (
+      'en' => 'Nikhef',
+      'nl' => 'Nikhef',
+    ),
+    'Description' => 
+    array (
+      'en' => 'Dutch National Institute for Subatomic Physics',
+      'nl' => 'Nationaal instituut voor sub-atomaire fysica',
+    ),
+    'PrivacyStatementURL' => 
+    array (
+      'en' => 'https://sso.nikhef.nl/policy/',
+    ),
+    'InformationURL' => 
+    array (
+      'en' => 'https://www.nikhef.nl/',
+    ),
+    'Logo' => 
+    array (
+      0 => 
+      array (
+        'url' => 'https://sso.nikhef.nl/sso/module.php/nikhef/assets/NIKHEF-logo-flat-nbg.gif',
+        'height' => 63,
+        'width' => 144,
+      ),
+    ),
+  ),
+  'DiscoHints' => 
+  array (
+    'DomainHint' => 
+    array (
+      0 => 'nikhef.nl',
+    ),
+    'GeolocationHint' => 
+    array (
+      0 => 'geo:52.3562717,4.9512118',
+    ),
+    'IPHint' => 
+    array (
+      0 => '192.16.185.0/24',
+      1 => '192.16.186.0/24',
+      2 => '192.16.199.0/24',
+      3 => '192.16.194.0/24',
+      4 => '192.16.195.0/24',
+      5 => '192.16.192.0/24',
+      6 => '145.102.132.0/22',
+      7 => '145.116.48.0/20',
+      8 => '194.171.96.0/21',
+      9 => '185.153.60.0/22',
+      10 => '2001:610:120::/48',
+      11 => '2a07:8500:120::/48',
+      12 => '2a07:8504:120::/48',
+    ),
+  ),
+  'contacts' => 
+  array (
+    0 => 
+    array (
+      'contactType' => 'support',
+      'emailAddress' => 'helpdesk@nikhef.nl',
+      'surName' => 'Nikhef',
+      'telephoneNumber' => '+31205922200',
+    ),
+    1 => 
+    array (
+      'contactType' => 'administrative',
+      'emailAddress' => 'nikidm-admin@nikhef.nl',
+      'surName' => 'Nikhef',
+    ),
+    2 => 
+    array (
+      'contactType' => 'other',
+      'emailAddress' => 'security@nikhef.nl',
+      'givenName' => 'CSIRT',
+      'surName' => 'Nikhef',
+      'telephoneNumber' => '+31205925090',
+      'company' => 'Nikhef',
+      'attributes' => 
+      array (
+        'xmlns:icmd' => 'http://refeds.org/metadata',
+        'icmd:contactType' => 'http://refeds.org/metadata/contactType/security',
+      ),
+    ),
+    3 => 
+    array (
+      'emailAddress' => 'helpdesk@nikhef.nl',
+      'contactType' => 'technical',
+      'givenName' => 'Helpdesk Nikhef CT',
+    ),
+  ),
+);

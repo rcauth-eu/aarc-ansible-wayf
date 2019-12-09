@@ -1,0 +1,11 @@
+--- sso.nikhef.nl.php.orig	2019-12-09 17:31:49.337784478 +0100
++++ sso.nikhef.nl.php	2019-12-09 17:32:48.714027699 +0100
+@@ -140,4 +140,8 @@
+       'givenName' => 'Helpdesk Nikhef CT',
+     ),
+   ),
++  'tags' =>
++  array (
++    0 => 'preferred',
++  ),
+ );
