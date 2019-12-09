@@ -28,6 +28,11 @@
 
 # Copy over our patched IdP-remote metadata files
 
+- name: create idp-remote directory
+  file:
+    path: "{{ ssp_metadatadir }}/idp-remote/"
+    state: directory
+
 - name: copy idp-remote metadata
   copy:
     remote_src: true
@@ -46,6 +51,11 @@
     state: absent
 
 # Copy over the sp-remote metadata files
+
+- name: create sp-remote directory
+  file:
+    path: "{{ ssp_metadatadir }}/sp-remote/"
+    state: directory
 
 - name: copy sp-remote metadata
   copy:
