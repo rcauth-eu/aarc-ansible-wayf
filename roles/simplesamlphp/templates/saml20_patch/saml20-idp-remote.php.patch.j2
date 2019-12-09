@@ -11,15 +11,15 @@ Author: Mischa Sallé <msalle@nikhef.nl>
   */
 + $metadata = [];
 +
-+ // Production non-eduGain IdPs
++ // Production non-eduGAIN IdPs
 {% for idp_remote in prod_idp_remotes %}
-+ require_once('idp-remote/{{ idp_remote }}');
-{% endfor %}
-+
-+ // Test IdPs
-{% for idp_remote in test_idp_remotes %}
 + require_once('idp-remote/{{ idp_remote }}');
 {% endfor %}
 +
 + // eduGAIN IdPs
 + require_once('metadata-generated/edugain/saml20-idp-remote.php');
++
++ // Test IdPs, add after eduGAIN to override
+{% for idp_remote in test_idp_remotes %}
++ require_once('idp-remote/{{ idp_remote }}');
+{% endfor %}
