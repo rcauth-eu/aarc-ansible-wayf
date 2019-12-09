@@ -34,7 +34,8 @@
     src: "simplesamlphp-{{ ssp_version }}-{{ ssp_suffix }}"
     path: "{{ ssp_dir }}"
 
-# Setup the configuration directory: rename shipped, real one as symlink
+# Setup the configuration directory: rename shipped, real will be made as
+# symlink in the config.yml task, once we have the physical directory
 - name: rename config directory
   command:
     creates: "{{ ssp_dir }}/config.dist"
@@ -42,12 +43,6 @@
       - /usr/bin/mv
       - "{{ ssp_dir }}/config"
       - "{{ ssp_dir }}/config.dist"
-
-- name: create symlink to config dir
-  file:
-    state: link
-    src: "{{ ssp_confdir }}"
-    path: "{{ ssp_dir }}/config"
 
 # Logging directory: create only when logging to file is enabled
 - name: create logging directory

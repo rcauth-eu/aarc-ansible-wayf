@@ -9,11 +9,19 @@
     owner: root
     group: root
     
+# Create unversioned symlink to the real versioned configuration directory.
 - name: make config symlink
   file:
     state: link
     src: "config-{{ ssp_version }}-{{ ssp_suffix }}"
     path: "{{ ssp_confdir }}"
+
+# Create symlink in the ssp_dir to the unversioned configuration directory.
+- name: create symlink to config dir
+  file:
+    state: link
+    src: "{{ ssp_confdir }}"
+    path: "{{ ssp_dir }}/config"
 
 - name: create hostname config file
   template:
