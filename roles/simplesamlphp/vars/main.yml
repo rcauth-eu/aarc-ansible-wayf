@@ -9,11 +9,6 @@ enabled_modules:
   - metarefresh
 
 disabled_modules:
-  - consentAdmin
-  - memcacheMonitor
-  - statistics
-  - oauth
-  - riak
 
 # List if source patches, applied by task patches.yml
 source_patches:
