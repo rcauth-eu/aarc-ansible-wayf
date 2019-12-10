@@ -16,3 +16,6 @@
 - import_tasks: saml20_config.yml
 - import_tasks: metadata_creds.yml
 - import_tasks: metadata.yml
+
+# Now that we're all done create the 'master' symlink
+- import_tasks: master_symlink.yml

@@ -5,7 +5,7 @@
 - name: apply code patches
   patch:
     src: "patch/{{ item }}"
-    basedir: "{{ ssp_dir }}"
+    basedir: "{{ ssp_installdir }}"
     strip: 1
     backup: false
   with_items: "{{ source_patches }}"

@@ -4,12 +4,12 @@
 
 - name: enable modules
   file:
-    path: "{{ ssp_dir }}/modules/{{ item }}/enable"
+    path: "{{ ssp_installdir }}/modules/{{ item }}/enable"
     state: touch
   with_items: "{{ enabled_modules }}"
 
 - name: disable modules
   file:
-    path: "{{ ssp_dir }}/modules/{{ item }}/disable"
+    path: "{{ ssp_installdir }}/modules/{{ item }}/disable"
     state: touch
   with_items: "{{ disabled_modules }}"

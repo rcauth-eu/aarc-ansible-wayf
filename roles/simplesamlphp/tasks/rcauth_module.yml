@@ -5,7 +5,7 @@
 - name: copy rcauth module
   copy:
     src: rcauth
-    dest: "{{ ssp_dir }}/modules/"
+    dest: "{{ ssp_installdir }}/modules/"
     directory_mode: 0755
     mode: 0644
     owner: root

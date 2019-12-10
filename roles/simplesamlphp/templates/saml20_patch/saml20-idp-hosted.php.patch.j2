@@ -7,7 +7,7 @@ Author: Mischa Sallé <msalle@nikhef.nl>
   */
  
 +/* Include our hostname, this sets $ssp_hostname */
-+include("{{ ssp_confdir }}/config_hostname.php");
++include(\SimpleSAML\Utils\Config::getConfigDir() . "/config_hostname.php");
 +
 -$metadata['__DYNAMIC:1__'] = [
 +$metadata["https://$ssp_hostname/{{ ssp_ctx_pfx }}/saml2/idp/metadata.php"] = [

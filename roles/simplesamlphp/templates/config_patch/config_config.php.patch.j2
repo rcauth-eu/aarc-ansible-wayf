@@ -22,8 +22,8 @@ Author: Tamas Balogh <tamasb@nikhef.nl>
 -    'datadir' => 'data/',
 +    'certdir' => '{{ ssp_pkidir }}',
 +    'loggingdir' => '{{ ssp_logdir }}',
-+    'datadir' => '{{ ssp_dir }}/data/',
-+    'metadatadir' => '{{ ssp_dir }}/metadata/',
++    'datadir' => '{{ ssp_datadir }}',
++    'metadatadir' => '{{ ssp_metadatadir }}',
      'tempdir' => '/tmp/simplesaml',
  
      /*

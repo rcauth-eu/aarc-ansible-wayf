@@ -76,7 +76,7 @@
     group: "{{ ssp_group }}"
     mode: 0775
 
-- name: create metadata-generated symlink
+- name: create metadata-generated symlink inside metadata directory
   file:
     path: "{{ ssp_metadatadir }}/metadata-generated"
     src: "{{ ssp_metadata_generateddir }}"

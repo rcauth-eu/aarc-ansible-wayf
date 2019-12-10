@@ -3,24 +3,32 @@
 ### DEFAULT VALUES FOR THE simplesamlphp ROLE
 ########################################################################
 
-### Configuration directory for simplesamlphp
-ssp_confdir: /etc/simplesamlphp/config
-
-### PKI directory for simplesamlphp
-ssp_pkidir: /etc/pki/simplesamlphp
-
-### metadata directory for simplesamlphp
-ssp_metadatadir: "{{ ssp_dir }}/metadata"
-
-### metadata-generated directory for edugain metadata
-ssp_metadata_generateddir: "{{ ssp_dir }}/metadata-generated"
-
-
 ### SimpleSAMLphp version
 #ssp_version: 1.2.3
 
 ### SimpleSAMLphp directory suffix, appended after the version
 ssp_suffix: devel
+
+
+### Configuration directory for simplesamlphp
+ssp_confdir: "/etc/simplesamlphp/config-{{ ssp_version }}-{{ ssp_suffix }}"
+
+### PKI directory for simplesamlphp
+ssp_pkidir: /etc/pki/simplesamlphp
+
+
+### Versioned installation directory for SimpleSAMLphp
+ssp_installdir: "{{ ssp_dir }}-{{ ssp_version }}-{{ ssp_suffix }}"
+
+### metadata directory for simplesamlphp
+ssp_metadatadir: "{{ ssp_installdir }}/metadata"
+
+### metadata-generated directory for edugain metadata
+ssp_metadata_generateddir: "{{ ssp_installdir }}/metadata-generated"
+
+
+### data directory for simplesamlphp
+ssp_datadir: "{{ ssp_installdir }}/data/"
 
 
 ### Some log configuration, more complete setting via config.php

@@ -11,7 +11,7 @@ Author: Tamas Balogh <tamasb@nikhef.nl>
  <?php
 
 +/* Include our hostname, this sets $ssp_hostname */
-+include("{{ ssp_confdir }}/config_hostname.php");
++include(\SimpleSAML\Utils\Config::getConfigDir() . "/config_hostname.php");
 +
 +/**
 + * Needed to unset the cookie. Otherwise we could have just used isset() ? ... :

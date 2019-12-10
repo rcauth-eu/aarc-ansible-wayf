@@ -1,0 +1,11 @@
+---
+
+### Task creating the 'master' symlink to the ssp_dir
+
+# Note that we could make a link using ssp_installdir as src, but we prefer a
+# relative link.
+- name: make master symlink
+  file:
+    state: link
+    src: "simplesamlphp-{{ ssp_version }}-{{ ssp_suffix }}"
+    path: "{{ ssp_dir }}"

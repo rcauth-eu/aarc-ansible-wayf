@@ -5,23 +5,16 @@
 - name: create configuration directory
   file:
     state: directory
-    path: "{{ ssp_confdir }}-{{ ssp_version }}-{{ ssp_suffix }}"
+    path: "{{ ssp_confdir }}"
     owner: root
     group: root
     
-# Create unversioned symlink to the real versioned configuration directory.
-- name: make config symlink
-  file:
-    state: link
-    src: "config-{{ ssp_version }}-{{ ssp_suffix }}"
-    path: "{{ ssp_confdir }}"
-
-# Create symlink in the ssp_dir to the unversioned configuration directory.
+# Create symlink in the ssp_installdir to the configuration directory
 - name: create symlink to config dir
   file:
     state: link
     src: "{{ ssp_confdir }}"
-    path: "{{ ssp_dir }}/config"
+    path: "{{ ssp_installdir }}/config"
 
 - name: create hostname config file
   template:
@@ -40,7 +33,7 @@
 - name: copy configuration templates
   copy:
     remote_src: true
-    src: "{{ ssp_dir }}/{{ item }}"
+    src: "{{ ssp_installdir }}/{{ item }}"
     dest: "{{ configtmp.path}}/"
   with_items:
     - config-templates/authsources.php

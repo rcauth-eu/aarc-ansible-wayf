@@ -7,7 +7,7 @@
 ### Setting to true also enables 'showerrors' for SimpleSAMLphp.
 #phpdebug: false
 
-### Root for SimpleSAMLphp installation
+### Root for SimpleSAMLphp installation (typically a symlink to the installdir)
 #ssp_dir: /var/simplesamlphp
 
 ### Hostname to use.
