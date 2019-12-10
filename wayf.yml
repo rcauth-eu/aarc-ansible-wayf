@@ -14,3 +14,8 @@
     - common
     - basic
     - simplesamlphp
+  post_tasks:
+    # Run the edugain cronjob as a post_tasks block since we first need to
+    # finish setting up the full host, which includes running the notified
+    # handlers such as httpd.
+    - import_tasks: post_tasks/edugain_cronjob.yml

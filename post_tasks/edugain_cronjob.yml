@@ -1,0 +1,14 @@
+---
+
+### Post tasks task to run the cronjob, can only be done once all else is done
+
+# Run cronjob when edugain metadata is absent or older than 24 hours
+- name: check edugain metadata is present
+  stat:
+    path: "{{ ssp_metadata_generateddir }}/edugain/saml20-idp-remote.php"
+  register: edugain_stat
+
+- name: run edugain cronjob
+  command: /etc/cron.daily/edugain-refresh
+  when: edugain_stat.stat.exists == False or
+        (ansible_date_time.epoch|int - edugain_stat.stat.mtime) > 86400

@@ -66,7 +66,7 @@
     - "{{ prod_sp_remotes }}"
     - "{{ test_sp_remotes }}"
 
-# Setup edugain metadata configuration
+# Setup edugain metadata configuration.
 
 - name: create metadata-generated directory
   file:
@@ -89,15 +89,3 @@
     owner: root
     group: root
     mode: 0755
-
-- name: check edugain metadata is present
-  stat:
-    path: "{{ ssp_metadata_generateddir }}/edugain/saml20-idp-remote.php"
-  register: edugain_stat
-
-# Run cronjob when edugain metadata is absent or older than 24 hours
-
-- name: run edugain cronjob
-  command: /etc/cron.daily/edugain-refresh
-  when: edugain_stat.stat.exists == False or
-        (ansible_date_time.epoch|int - edugain_stat.stat.mtime) > 86400
