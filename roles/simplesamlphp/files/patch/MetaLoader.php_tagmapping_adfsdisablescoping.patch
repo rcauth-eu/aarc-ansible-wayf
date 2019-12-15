@@ -1,0 +1,81 @@
+Description: add tagmapping and handle adfs IdPs
+ We combine two patches since they are difficult to apply independently.
+ 1) adding our tags to eduGAIN metadata using the tagmapping config option
+ 2) set disable_scoping flag for ADFS-based IdPs
+ We can make use of the new (1.17.0 and up) disable_scoping flag which can be
+ set per IdP. We filter on either entityid containing /adfs/services/trust or
+ the SingleSignOnService Location containing /adfs/ls/. We try both, since for
+ SURFconext, we only have the entityid to rely upon, but the entityid only is
+ not sufficient, since e.g. CERN is using a custom string.
+Author: Mischa Sallé <msalle@nikhef.nl>
+Author: Tamas Balogh <tamasb@nikhef.nl>
+--- a/modules/metarefresh/lib/MetaLoader.php	2019-11-26 14:18:26.000000000 +0100
++++ b/modules/metarefresh/lib/MetaLoader.php	2019-11-27 12:38:15.000000000 +0100
+@@ -208,6 +208,67 @@
+                 $template = $source['template'];
+             }
+ 
++            if(isset($source['tagmapping']) && !empty($source['tagmapping'])) {
++                $tagmapping = $source['tagmapping'];
++                // Ensure we have a $template with a tags array if not yet from
++                // the config-metarefresh.php file.
++                if ( $template == null )
++                    $template = [ 'tags' => [] ];
++                elseif ( !array_key_exists('tags', $template) )
++                    $template['tags'] = [];
++
++                // Add metadata tags based on 'registrationAuthority' inside
++                // the 'RegistrationInfo'.
++                $idpmetadata = $entity->getMetadata20IdP();
++                if(array_key_exists('RegistrationInfo', $idpmetadata)) {
++                    $regAuthInfo = $idpmetadata['RegistrationInfo'];
++                    if(array_key_exists('registrationAuthority', $regAuthInfo)) {
++                        $regAuth = $regAuthInfo['registrationAuthority'];
++                        Logger::debug('Found the Registration Auth ' . $regAuth . " for ". $entity->getEntityId());
++                        if (array_key_exists($regAuth,$tagmapping)) {
++                            array_push($template['tags'],$tagmapping[$regAuth]);
++                        } elseif (array_key_exists('*',$tagmapping)) {
++                            array_push($template['tags'],$tagmapping['*']);
++                        } else {
++                            Logger::info('No tag map definition for ' . $regAuth . ' (entityID '. $entity->getEntityId() . ")\n");
++                        }
++                    } else {
++                        Logger::info('No Registration Authority for '. $entity->getEntityId() . "\n");
++                    }
++                } else {
++                    Logger::info('No Registration Info for ' . $entity->getEntityId() . "\n");
++                }
++            }
++
++            // We want to set disable_scoping only for ADFS based IdPs which
++            // cannot handle it. First check whether the entityid contains the
++            // typical adfs string, if not, check the Location of the
++            // SingleSignOnService. Note: SAML2Int requires SingleSignOnService
++            // with one or more entities, and each entity must MUST have a
++            // Location, following saml-metadata-2.0-os
++            $idpmetadata = $entity->getMetadata20IdP();
++            $adfs_entity = false;
++            if (strpos($idpmetadata['entityid'], '/adfs/services/trust') !== false) {
++                $adfs_entity = true;
++            } else { // Now check the Location.
++                $sso_service = $idpmetadata['SingleSignOnService'];
++                foreach ($sso_service as $sso_element)  {
++                    if (strpos($sso_element['Location'], '/adfs/ls/')) {
++                        $adfs_entity = true;
++                        break;
++                    }
++                }
++            }
++            if ($adfs_entity) {
++                Logger::debug('setting disable_scoping for ADFS entityID: '.$idpmetadata['entityid']);
++                // Create empty template if we don't have one yet from the
++                // config-metarefresh.php file
++                if ( $template == null )
++                    $template = ['disable_scoping' => true];
++                else
++                    $template['disable_scoping'] = true;
++            }
++
+             if (in_array('shib13-sp-remote', $this->types, true)) {
+                 $this->addMetadata($source['src'], $entity->getMetadata1xSP(), 'shib13-sp-remote', $template);
+             }

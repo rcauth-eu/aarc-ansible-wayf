@@ -20,7 +20,7 @@ source_patches:
   - en_discopower.po.patch
   - nl_discopower.po.patch
   - MetaLoader.php.patch
-  - MetaLoader.php_tagmapping.patch
+  - MetaLoader.php_tagmapping_adfsdisablescoping.patch
   - fetch.php.patch
   - hook_cron.php.patch
   - Cron.php.patch
