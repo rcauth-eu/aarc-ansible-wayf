@@ -20,6 +20,15 @@
     backup: yes
   notify: restart php-fpm
 
+- name: disable expose_php
+  lineinfile:
+    path: "/etc/php.ini"
+    regexp: '^expose_php\s+=.*$'
+    insertafter: '^;expose_php\s+='
+    line: "expose_php = Off"
+    backup: yes
+  notify: restart php-fpm
+
 - name: enable display errors
   lineinfile:
     path: "/etc/php.ini"
