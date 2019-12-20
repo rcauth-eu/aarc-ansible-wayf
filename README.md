@@ -25,7 +25,8 @@ There is only a single playbook, _wayf.yml_, that runs all the roles.
     It is assumed you will be using a certificate from one of the standard
     browser-supported CAs. In case of a sub-CA you also will need to specify
     the `hostcert_intermediate` variable to the correct PEM file on the remote
-    host (see further below on how to configure variables).
+    host (see further below on how to configure variables) and make sure it is
+    present in the _roles/basic/files/_ (see the _*.chain.PLACEHOLDER_).
 
  2. You need to have a SAML metadata certificate ready for the WAYF. Place
     the PEM formatted certificate and key file in the _roles/basic/files/_

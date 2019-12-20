@@ -47,3 +47,6 @@ httpd_loglevel: debug
 
 hostcert: /etc/pki/tls/hostcert.pem
 hostkey: /etc/pki/tls/hostkey.pem
+
+### specify (remote filename of) intermediate certificate in case of a subCA
+#hostcert_intermediate: /etc/pki/tls/TERENA-SSL-CA-3.pem

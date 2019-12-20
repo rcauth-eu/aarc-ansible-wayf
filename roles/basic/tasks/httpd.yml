@@ -21,6 +21,16 @@
     mode: 0400
   notify: restart httpd
 
+- name: copy intermediate chainfile
+  copy:
+    src: "{{ inventory_hostname }}.chain"
+    dest: "{{ hostcert_intermediate }}"
+    owner: root
+    group: root
+    mode: 0644
+  when: hostcert_intermediate is defined
+  notify: restart httpd
+
 # Configure httpd, all configuration is in ssl.conf
 - name: configure httpd
   template:
