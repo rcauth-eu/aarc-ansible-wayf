@@ -2,7 +2,7 @@ Description: prevent 'undefined index' warning
 Author: Mischa Sallé <msalle@nikhef.nl>
 --- a/modules/discopower/lib/PowerIdPDisco.php	2019-10-03 22:38:23.000000000 +0200
 +++ b/modules/discopower/lib/PowerIdPDisco.php	2019-11-29 10:41:04.000000000 +0100
-@@ -280,7 +280,8 @@
+@@ -281,7 +281,8 @@
  
          /* store the tab list in the session */
          $session = Session::getSessionFromRequest();
