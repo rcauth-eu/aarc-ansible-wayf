@@ -1,0 +1,30 @@
+Description: Load Locale files for template modules
+ When throwing an Error using an includeTemplate from a different module, we
+ must make sure to include the Locale files for the corresponding module.
+ The first part might not ever work, since it seems module is never set in
+ Error, but that would ideally be the better way.
+Author: Mischa Sallé <msalle@nikhef.nl>
+--- a/lib/SimpleSAML/Error/Error.php	2019-12-09 17:03:39.000000000 +0100
++++ b/lib/SimpleSAML/Error/Error.php	2020-01-07 13:31:02.000000000 +0100
+@@ -266,6 +266,21 @@
+             assert(false);
+         } else {
+             $t = new Template($config, 'error.php', 'errors');
++            // This is a bit of a hack to ensure we have the relevant
++            // Localization strings, e.g. from core.
++            if (isset($this->module)) {
++                // Testing for $this->module is currently probably not useful
++                // as it seems it is never set. On the other hand, it would
++                // probably be the proper way to get the right Locale files.
++                $t->getLocalization()->addModuleDomain($this->module);
++            } elseif (isset($this->includeTemplate))  {
++                // Templates can start with "MODULENAME:"
++                // We therefore add the Locale files for that module.
++                $pieces = explode(':', $this->includeTemplate, -1);
++                if (array_key_exists(0, $pieces))
++                    $t->getLocalization()->addModuleDomain($pieces[0]);
++            }
++
+             $translator = $t->getTranslator();
+             $t->data = array_merge($t->data, $data);
+             $t->data['dictTitleTranslated'] = $translator->t($t->data['dictTitle']);
