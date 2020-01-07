@@ -28,6 +28,7 @@ source_patches:
   - contrab.patch
   - EMail.php.patch
   - Error.php.patch
+  - nl_messages.po.patch
 
 # List of metadata/* files, installed and configured by task saml20_config.yml
 saml20_items:

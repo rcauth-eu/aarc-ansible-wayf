@@ -1,0 +1,185 @@
+Description: add several missing Dutch translations
+Author: Mischa Sallé <msalle@nikhef.nl>
+--- a/locales/nl/LC_MESSAGES/messages.po	2019-12-09 17:03:40.000000000 +0100
++++ b/locales/nl/LC_MESSAGES/messages.po	2020-01-07 14:54:53.000000000 +0100
+@@ -44,6 +44,9 @@
+ msgid "{login:username}"
+ msgstr "Gebruikersnaam"
+ 
++msgid "{login:processing}"
++msgstr "Bezig te verwerken..."
++
+ msgid "Back"
+ msgstr "Terug"
+ 
+@@ -88,6 +91,9 @@
+ msgid "{admin:metadata_metadata}"
+ msgstr "Metadata"
+ 
++msgid "{errors:title_SSOPARAMS}"
++msgstr "Geen SAML request opgegeven"
++
+ msgid "{errors:report_text}"
+ msgstr ""
+ "Voeg desgewenst je e-mailadres toe, zodat de beheerders contact kunnen "
+@@ -192,6 +198,9 @@
+ "De parameters die naar de discovery service zijn gestuurd, zijn niet "
+ "correct volgens de specificatie."
+ 
++msgid "{errors:title_ARSPARAMS}"
++msgstr "Geen SAML bericht opgegeven"
++
+ msgid "{errors:descr_CREATEREQUEST}"
+ msgstr "Er is een fout opgetreden bij het aanmaken van een SAML request."
+ 
+@@ -201,6 +210,9 @@
+ msgid "{logout:return}"
+ msgstr "Terug naar service"
+ 
++msgid "{errors:title_MEMCACHEDOWN}"
++msgstr "Kan sessie data niet ophalen"
++
+ msgid "{admin:metadata_xmlurl}"
+ msgstr ""
+ "U kunt <a href=\"%METAURL%\">deze directe URL gebruiken</a> om de "
+@@ -309,6 +321,9 @@
+ "voor uitloggen</i>. Om er zeker van te zijn dat al je sessies zijn "
+ "beëindigd, kun je het beste <i>je webbrowser afsluiten</i>."
+ 
++msgid "{admin:metaconv_selectfile}"
++msgstr "of kies een file:"
++
+ msgid "{admin:metadata_xmlformat}"
+ msgstr "In SAML 2.0 Metadata XML formaat:"
+ 
+@@ -499,6 +514,12 @@
+ msgid "{login:help_desk_link}"
+ msgstr "Helpdesk homepage"
+ 
++msgid "{errors:descr_ARSPARAMS}"
++msgstr ""
++"Je hebt het Artifact Resolution Service interface aangeroepen, maar stuurde "
++"geen SAML ArtifactResolve bericht mee. Merk op dat dit 'endpoint' niet "
++"bedoeld is om direct benaderd te worden."
++
+ msgid "{login:remember_me}"
+ msgstr "Onthoud mij"
+ 
+@@ -621,6 +642,12 @@
+ msgid "{disco:selectidp_full}"
+ msgstr "Selecteer de Identity Provider waar je wil authenticeren:"
+ 
++msgid "{errors:descr_SSOPARAMS}"
++msgstr ""
++"Je hebt het Single Sign On interface aangeroepen, maar stuurde geen SAML "
++"Authentication Request mee. Merk op dat dit 'endpoint' niet bedoeld is om"
++" direct benaderd te worden."
++
+ msgid "{errors:descr_NOTFOUNDREASON}"
+ msgstr ""
+ "De opgegeven pagina kon niet worden gevonden. De oorzaak is: %REASON%. De"
+@@ -958,18 +985,33 @@
+ "wijzen dat er een configuratie probleem is. Als het probleem zich blijft "
+ "voordoen kun u contact opnemen met de Service Provider."
+ 
++msgid "No SAML request provided"
++msgstr "Geen SAML request opgegeven"
++
+ msgid "Some error occurred"
+ msgstr "Er is een fout opgetreden"
+ 
+ msgid "Organization"
+ msgstr "Organisatie"
+ 
++msgid ""
++"You accessed the Single Sign On Service interface, but did not provide a "
++"SAML Authentication Request. Please note that this endpoint is not "
++"intended to be accessed directly."
++msgstr ""
++"Je hebt het Single Sign On interface aangeroepen, maar stuurde geen SAML "
++"Authentication Request mee. Merk op dat dit 'endpoint' niet bedoeld is om"
++" direct benaderd te worden."
++
+ msgid "No certificate"
+ msgstr "Geen certificaat"
+ 
+ msgid "Choose home organization"
+ msgstr "Kies je organisatie"
+ 
++msgid "Cannot retrieve session data"
++msgstr "Kan sessie data niet ophalen"
++
+ msgid "Persistent pseudonymous ID"
+ msgstr "Persistente anonieme ID"
+ 
+@@ -1016,6 +1058,9 @@
+ msgid "Password"
+ msgstr "Wachtwoord"
+ 
++msgid "ORCID researcher identifiers"
++msgstr "ORCID onderzoeker identifiers"
++
+ msgid "Nickname"
+ msgstr "Bijnaam"
+ 
+@@ -1038,6 +1083,10 @@
+ msgid "Private information elements"
+ msgstr "Privé informatie-elementen"
+ 
++msgid "Person's non-reassignable, persistent pseudonymous ID at home organization"
++msgstr "Niet opnieuw toekenbare, persistente pseudonieme ID bij organisatie "
++"van de persoon"
++
+ msgid "You are also logged in on these services:"
+ msgstr "Je bent ook ingelogd bij deze diensten:"
+ 
+@@ -1118,6 +1167,13 @@
+ msgid "Postal address"
+ msgstr "Adres"
+ 
++msgid ""
++"Your session data cannot be retrieved right now due to technical "
++"difficulties. Please try again in a few minutes."
++msgstr ""
++"Je sessie data kan op dit moment niet opgehaald worden door technische "
++"problemen. Probeer het over een paar minuten nogmaals."
++
+ msgid "An error occurred when trying to process the Logout Request."
+ msgstr "Er is een fout opgetreden tijdens het verwerken van een Logout Request."
+ 
+@@ -1350,6 +1406,9 @@
+ "voor uitloggen</i>. Om er zeker van te zijn dat al je sessies zijn "
+ "beëindigd, kun je het beste <i>je webbrowser afsluiten</i>."
+ 
++msgid "or select a file:"
++msgstr "of kies een file:"
++
+ msgid "Remember me"
+ msgstr "Onthoud mij"
+ 
+@@ -1485,6 +1544,15 @@
+ msgid "We did not accept the response sent from the Identity Provider."
+ msgstr "Het antwoord van de Identity Provider is niet geaccepteerd."
+ 
++msgid ""
++"You accessed the Artifact Resolution Service interface, but did not "
++"provide a SAML ArtifactResolve message. Please note that this endpoint is"
++" not intended to be accessed directly."
++msgstr ""
++"Je hebt het Artifact Resolution Service interface aangeroepen, maar stuurde "
++"geen SAML ArtifactResolve bericht mee. Merk op dat dit 'endpoint' niet "
++"bedoeld is om direct benaderd te worden."
++
+ msgid "The given page was not found. The reason was: %REASON%  The URL was: %URL%"
+ msgstr ""
+ "De opgegeven pagina kon niet worden gevonden. De oorzaak is: %REASON%. De"
+@@ -1507,6 +1575,9 @@
+ msgid "Organizational homepage"
+ msgstr "Organisatie homepage"
+ 
++msgid "Processing..."
++msgstr "Bezig te verwerken..."
++
+ msgid ""
+ "You accessed the Assertion Consumer Service interface, but did not "
+ "provide a SAML Authentication Response. Please note that this endpoint is"
