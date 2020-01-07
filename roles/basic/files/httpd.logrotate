@@ -1,0 +1,14 @@
+/var/log/httpd/*log {
+    maxsize 100M
+    weekly
+    missingok
+    notifempty
+    sharedscripts
+    compress
+    compresscmd /usr/bin/xz
+    compressext .xz
+    delaycompress
+    postrotate
+        /bin/systemctl reload httpd.service > /dev/null 2>/dev/null || true
+    endscript
+}

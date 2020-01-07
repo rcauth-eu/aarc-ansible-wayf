@@ -1,0 +1,12 @@
+---
+
+### Configure logrotate for httpd and syslog
+
+- name: replace logrotate configurations
+  copy:
+    src: "{{ item }}.logrotate"
+    dest: "/etc/logrotate.d/{{ item }}"
+    backup: true
+  with_items:
+    - httpd
+    - syslog

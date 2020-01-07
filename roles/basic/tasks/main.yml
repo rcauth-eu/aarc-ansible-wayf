@@ -21,6 +21,9 @@
 - import_tasks: php.yml
 - import_tasks: httpd.yml
 
+# Replace logrotate configurations
+- import_tasks: logrotate.yml
+
 # disable services
 - name: disable services
   service: name={{ item }} state=stopped enabled=no
