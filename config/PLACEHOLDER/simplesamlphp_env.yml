@@ -51,10 +51,10 @@
 #ssp_tarball: "https://github.com/simplesamlphp/simplesamlphp/releases/download/v{{ ssp_version }}/simplesamlphp-{{ ssp_version }}.tar.gz"
 
 
-### tech contact for the service (not metadata), email is address, not href,
-### it is used for sending error reports to.
+### tech contact for the service. It is used both in the metadata and for
+### sending error reports to (after stripping the mailto:).
 #tech_name: Operator
-#tech_email: jdoe@example.org
+#tech_email: mailto:jdoe@example.org
 
 ### timezone: either null or name including single quotes
 #timezone: "'Europe/Amsterdam'"

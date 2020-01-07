@@ -26,6 +26,7 @@ source_patches:
   - Cron.php.patch
   - croninfo.twig.patch
   - contrab.patch
+  - EMail.php.patch
 
 # List of metadata/* files, installed and configured by task saml20_config.yml
 saml20_items:
