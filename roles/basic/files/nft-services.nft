@@ -35,7 +35,7 @@
 
   set tcp_logging_from_global {
     type inet_service; flags interval;
-    elements = { http, https }
+    #elements = { }
   }
 
   # UDP non-logged permitted services
