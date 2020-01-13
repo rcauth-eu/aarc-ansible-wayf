@@ -37,7 +37,7 @@ Author: Tamas Balogh <tamasb@nikhef.nl>
  $config = [
  
      // This is a authentication source which handles admin authentication.
-@@ -18,15 +39,25 @@
+@@ -18,15 +39,26 @@
  
          // The entity ID of this SP.
          // Can be NULL/unset, in which case an entity ID is generated based on the metadata URL.
@@ -48,11 +48,12 @@ Author: Tamas Balogh <tamasb@nikhef.nl>
 +        'privatekey' => '{{ ssp_key }}',
 +        'certificate' => '{{ ssp_cert }}',
 +
-+        // Need to explicitly set the NameIDPolicy to null, or it defaults to
-+        // transient, which breaks with a InvalidNameIDPolicy when talking to a
-+        // Shib IdP. See
-+        // https://groups.google.com/forum/#!topic/simplesamlphp/E2n9e4oMI-g
-+        'NameIDPolicy' => null,
++        // Setting NameIDPolicy to false means not asking for a specific format
++        // in the AuthnRequest. Not setting it or setting it to null requests
++        // the default type 'transient'. We won't use transient, and asking for
++        // it can break ADFS, so it is better to just set the policy to false.
++        // See also https://github.com/simplesamlphp/simplesamlphp/issues/771
++        'NameIDPolicy' => false,
  
          // The entity ID of the IdP this SP should contact.
          // Can be NULL/unset, in which case the user will be shown a list of available IdPs.
@@ -66,7 +67,7 @@ Author: Tamas Balogh <tamasb@nikhef.nl>
  
          /*
           * The attributes parameter must contain an array of desired attributes by the SP.
-@@ -35,61 +66,120 @@
+@@ -35,61 +67,120 @@
           * The metadata will then be created as follows:
           * <md:RequestedAttribute FriendlyName="friendlyName" Name="name" />
           */
@@ -232,7 +233,7 @@ Author: Tamas Balogh <tamasb@nikhef.nl>
  
      /*
      'crypto-hash' => [
-@@ -102,219 +192,4 @@
+@@ -102,219 +193,4 @@
      ],
      */
  
