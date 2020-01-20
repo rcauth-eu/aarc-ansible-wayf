@@ -7,7 +7,7 @@ Author: Mischa Sallé <msalle@nikhef.nl>
 Author: Tamas Balogh <tamasb@nikhef.nl>
 --- a/config/authsources.php	2019-11-19 15:02:43.000000000 +0100
 +++ b/config/authsources.php	2019-11-21 22:01:49.674334334 +0100
-@@ -1,5 +1,29 @@
+@@ -1,5 +1,40 @@
  <?php
 
 +/* Include our hostname, this sets $ssp_hostname */
@@ -26,18 +26,29 @@ Author: Tamas Balogh <tamasb@nikhef.nl>
 +        // Unset cookie for rest of code
 +        unset($_COOKIE[$cookiename]);
 +        // set to false. NOTE: need to match both path and domain
-+        setcookie($cookiename, FALSE, 1, '/', 'tnet.test');
-+        // Now return the value
-+        return $value;
-+    } else {
-+        return null;
++        setcookie($cookiename, FALSE, 1, '/', '{{ ssp_hostname.split(".", 1)[1] }}');
++
++        // Check whether we know entityID
++        if (!empty($value))  {
++            try {
++                \SimpleSAML\Metadata\MetaDataStorageHandler::getMetadataHandler()->getMetaData($value, 'saml20-idp-remote');
++            } catch (\Exception $e) {
++                throw new \SimpleSAML\Error\MetadataNotFound($value);
++            }
++
++            // All is fine, return the value
++            return $value;
++        }
 +    }
++
++    // No or empty cookie
++    return null;
 +}
 +
  $config = [
  
      // This is a authentication source which handles admin authentication.
-@@ -18,15 +39,26 @@
+@@ -18,15 +50,26 @@
  
          // The entity ID of this SP.
          // Can be NULL/unset, in which case an entity ID is generated based on the metadata URL.
@@ -67,7 +78,7 @@ Author: Tamas Balogh <tamasb@nikhef.nl>
  
          /*
           * The attributes parameter must contain an array of desired attributes by the SP.
-@@ -35,61 +67,120 @@
+@@ -35,61 +78,120 @@
           * The metadata will then be created as follows:
           * <md:RequestedAttribute FriendlyName="friendlyName" Name="name" />
           */
@@ -233,7 +244,7 @@ Author: Tamas Balogh <tamasb@nikhef.nl>
  
      /*
      'crypto-hash' => [
-@@ -102,219 +193,4 @@
+@@ -102,219 +204,4 @@
      ],
      */
  
