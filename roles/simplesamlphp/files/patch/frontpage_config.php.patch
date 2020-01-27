@@ -1,6 +1,7 @@
-Description: warnings should only go to admin
- The configuration tab should only show warnings when the administrator is
- logged in.
+Description: warnings and version should only go to admin
+ Version and directory should only be shown when the administrator is logged in.
+ Likewise the configuration tab should only show warnings when the administrator
+ is logged in.
 Author: Mischa Sallé <msalle@nikhef.nl>
 --- a/modules/core/www/frontpage_config.php	2019-11-19 15:02:44.000000000 +0100
 +++ b/modules/core/www/frontpage_config.php	2019-11-22 09:02:13.383403303 +0100
@@ -15,3 +16,16 @@ Author: Mischa Sallé <msalle@nikhef.nl>
  
  
  $t->data['links'] = $links;
+@@ -197,7 +199,10 @@
+     'required' => $translator->noop('{core:frontpage:required}'),
+     'optional' => $translator->noop('{core:frontpage:optional}'),
+ ];
+-$t->data['version'] = $config->getVersion();
+-$t->data['directory'] = dirname(dirname(dirname(dirname(__FILE__))));
++// Only show version and directory when we're admin!
++if ($isadmin) {
++    $t->data['version'] = $config->getVersion();
++    $t->data['directory'] = dirname(dirname(dirname(dirname(__FILE__))));
++}
+ 
+ $t->show();

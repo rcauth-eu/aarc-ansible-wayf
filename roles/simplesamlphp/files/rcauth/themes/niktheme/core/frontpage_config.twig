@@ -5,9 +5,11 @@
 {% block content %}
     {% include "@core/_frontpage_menu.twig" %}
 
+    {%- if isadmin %}
     <div>
         <code class="simplesaml_version">{{ directory }} ({{ version }})</code>
     </div>
+    {% endif -%}
 
     {% set icon_enabled = '<i class="fa fa-check"></i>' %}
     {% set icon_disabled = '<i class="fa fa-ban"></i>' %}
@@ -33,7 +35,7 @@
         <li><a href="/{{ baseurlpath }}admin/metadata-converter.php">{{ 'Metadata converter'|trans }}</a></li>
     </ul>
 
-    {% if warnings is defined and warnings is not empty %}
+    {% if isadmin and warnings is defined and warnings is not empty %}
     <h2>{{ '{core:frontpage:warnings}'|trans|escape('html') }}</h2>
     {% for key, warning in warnings %}
     <div class="caution">{{ warning|raw }}</div>
