@@ -2,32 +2,21 @@ Description: fix translation typo
 Author: Mischa Sallé <msalle@nikhef.nl>
 --- a/modules/cron/locales/nl/LC_MESSAGES/cron.po	2019-11-26 16:43:46.000000000 +0100
 +++ b/modules/cron/locales/nl/LC_MESSAGES/cron.po	2019-11-27 13:19:21.000000000 +0100
-@@ -22,7 +22,7 @@
+@@ -21,7 +21,7 @@
  msgstr "Cron gestart op"
  
  msgid "{cron:cron:cron_suggestion}"
--msgstr "Hier is een suggestie voor een contrab bestand:"
-+msgstr "Hier is een suggestie voor een crontab bestand:"
+-msgstr "Dit is een suggestie voor een contrab-bestand:"
++msgstr "Dit is een suggestie voor een crontab bestand:"
  
  msgid "{cron:cron:run_text}"
  msgstr "Start cron"
-@@ -52,7 +52,7 @@
- msgstr "Cron melding"
+@@ -51,7 +51,7 @@
+ msgstr "Cronmelding"
  
  msgid "Here is a suggestion for a crontab file:"
--msgstr "Hier is een suggestie voor een contrab bestand:"
-+msgstr "Hier is een suggestie voor een crontab bestand:"
+-msgstr "Dit is een suggestie voor een contrab bestand:"
++msgstr "Dit is een suggestie voor een crontab bestand:"
  
  msgid "Click here to run the cron jobs:"
- msgstr "Klik hier om de cron taken te starten:"
---- a/modules/cron/dictionaries/cron.translation.json	2019-11-26 16:43:45.000000000 +0100
-+++ b/modules/cron/dictionaries/cron.translation.json	2019-11-27 13:19:08.000000000 +0100
-@@ -113,7 +113,7 @@
- 		"ja": "crontab\u30d5\u30a1\u30a4\u30eb\u306e\u63d0\u6848:",
- 		"zh-tw": "\u9019\u662f\u5efa\u8b70\u7684 crontab \u6a94\u6848\uff1a",
- 		"nn": "Her er eit d\u00f8me p\u00e5 crontab-fil:",
--		"nl": "Hier is een suggestie voor een contrab bestand:",
-+		"nl": "Hier is een suggestie voor een crontab bestand:",
- 		"et": "Siin on crontab faili soovitus:",
- 		"he": "\u05d4\u05e6\u05e2\u05d4 \u05dc\u05e7\u05d5\u05d1\u05e5 crontab:",
- 		"ru": "\u0423\u043a\u0430\u0437\u0430\u043d\u0438\u044f \u0434\u043b\u044f \u0444\u0430\u0439\u043b\u0430 crontab:",
+ msgstr "Klik hier om de crontaken te starten:"
