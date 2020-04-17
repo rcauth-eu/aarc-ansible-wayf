@@ -16,7 +16,7 @@
     path: "/etc/php.ini"
     regexp: 'memory_limit\s+=.*$'
     insertafter: '^;memory_limit\s+='
-    line: 'memory_limit = 1G'
+    line: 'memory_limit = 1536M'
     backup: yes
   notify: restart php-fpm
 
