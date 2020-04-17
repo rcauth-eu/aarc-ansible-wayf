@@ -11,7 +11,7 @@ Author: Mischa Sallé <msalle@nikhef.nl>
 Author: Tamas Balogh <tamasb@nikhef.nl>
 --- a/modules/metarefresh/lib/MetaLoader.php	2019-11-26 14:18:26.000000000 +0100
 +++ b/modules/metarefresh/lib/MetaLoader.php	2019-11-27 12:38:15.000000000 +0100
-@@ -208,6 +208,67 @@
+@@ -212,6 +212,67 @@
                  $template = $source['template'];
              }
  

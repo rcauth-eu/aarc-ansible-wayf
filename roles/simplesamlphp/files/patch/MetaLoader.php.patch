@@ -6,7 +6,7 @@ Author: Mischa Sallé <msalle@nikhef.nl>
 Author: Tamas Balogh <tamasb@nikhef.nl>
 --- a/modules/metarefresh/lib/MetaLoader.php	2019-10-04 23:12:31.000000000 +0200
 +++ b/modules/metarefresh/lib/MetaLoader.php	2019-11-21 21:43:08.977859355 +0100
-@@ -159,6 +159,25 @@
+@@ -163,6 +163,25 @@
                  }
              }
  
@@ -32,7 +32,7 @@ Author: Tamas Balogh <tamasb@nikhef.nl>
              if (array_key_exists('certificates', $source) && $source['certificates'] !== null) {
                  if (!$entity->validateSignature($source['certificates'])) {
                      Logger::info(
-@@ -218,6 +237,63 @@
+@@ -222,6 +241,63 @@
      }
  
  

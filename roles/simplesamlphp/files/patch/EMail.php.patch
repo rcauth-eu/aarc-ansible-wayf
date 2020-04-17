@@ -4,8 +4,8 @@ Description: Remove mailto: from email address
  sure we remove mailto: when using it as actual email adress. 
 Author: Mischa Sallé <msalle@nikhef.nl>
 --- a/lib/SimpleSAML/Utils/EMail.php	2019-12-09 17:03:39.000000000 +0100
-+++ a/lib/SimpleSAML/Utils/EMail.php	2020-01-07 11:05:53.000000000 +0100
-@@ -67,7 +67,13 @@
++++ b/lib/SimpleSAML/Utils/EMail.php	2020-01-07 11:05:53.000000000 +0100
+@@ -68,7 +68,13 @@
          if ('na@example.org' === $address) {
              throw new \Exception('technicalcontact_email must be changed from the default value');
          }
