@@ -23,10 +23,8 @@ source_patches:
   - MetaLoader.php_tagmapping_adfsdisablescoping.patch
   - fetch.php.patch
   - hook_cron.php.patch
-  - Cron.php.patch
   - croninfo.twig.patch
   - contrab.patch
-  - EMail.php.patch
   - Error.php.patch
   - nl_messages.po.patch
 
