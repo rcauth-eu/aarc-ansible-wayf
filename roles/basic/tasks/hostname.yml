@@ -2,6 +2,17 @@
 
 ### Configure our canonical hostname
 
+- name: disable private network for hostnamed
+  copy:
+    src: no-private-network.conf
+    dest: /etc/systemd/system/systemd-hostnamed.service.d/
+  register: systemdreload
+
+- name: daemon reload systemd
+  systemd:
+    daemon_reload: yes
+  when: systemdreload.changed
+
 - name: set hostname
   hostname:
     name: "{{ inventory_hostname }}"
