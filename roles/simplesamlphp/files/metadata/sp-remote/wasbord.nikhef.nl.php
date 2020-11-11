@@ -1,6 +1,6 @@
 <?php
-$metadata['https://wasbord.nikhef.nl'] = array (
-  'entityid' => 'https://wasbord.nikhef.nl',
+$metadata['https://pilot-ca1.rcauth.eu'] = array (
+  'entityid' => 'https://pilot-ca1.rcauth.eu',
   'description' => 
   array (
     'en' => 'RCauth Pilot Online CA for providing end-user proxy certificates to Science Gateways and other portals',
@@ -77,25 +77,25 @@ $metadata['https://wasbord.nikhef.nl'] = array (
     0 => 
     array (
       'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST',
-      'Location' => 'https://wasbord.nikhef.nl/Shibboleth.sso/SAML2/POST',
+      'Location' => 'https://pilot-ca1.rcauth.eu/Shibboleth.sso/SAML2/POST',
       'index' => 1,
     ),
     1 => 
     array (
       'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST-SimpleSign',
-      'Location' => 'https://wasbord.nikhef.nl/Shibboleth.sso/SAML2/POST-SimpleSign',
+      'Location' => 'https://pilot-ca1.rcauth.eu/Shibboleth.sso/SAML2/POST-SimpleSign',
       'index' => 2,
     ),
     2 => 
     array (
       'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Artifact',
-      'Location' => 'https://wasbord.nikhef.nl/Shibboleth.sso/SAML2/Artifact',
+      'Location' => 'https://pilot-ca1.rcauth.eu/Shibboleth.sso/SAML2/Artifact',
       'index' => 3,
     ),
     3 => 
     array (
       'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:PAOS',
-      'Location' => 'https://wasbord.nikhef.nl/Shibboleth.sso/SAML2/ECP',
+      'Location' => 'https://pilot-ca1.rcauth.eu/Shibboleth.sso/SAML2/ECP',
       'index' => 4,
     ),
   ),
@@ -104,22 +104,22 @@ $metadata['https://wasbord.nikhef.nl'] = array (
     0 => 
     array (
       'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:SOAP',
-      'Location' => 'https://wasbord.nikhef.nl/Shibboleth.sso/SLO/SOAP',
+      'Location' => 'https://pilot-ca1.rcauth.eu/Shibboleth.sso/SLO/SOAP',
     ),
     1 => 
     array (
       'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect',
-      'Location' => 'https://wasbord.nikhef.nl/Shibboleth.sso/SLO/Redirect',
+      'Location' => 'https://pilot-ca1.rcauth.eu/Shibboleth.sso/SLO/Redirect',
     ),
     2 => 
     array (
       'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST',
-      'Location' => 'https://wasbord.nikhef.nl/Shibboleth.sso/SLO/POST',
+      'Location' => 'https://pilot-ca1.rcauth.eu/Shibboleth.sso/SLO/POST',
     ),
     3 => 
     array (
       'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Artifact',
-      'Location' => 'https://wasbord.nikhef.nl/Shibboleth.sso/SLO/Artifact',
+      'Location' => 'https://pilot-ca1.rcauth.eu/Shibboleth.sso/SLO/Artifact',
     ),
   ),
   'attributes' => 
