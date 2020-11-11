@@ -34,7 +34,7 @@ $metadata['https://pilot-ca1.rcauth.eu'] = array (
       'givenName' => 'Operator',
       'emailAddress' => 
       array (
-        0 => 'ca@rcauth.eu',
+        0 => 'mailto:ca@rcauth.eu',
       ),
     ),
     1 => 
@@ -44,7 +44,7 @@ $metadata['https://pilot-ca1.rcauth.eu'] = array (
       'givenName' => 'Operator',
       'emailAddress' => 
       array (
-        0 => 'ca@rcauth.eu',
+        0 => 'mailto:ca@rcauth.eu',
       ),
     ),
     2 => 
@@ -54,7 +54,7 @@ $metadata['https://pilot-ca1.rcauth.eu'] = array (
       'givenName' => 'CSIRT',
       'emailAddress' => 
       array (
-        0 => 'security@nikhef.nl',
+        0 => 'mailto:security@nikhef.nl',
       ),
       'telephoneNumber' => 
       array (
@@ -67,7 +67,7 @@ $metadata['https://pilot-ca1.rcauth.eu'] = array (
       'givenName' => 'Operator',
       'emailAddress' => 
       array (
-        0 => 'ca@rcauth.eu',
+        0 => 'mailto:ca@rcauth.eu',
       ),
     ),
   ),
