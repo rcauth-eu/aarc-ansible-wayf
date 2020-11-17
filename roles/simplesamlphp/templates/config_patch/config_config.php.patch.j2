@@ -65,7 +65,7 @@ Author: Tamas Balogh <tamasb@nikhef.nl>
  
      /*
       * Set this options to true if you want to require administrator password to access the web interface
-@@ -262,7 +263,7 @@
+@@ -261,7 +262,7 @@
       * When 'errorreporting' is enabled, a form will be presented for the user to report
       * the error to 'technicalcontact_email'.
       */
@@ -74,7 +74,7 @@ Author: Tamas Balogh <tamasb@nikhef.nl>
      'errorreporting' => true,
  
      /*
-@@ -292,8 +294,8 @@
+@@ -291,8 +292,8 @@
       * Options: [syslog,file,errorlog,stderr]
       *
       */
@@ -85,7 +85,7 @@ Author: Tamas Balogh <tamasb@nikhef.nl>
  
      /*
       * Specify the format of the logs. Its use varies depending on the log handler used (for instance, you cannot
-@@ -321,7 +323,7 @@
+@@ -320,7 +321,7 @@
       * - %msg: the message to be logged.
       *
       */
@@ -95,7 +95,7 @@ Author: Tamas Balogh <tamasb@nikhef.nl>
  
      /*
       * Choose which facility should be used when logging with syslog.
-@@ -351,13 +353,12 @@
+@@ -350,13 +351,12 @@
       * This is an array of outputs. Each output has at least a 'class' option, which
       * selects the output.
       */
@@ -111,7 +111,7 @@ Author: Tamas Balogh <tamasb@nikhef.nl>
          // Log statistics to files in a directory. One file per day.
          /*
          [
-@@ -461,7 +462,7 @@
+@@ -460,7 +460,7 @@
       * one of the functionalities below, but in some cases you could run multiple functionalities.
       * In example when you are setting up a federation bridge.
       */
@@ -120,7 +120,7 @@ Author: Tamas Balogh <tamasb@nikhef.nl>
      'enable.shib13-idp' => false,
      'enable.adfs-idp' => false,
  
-@@ -560,7 +561,7 @@
+@@ -559,7 +559,7 @@
       * through https. If the user can access the service through
       * both http and https, this must be set to FALSE.
       */
@@ -129,7 +129,7 @@ Author: Tamas Balogh <tamasb@nikhef.nl>
  
      /*
       * Set the SameSite attribute in the cookie.
-@@ -572,7 +573,7 @@
+@@ -571,7 +571,7 @@
       * Example:
       *  'session.cookie.samesite' => 'None',
       */
@@ -138,7 +138,7 @@ Author: Tamas Balogh <tamasb@nikhef.nl>
  
      /*
       * Options to override the default settings for php sessions.
-@@ -744,9 +745,7 @@
+@@ -775,9 +775,7 @@
       * Languages available, RTL languages, and what language is the default.
       */
      'language.available' => [
@@ -149,7 +149,20 @@ Author: Tamas Balogh <tamasb@nikhef.nl>
      ],
      'language.rtl' => ['ar', 'dv', 'fa', 'ur', 'he'],
      'language.default' => 'en',
-@@ -815,7 +814,8 @@
+@@ -794,10 +792,10 @@
+     'language.cookie.name' => 'language',
+     'language.cookie.domain' => null,
+     'language.cookie.path' => '/',
+-    'language.cookie.secure' => false,
++    'language.cookie.secure' => true,
+     'language.cookie.httponly' => false,
+     'language.cookie.lifetime' => (60 * 60 * 24 * 900),
+-    'language.cookie.samesite' => null,
++    'language.cookie.samesite' => 'None',
+ 
+     /**
+      * Custom getLanguage function called from SimpleSAML\Locale\Language::getLanguage().
+@@ -846,7 +844,8 @@
      /*
       * Which theme directory should be used?
       */
@@ -159,7 +172,7 @@ Author: Tamas Balogh <tamasb@nikhef.nl>
  
      /*
       * Set this option to the text you would like to appear at the header of each page. Set to false if you don't want
-@@ -887,6 +887,12 @@
+@@ -918,6 +917,12 @@
          ],
      ],
  
@@ -172,7 +185,7 @@ Author: Tamas Balogh <tamasb@nikhef.nl>
  
      /*********************
       | DISCOVERY SERVICE |
-@@ -990,6 +996,23 @@
+@@ -1021,6 +1026,23 @@
          ],
          */
  
@@ -196,7 +209,7 @@ Author: Tamas Balogh <tamasb@nikhef.nl>
          /*
           * Generate the 'group' attribute populated from other variables, including eduPersonAffiliation.
          60 => [
-@@ -1111,7 +1130,7 @@
+@@ -1142,7 +1164,7 @@
       * Metadata signing can also be enabled for a individual SP or IdP by setting the
       * same option in the metadata for the SP or IdP.
       */
@@ -205,7 +218,7 @@ Author: Tamas Balogh <tamasb@nikhef.nl>
  
      /*
       * The default key & certificate which should be used to sign generated metadata. These
-@@ -1126,7 +1145,7 @@
+@@ -1157,7 +1179,7 @@
      'metadata.sign.privatekey' => null,
      'metadata.sign.privatekey_pass' => null,
      'metadata.sign.certificate' => null,
