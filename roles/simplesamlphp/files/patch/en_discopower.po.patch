@@ -15,12 +15,15 @@ Author: Mischa Sallé <msalle@nikhef.nl>
  
  msgid "{discopower:tabs:iceland}"
  msgstr "Iceland"
-@@ -54,6 +54,51 @@
+@@ -54,6 +54,75 @@
  msgid "{discopower:tabs:norway}"
  msgstr "Norway"
  
 +msgid "{discopower:tabs:er_infras}"
 +msgstr "Research and e-Infrastructures"
++
++msgid "{discopower:tabs:austria}"
++msgstr "Austria"
 +
 +msgid "{discopower:tabs:belgium}"
 +msgstr "Belgium"
@@ -43,6 +46,9 @@ Author: Mischa Sallé <msalle@nikhef.nl>
 +msgid "{discopower:tabs:lithuania}"
 +msgstr "Lithuania"
 +
++msgid "{discopower:tabs:romania}"
++msgstr "Romania"
++
 +msgid "{discopower:tabs:spain}"
 +msgstr "Spain"
 +
@@ -52,14 +58,32 @@ Author: Mischa Sallé <msalle@nikhef.nl>
 +msgid "{discopower:tabs:australia}"
 +msgstr "Australia"
 +
++msgid "{discopower:tabs:brazil}"
++msgstr "Brazil"
++
 +msgid "{discopower:tabs:canada}"
 +msgstr "Canada"
++
++msgid "{discopower:tabs:india}"
++msgstr "India"
++
++msgid "{discopower:tabs:japan}"
++msgstr "Japan"
++
++msgid "{discopower:tabs:new-zealand}"
++msgstr "New Zealand"
 +
 +msgid "{discopower:tabs:oman}"
 +msgstr "Oman"
 +
++msgid "{discopower:tabs:pakistan}"
++msgstr "Pakistan"
++
 +msgid "{discopower:tabs:south-korea}"
 +msgstr "Korean Access Federation"
++
++msgid "{discopower:tabs:sri-lanka}"
++msgstr "Sri Lanka"
 +
 +msgid "{discopower:tabs:other}"
 +msgstr "Other countries"
@@ -67,7 +91,7 @@ Author: Mischa Sallé <msalle@nikhef.nl>
  msgid "{discopower:tabs:misc}"
  msgstr "Miscellaneous"
  
-@@ -99,3 +144,6 @@
+@@ -99,3 +168,6 @@
  msgid "{discopower:tabs:incremental_search}"
  msgstr "Incremental search..."
  

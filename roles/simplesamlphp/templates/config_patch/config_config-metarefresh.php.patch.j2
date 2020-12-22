@@ -19,7 +19,7 @@ Author: Tamas Balogh <tamasb@nikhef.nl>
              'sources' => [
                  [
                      /*
-@@ -37,19 +37,69 @@
+@@ -37,19 +37,76 @@
                      #    'http://some.other.uni/idp',
                      #),
  
@@ -73,6 +73,7 @@ Author: Tamas Balogh <tamasb@nikhef.nl>
 +                     * config in module_discopower.php */
 +                    'tagmapping' => [
 +                            'https://aaf.edu.au' => 'australia',
++                            'http://eduid.at' => 'austria',
 +                            'http://federation.belnet.be/' => 'belgium',
 +                            'http://cafe.rnp.br' => 'brazil',
 +                            'http://www.canarie.ca' => 'canada',
@@ -82,14 +83,20 @@ Author: Tamas Balogh <tamasb@nikhef.nl>
 +                            'https://www.aai.dfn.de' => 'germany',
 +                            'http://aai.grnet.gr/' => 'greece',
 +                            'https://incommon.org' => 'incommon',
++                            'http://inflibnet.ac.in' => 'india',
 +                            'http://www.heanet.ie' => 'ireland',
 +                            'http://www.idem.garr.it/' => 'italy',
++                            'https://www.gakunin.jp' => 'japan',
 +                            'https://fedi.litnet.lt' => 'lithuania',
 +                            'http://www.surfconext.nl/' => 'netherlands',
++                            'http://eduid.roedu.net' => 'romania',
++                            'https://tuakiri.ac.nz/' => 'new-zealand',
 +                            'http://www.omren.om' => 'oman',
++                            'https://pkifed.pk' => 'pakistan',
 +                            'https://safire.ac.za' => 'southafrica',
 +                            'http://kafe.kreonet.net' => 'south-korea',
 +                            'http://www.rediris.es/' => 'spain',
++                            'https://liaf.ac.lk' => 'sri-lanka',
 +                            'http://www.swamid.se/' => 'sweden',
 +                            'http://rr.aai.switch.ch/' => 'switzerland',
 +                            'http://ukfederation.org.uk' => 'uk',
@@ -97,7 +104,7 @@ Author: Tamas Balogh <tamasb@nikhef.nl>
                      ],
  
                      /*
-@@ -64,12 +114,12 @@
+@@ -64,12 +121,12 @@
                       *
                       * This option takes precedence over the same option per metadata set.
                       */
@@ -112,7 +119,7 @@ Author: Tamas Balogh <tamasb@nikhef.nl>
  
              /*
               * Which output format the metadata should be saved as.
-@@ -87,7 +137,7 @@
+@@ -87,7 +144,7 @@
               *
               * All of them will be used by default.
               */
