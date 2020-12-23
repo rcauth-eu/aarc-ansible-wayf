@@ -15,7 +15,7 @@ Author: Mischa Sallé <msalle@nikhef.nl>
  
  msgid "{discopower:tabs:iceland}"
  msgstr "IJsland"
-@@ -54,6 +54,72 @@
+@@ -54,6 +54,75 @@
  msgid "{discopower:tabs:norway}"
  msgstr "Noorwegen"
  
@@ -58,6 +58,9 @@ Author: Mischa Sallé <msalle@nikhef.nl>
 +msgid "{discopower:tabs:australia}"
 +msgstr "Australi&euml;"
 +
++msgid "{discopower:tabs:brazil}"
++msgstr "Brazili&euml;"
++
 +msgid "{discopower:tabs:canada}"
 +msgstr "Canada"
 +
@@ -88,7 +91,7 @@ Author: Mischa Sallé <msalle@nikhef.nl>
  msgid "{discopower:tabs:misc}"
  msgstr "Overige"
  
-@@ -99,3 +165,6 @@
+@@ -99,3 +168,6 @@
  msgid "InCommon"
  msgstr "InCommon"
  
