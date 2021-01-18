@@ -1,0 +1,17 @@
+Description: add AES-GCM key algorithms
+ This is
+ https://github.com/simplesamlphp/saml2/commit/1f0c32fca12a625ba24eb55fe3c08f6565bc6e6a
+ See further
+ https://github.com/simplesamlphp/saml2/issues/179#issuecomment-687597903
+--- a/vendor/simplesamlphp/saml2/src/SAML2/EncryptedAssertion.php	2020-05-14 18:38:12.000000000 +0200
++++ b/vendor/simplesamlphp/saml2/src/SAML2/EncryptedAssertion.php	2021-01-18 12:23:54.860167460 +0100
+@@ -65,6 +65,9 @@
+             case XMLSecurityKey::AES128_CBC:
+             case XMLSecurityKey::AES192_CBC:
+             case XMLSecurityKey::AES256_CBC:
++            case XMLSecurityKey::AES128_GCM:
++            case XMLSecurityKey::AES192_GCM:
++            case XMLSecurityKey::AES256_GCM:
+                 $symmetricKey = $key;
+                 break;
+ 
