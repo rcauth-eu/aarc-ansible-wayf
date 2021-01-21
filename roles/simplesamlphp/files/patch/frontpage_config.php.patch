@@ -5,10 +5,10 @@ Description: warnings and version should only go to admin
 Author: Mischa Sallé <msalle@nikhef.nl>
 --- a/modules/core/www/frontpage_config.php	2019-11-19 15:02:44.000000000 +0100
 +++ b/modules/core/www/frontpage_config.php	2019-11-22 09:02:13.383403303 +0100
-@@ -180,7 +180,9 @@
-         $warning = $translator->t($warning);
-     }
- }
+@@ -170,7 +170,9 @@
+ $t->data['loginurl'] = $loginurl;
+ $t->data['logouturl'] = $logouturl;
+ 
 -$t->data['warnings'] = $warnings;
 +// Only show warnings when we're admin!
 +if ($isadmin)
@@ -16,7 +16,7 @@ Author: Mischa Sallé <msalle@nikhef.nl>
  
  
  $t->data['links'] = $links;
-@@ -197,7 +199,10 @@
+@@ -187,7 +189,10 @@
      'required' => $translator->noop('{core:frontpage:required}'),
      'optional' => $translator->noop('{core:frontpage:optional}'),
  ];

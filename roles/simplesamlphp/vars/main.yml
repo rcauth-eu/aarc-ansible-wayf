@@ -13,19 +13,12 @@ disabled_modules:
 # List if source patches, applied by task patches.yml
 source_patches:
   - frontpage_config.php.patch
-  - frontpage_federation.twig.patch
   - _frontpage_menu.twig.patch
   - PowerIdPDisco.php.patch
   - disco.twig.patch
   - en_discopower.po.patch
   - nl_discopower.po.patch
   - MetaLoader.php_tagmapping_adfsdisablescoping.patch
-  - croninfo.twig.patch
-  - contrab.patch
-  - Error.php.patch
-  - nl_messages.po.patch
-  - XMLSecurityKey.php.patch
-  - EncryptedAssertion.php.patch
 
 # List of metadata/* files, installed and configured by task saml20_config.yml
 saml20_items:

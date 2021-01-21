@@ -111,16 +111,16 @@ Author: Tamas Balogh <tamasb@nikhef.nl>
          // Log statistics to files in a directory. One file per day.
          /*
          [
-@@ -460,7 +460,7 @@
-      * one of the functionalities below, but in some cases you could run multiple functionalities.
-      * In example when you are setting up a federation bridge.
+@@ -462,7 +462,7 @@
+      *
+      * Note that shib13-idp has been deprecated and will be removed in SimpleSAMLphp 2.0.
       */
 -    'enable.saml20-idp' => false,
 +    'enable.saml20-idp' => true,
      'enable.shib13-idp' => false,
      'enable.adfs-idp' => false,
  
-@@ -559,7 +559,7 @@
+@@ -566,7 +566,7 @@
       * through https. If the user can access the service through
       * both http and https, this must be set to FALSE.
       */
@@ -129,27 +129,18 @@ Author: Tamas Balogh <tamasb@nikhef.nl>
  
      /*
       * Set the SameSite attribute in the cookie.
-@@ -571,7 +571,7 @@
-      * Example:
-      *  'session.cookie.samesite' => 'None',
-      */
--    'session.cookie.samesite' => null,
-+    'session.cookie.samesite' => 'None',
- 
-     /*
-      * Options to override the default settings for php sessions.
-@@ -775,9 +775,7 @@
+@@ -784,9 +784,7 @@
       * Languages available, RTL languages, and what language is the default.
       */
      'language.available' => [
 -        'en', 'no', 'nn', 'se', 'da', 'de', 'sv', 'fi', 'es', 'ca', 'fr', 'it', 'nl', 'lb',
 -        'cs', 'sl', 'lt', 'hr', 'hu', 'pl', 'pt', 'pt-br', 'tr', 'ja', 'zh', 'zh-tw', 'ru',
--        'et', 'he', 'id', 'sr', 'lv', 'ro', 'eu', 'el', 'af', 'zu', 'xh',
+-        'et', 'he', 'id', 'sr', 'lv', 'ro', 'eu', 'el', 'af', 'zu', 'xh', 'st',
 +        'en', 'nl'
      ],
      'language.rtl' => ['ar', 'dv', 'fa', 'ur', 'he'],
      'language.default' => 'en',
-@@ -794,10 +792,10 @@
+@@ -803,7 +801,7 @@
      'language.cookie.name' => 'language',
      'language.cookie.domain' => null,
      'language.cookie.path' => '/',
@@ -157,12 +148,8 @@ Author: Tamas Balogh <tamasb@nikhef.nl>
 +    'language.cookie.secure' => true,
      'language.cookie.httponly' => false,
      'language.cookie.lifetime' => (60 * 60 * 24 * 900),
--    'language.cookie.samesite' => null,
-+    'language.cookie.samesite' => 'None',
- 
-     /**
-      * Custom getLanguage function called from SimpleSAML\Locale\Language::getLanguage().
-@@ -846,7 +844,8 @@
+     'language.cookie.samesite' => \SimpleSAML\Utils\HTTP::canSetSameSiteNone() ? 'None' : null,
+@@ -855,7 +853,8 @@
      /*
       * Which theme directory should be used?
       */
@@ -172,7 +159,7 @@ Author: Tamas Balogh <tamasb@nikhef.nl>
  
      /*
       * Set this option to the text you would like to appear at the header of each page. Set to false if you don't want
-@@ -918,6 +917,12 @@
+@@ -927,6 +926,12 @@
          ],
      ],
  
@@ -185,7 +172,7 @@ Author: Tamas Balogh <tamasb@nikhef.nl>
  
      /*********************
       | DISCOVERY SERVICE |
-@@ -1021,6 +1026,23 @@
+@@ -1030,6 +1035,23 @@
          ],
          */
  
@@ -209,7 +196,7 @@ Author: Tamas Balogh <tamasb@nikhef.nl>
          /*
           * Generate the 'group' attribute populated from other variables, including eduPersonAffiliation.
          60 => [
-@@ -1142,7 +1164,7 @@
+@@ -1151,7 +1173,7 @@
       * Metadata signing can also be enabled for a individual SP or IdP by setting the
       * same option in the metadata for the SP or IdP.
       */
@@ -218,12 +205,3 @@ Author: Tamas Balogh <tamasb@nikhef.nl>
  
      /*
       * The default key & certificate which should be used to sign generated metadata. These
-@@ -1157,7 +1179,7 @@
-     'metadata.sign.privatekey' => null,
-     'metadata.sign.privatekey_pass' => null,
-     'metadata.sign.certificate' => null,
--    'metadata.sign.algorithm' => null,
-+#    'metadata.sign.algorithm' => null,
- 
- 
-     /****************************
