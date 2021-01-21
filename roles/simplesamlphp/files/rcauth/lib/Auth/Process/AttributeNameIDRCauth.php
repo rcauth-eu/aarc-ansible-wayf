@@ -147,14 +147,15 @@ class AttributeNameIDRCauth extends \SimpleSAML\Module\saml\BaseNameIDGenerator
                 );
                 return null;
             }
-            if (isset($value->Format) && $value->Format !== $this->format) {
+            $val_Format=$value->getFormat();
+            if (isset($val_Format) && $val_Format !== $this->format) {
                 \SimpleSAML\Logger::warning(
                     'Format of attribute ' . var_export($this->attribute, true) .
-                    ' is unsupported: '.var_export($value->Format, true)
+                    ' is unsupported: '.var_export($val_Format, true)
                 );
                 return null;
             }
-            $value = $value->value;
+            $value = $value->getValue();
         } elseif (! is_string($value)) {
             \SimpleSAML\Logger::warning(
                 'Attribute ' . var_export($this->attribute, true) .
