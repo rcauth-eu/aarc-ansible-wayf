@@ -1,16 +1,18 @@
 #!/bin/sh
 # follow redirects as we might not listen to localhost
-curl -k -L --silent "https://localhost/{{ ssp_ctx_pfx }}/module.php/cron/cron.php?key={{ cron_key }}&tag=daily"
+curl -k -L --silent "https://localhost/{{ ssp_ctx_pfx }}/module.php/cron/cron.php?key={{ cron_key }}&tag=daily" || {
+    echo "$0: curl failed with $?"; exit 1;
+}
 
 # Create separate eduteams metadata from here:
 edugaindir={{ ssp_metadata_generateddir }}/edugain
 input=${edugaindir}/saml20-idp-remote.php
 output=${edugaindir}/eduteams.php
 
-tmpfile=$(mktemp ${output}XXXXXX)
-chown apache.apache $tmpfile
-chmod a+r $tmpfile
-echo '<?php' > $tmpfile
+tmpfile=$(mktemp ${output}XXXXXX) && \
+    chown apache.apache $tmpfile && \
+    chmod a+r $tmpfile && \
+    echo '<?php' > $tmpfile || { echo "Cannot make edugain tmpfile"; exit 1; }
 
 # Get eduTEAMS metadata from eduGAIN, disable hide.from.discovery and add
 # er_infras tag.
