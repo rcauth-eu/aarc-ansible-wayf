@@ -15,7 +15,7 @@ Author: Mischa Sallé <msalle@nikhef.nl>
  
  msgid "{discopower:tabs:iceland}"
  msgstr "IJsland"
-@@ -54,6 +54,75 @@
+@@ -54,6 +54,78 @@
  msgid "{discopower:tabs:norway}"
  msgstr "Noorwegen"
  
@@ -78,6 +78,9 @@ Author: Mischa Sallé <msalle@nikhef.nl>
 +
 +msgid "{discopower:tabs:pakistan}"
 +msgstr "Pakistan"
++
++msgid "{discopower:tabs:portugal}"
++msgstr "Portugal"
 +
 +msgid "{discopower:tabs:south-korea}"
 +msgstr "Koreaanse Toegangsfederatie"
