@@ -4,7 +4,7 @@
 ########################################################################
 
 ### SimpleSAMLphp version
-#ssp_version: 1.19.7
+#ssp_version: 1.19.8
 
 ### SimpleSAMLphp directory suffix, appended after the version
 #ssp_suffix: devel
