@@ -23,7 +23,7 @@ extra_packages:
   - php-dom
   - php-json
   # composer related packages:
-  - php-pecl-zip
+#  - php-pecl-zip # disable for now since it breaks with php 8.0 on Rocky8
   - git
 
 # List of enabled services
