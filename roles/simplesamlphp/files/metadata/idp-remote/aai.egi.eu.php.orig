@@ -1,121 +1,170 @@
 <?php
- $metadata['https://aai.egi.eu/proxy/saml2/idp/metadata.php'] = array (
-  'metadata-set' => 'saml20-idp-remote',
-  'entityid' => 'https://aai.egi.eu/proxy/saml2/idp/metadata.php',
-  'SingleSignOnService' => 
-  array (
-    0 => 
-    array (
-      'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect',
-      'Location' => 'https://aai.egi.eu/proxy/saml2/idp/SSOService.php',
-    ),
-  ),
-  'SingleLogoutService' => 
-  array (
-    0 => 
-    array (
-      'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect',
-      'Location' => 'https://aai.egi.eu/proxy/saml2/idp/SingleLogoutService.php',
-    ),
-  ),
-  'certData' => 'MIIC/TCCAeWgAwIBAgIJAL28js4M2RlTMA0GCSqGSIb3DQEBCwUAMBUxEzARBgNVBAMMCmFhaS5lZ2kuZXUwHhcNMTYwMjE4MDIwNzIzWhcNMjYwMjE3MDIwNzIzWjAVMRMwEQYDVQQDDAphYWkuZWdpLmV1MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAvJCZ7qhzee4A/Yp2ov+spIlEZV4s+JMGa5UySjS4TcnVBS3NSsypASdoW4vpZqQxi2Jxnady+SwGbmxW2Q9Ul239LXCxXbkoWpOJBuin69NJ9j5qc2Se7T811TfY7+VBac9vjyw2cu2Qw6QAXqQB+VyAxVqZE72nzrxf/1Sgwmfsm8ivE0/u+6HfVwfZyDz+wTzHsMYHzCx7P9LWTrIjEDCdY2Y/4RzciYyyhZtGXI6vDgKV+mAsNKKyHdhxxbuOWaMUK+nnd+365hjAghNUo8TCgkaYPUYt7/STR4k4vC1d0hDvwU2mDHFnG3lxZxhGPU6Iq6DAno+RA/E/dw9/fwIDAQABo1AwTjAdBgNVHQ4EFgQUPGAz+p6tMaY+gLJT7SXXTVWmmocwHwYDVR0jBBgwFoAUPGAz+p6tMaY+gLJT7SXXTVWmmocwDAYDVR0TBAUwAwEB/zANBgkqhkiG9w0BAQsFAAOCAQEAIhPJxL9gkrzF1LzjKOfUj46inB7C+exy9paChDWl3UwRan3+iq2fTJ8mJp5olWWhO+EINuBL7s0lHfmaud365Vs2/E9+4KBg0xrtJt4Ipa15Io1KDf2ZQf1sGQTGakJ3HMsXdvKJPFp1+uqAumABKfG9PukHSxRarhmzMy8tDR09dIB1FYwB5l0Wnhwj6Xyr404cI3y8Q7vi7CoDOzjPPss5IbZeGbX9WvoVgZi6L7hSlfV1fN5TqURkB4n5YVlpIEI+h1snU/WJSq0zGcSzlYNqoj6PFvrLiuKB2vc1eqNXBdS+9DeoaI9RyfA4LTaswIGms8R7YZZp9fYvFRn8Cg==',
-  'NameIDFormat' => 'urn:oasis:names:tc:SAML:2.0:nameid-format:persistent',
-  'OrganizationName' => 
+ $metadata['https://aai.egi.eu/auth/realms/egi'] = array (
+  'entityid' => 'https://aai.egi.eu/auth/realms/egi',
+  'description' =>
   array (
     'en' => 'EGI Foundation',
   ),
-  'OrganizationDisplayName' => 
+  'OrganizationName' =>
   array (
     'en' => 'EGI Foundation',
   ),
-  'OrganizationURL' => 
+  'name' =>
+  array (
+    'en' => 'EGI Check-in',
+  ),
+  'OrganizationDisplayName' =>
+  array (
+    'en' => 'EGI Foundation',
+  ),
+  'url' =>
   array (
     'en' => 'https://www.egi.eu/',
   ),
-  'scope' => 
+  'OrganizationURL' =>
   array (
-    0 => 'egi.eu',
+    'en' => 'https://www.egi.eu/',
   ),
-  'EntityAttributes' => 
+  'contacts' =>
   array (
-    'http://macedir.org/entity-category-support' => 
+    0 =>
     array (
-      0 => 'http://refeds.org/category/research-and-scholarship',
-    ),
-    'urn:oasis:names:tc:SAML:attribute:assurance-certification' => 
-    array (
-      0 => 'https://aai.egi.eu/LoA#Low',
-      1 => 'https://aai.egi.eu/LoA#Substantial',
-      2 => 'https://aai.egi.eu/LoA#High',
-      3 => 'https://refeds.org/sirtfi',
-    ),
-  ),
-  'UIInfo' => 
-  array (
-    'DisplayName' => 
-    array (
-      'en' => 'EGI AAI CheckIn',
-    ),
-    'Description' => 
-    array (
-      'en' => 'EGI AAI CheckIn Identity Provider Proxy',
-    ),
-    'Logo' => 
-    array (
-      0 => 
+      'contactType' => 'administrative',
+      'givenName' => 'EGI Check-in',
+      'emailAddress' =>
       array (
-        'url' => 'https://aai.egi.eu/proxy/module.php/egi/resources/EGI_Logo-80x60.png',
+        0 => 'check-in@egi.eu',
+      ),
+    ),
+    1 =>
+    array (
+      'contactType' => 'support',
+      'givenName' => 'EGI Check-in Support',
+      'emailAddress' =>
+      array (
+        0 => 'checkin-support@mailman.egi.eu',
+      ),
+    ),
+    2 =>
+    array (
+      'contactType' => 'technical',
+      'givenName' => 'EGI Check-in',
+      'emailAddress' =>
+      array (
+        0 => 'check-in@egi.eu',
+      ),
+    ),
+  ),
+  'metadata-set' => 'saml20-idp-remote',
+  'SingleSignOnService' =>
+  array (
+    0 =>
+    array (
+      'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST',
+      'Location' => 'https://aai.egi.eu/auth/realms/egi/protocol/saml',
+    ),
+    1 =>
+    array (
+      'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect',
+      'Location' => 'https://aai.egi.eu/auth/realms/egi/protocol/saml',
+    ),
+  ),
+  'SingleLogoutService' =>
+  array (
+    0 =>
+    array (
+      'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST',
+      'Location' => 'https://aai.egi.eu/auth/realms/egi/protocol/saml',
+    ),
+    1 =>
+    array (
+      'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect',
+      'Location' => 'https://aai.egi.eu/auth/realms/egi/protocol/saml',
+    ),
+  ),
+  'ArtifactResolutionService' =>
+  array (
+  ),
+  'NameIDFormats' =>
+  array (
+    0 => 'urn:oasis:names:tc:SAML:2.0:nameid-format:persistent',
+    1 => 'urn:oasis:names:tc:SAML:2.0:nameid-format:transient',
+    2 => 'urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified',
+    3 => 'urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress',
+  ),
+  'keys' =>
+  array (
+    0 =>
+    array (
+      'encryption' => false,
+      'signing' => true,
+      'type' => 'X509Certificate',
+      'X509Certificate' => 'MIIDCzCCAfOgAwIBAgIUPczXrTwPFkoYpKMNuQ6+KbKHQscwDQYJKoZIhvcNAQELBQAwFTETMBEGA1UEAwwKYWFpLmVnaS5ldTAeFw0yMjA1MjQwMTAyMzBaFw0zMjA1MjMwMTAyMzBaMBUxEzARBgNVBAMMCmFhaS5lZ2kuZXUwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCurCF25r7/NMblIPD90WRb47NgyHl7t7f6d56JnL9qMpVEIcaTLiNLHlaOhXF9a+q38mkZsJD9WT3HX1SJFCVIE2a58m1W2sEdxdKumlOMAGDbRNVj6ZErZYl93ArZhRzzG03DWsIw5BCTQILmPYB5SDABjTZYtpTQVgqbKkmB9JAR5bULLCXw6uSRiFycQRPsTCB6a4RuoNj6lyp3eQgf76TCCPKZRDwImAiAjf/MctWsmwLF0AMM//MUWxM6cTbTmcygExOTXQRx1MYBQGPciixOfseKtXJCCIUvay2yObErdN4GWLRjNWqU/SK5ID0UI8LierNEgPKePLvTPaFnAgMBAAGjUzBRMB0GA1UdDgQWBBSjl/e26XSINToR6Ck2SRA2h9EawzAfBgNVHSMEGDAWgBSjl/e26XSINToR6Ck2SRA2h9EawzAPBgNVHRMBAf8EBTADAQH/MA0GCSqGSIb3DQEBCwUAA4IBAQCZA/Rd1S/9REfn8RuHZwaoi//5LGQrMtJbomGOoVTsQ9ZVmA0S6vdpx9K1n0VM8/+L5tAB9a/djPP8OvoMIA+R2pzCmbObekPxMqjRyQrW80FVd+Fp81r9/JlFlf26zLqZM8gVZpELsiXdllTAJwsgrCju4USIYPJvMP7qab4OPUPx+PQ+HbjZkOxQQQtjCK6CJ9Vs59Q8rAdutjFGhKDg/Pfr8Wg4E9hYgGbKSvBOL60wgpjRt4IC7Bd4yx6stSmpvYR11hqa5+UQZWpAYLtJnUj+E+eSjj+OWUuX6uurbdWnIhkNf4oHrxU5YGzAz+yD7u9+LDlGRqDeB37br549',
+    ),
+  ),
+  'scope' =>
+  array (
+    0 => 'd4science.org',
+    1 => 'deep-hybrid-datacloud.eu',
+    2 => 'eduteams.org',
+    3 => 'egi.eu',
+    4 => 'eudat.eu',
+    5 => 'umbrellaid.org',
+  ),
+  'EntityAttributes' =>
+  array (
+    'urn:oasis:names:tc:SAML:attribute:assurance-certification' =>
+    array (
+      0 => 'https://aai.egi.eu/LoA#High',
+      1 => 'https://aai.egi.eu/LoA#Low',
+      2 => 'https://aai.egi.eu/LoA#Substantial',
+    ),
+  ),
+  'UIInfo' =>
+  array (
+    'DisplayName' =>
+    array (
+      'en' => 'EGI Check-in',
+    ),
+    'Description' =>
+    array (
+      'en' => 'EGI Check-in Identity Provider Proxy',
+    ),
+    'InformationURL' =>
+    array (
+      'en' => 'https://www.egi.eu/services/check-in/',
+    ),
+    'PrivacyStatementURL' =>
+    array (
+      'en' => 'https://aai.egi.eu/privacy/en',
+    ),
+    'Logo' =>
+    array (
+      0 =>
+      array (
+        'url' => 'https://aai.egi.eu/proxy/module.php/themeegi/resources/images/EGI_Logo-80x60.png',
         'height' => 60,
         'width' => 80,
       ),
-      1 => 
+      1 =>
       array (
-        'url' => 'https://aai.egi.eu/proxy/module.php/egi/resources/EGI_Logo-50x50.png',
+        'url' => 'https://aai.egi.eu/proxy/module.php/themeegi/resources/images/EGI_Logo-50x50.png',
         'height' => 50,
         'width' => 50,
       ),
     ),
-    'InformationURL' => 
-    array (
-      'en' => 'https://wiki.egi.eu/wiki/AAI',
-    ),
   ),
-  'DiscoHints' => 
+  'DiscoHints' =>
   array (
-    'DomainHint' => 
+    'IPHint' =>
+    array (
+    ),
+    'DomainHint' =>
     array (
       0 => 'egi.eu',
     ),
-  ),
-  'redirect.sign' => true,
-  'contacts' => 
-  array (
-    0 => 
+    'GeolocationHint' =>
     array (
-      'contactType' => 'administrative',
-      'company' => 'Greek Research and Technology Network',
-      'givenName' => 'Christos',
-      'surName' => 'Kanellopoulos',
-      'emailAddress' => 'mailto:skanct@admin.grnet.gr',
-    ),
-    1 => 
-    array (
-      'contactType' => 'other',
-      'emailAddress' => 'mailto:abuse@egi.eu',
-      'givenName' => 'EGI Computer Security and Incident Response Team',
-      'company' => 'EGI Foundation',
-      'attributes' => 
-      array (
-        'xmlns:remd' => 'http://refeds.org/metadata',
-        'remd:contactType' => 'http://refeds.org/metadata/contactType/security',
-      ),
-    ),
-    2 => 
-    array (
-      'emailAddress' => 'mailto:nliam@grnet.gr',
-      'contactType' => 'technical',
-      'givenName' => 'Nicolas',
-      'surName' => 'Liampotis',
     ),
   ),
 );

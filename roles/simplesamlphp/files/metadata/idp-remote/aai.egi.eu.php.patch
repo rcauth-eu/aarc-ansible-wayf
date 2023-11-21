@@ -1,7 +1,7 @@
---- aai.egi.eu.php.orig	2016-12-15 13:56:08.000000000 +0100
-+++ aai.egi.eu.php	2016-12-15 17:01:53.081285398 +0100
-@@ -118,4 +118,22 @@
-       'surName' => 'Liampotis',
+--- aai.egi.eu.php.orig	2023-11-21 10:49:53.692258927 +0100
++++ aai.egi.eu.php	2023-11-21 10:52:31.549282064 +0100
+@@ -167,4 +167,24 @@
+     array (
      ),
    ),
 +  'tags' =>
@@ -12,14 +12,16 @@
 +  array(
 +    10 => array(
 +       'class' => 'authorize:Authorize',
-+#      'urn:oid:1.3.6.1.4.1.5923.1.1.1.11' =>
-+#      array(
-+#          '@https://aai.egi.eu/LoA#Substantial|https://aai.egi.eu/LoA#High@'
-+#      ),
 +       'urn:oid:1.3.6.1.4.1.5923.1.1.1.7' =>
 +       array(
 +           '@^urn:mace:egi.eu:res:rcauth#.*$@'
 +       ),
++    ),
++    # copy voPersonID into eduPersonUniqueId for legacy EGI Check-in users that
++    # already have a RCauth DN.
++    60 => array(
++       'class' => 'core:AttributeCopy',
++       'urn:oid:1.3.6.1.4.1.25178.4.1.6' => 'urn:oid:1.3.6.1.4.1.5923.1.1.1.13',
 +    ),
 +  ),
  );
