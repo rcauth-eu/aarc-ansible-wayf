@@ -13,15 +13,15 @@ ssp_dir: /var/simplesamlphp
 ### Hostname to use.
 ### This is the primary hostname used by apache as ServerName, and by
 ### SimpleSAMLphp in its metadata etc.
-ssp_hostname: wayf-test.rcauth.eu
+ssp_hostname: wayf.rcauth.eu
 
 ### other hostnames the HTTP server is accepting. Note that these will
 ### typically not fully work for SimpleSAMLphp, due to mismatching metadata.
 ### Adding localhost can be useful for the edugain cronjob.
-#server_aliases:
+server_aliases:
 #  - wayf.rcauth.eu
 #  - "{{ inventory_hostname }}"
-#  - localhost
+  - localhost
 
 ### Apache user and group
 ssp_user: apache

@@ -43,10 +43,10 @@ ntp_servers:
 
 
 ### HTTP: loglevel and host credentials
-httpd_loglevel: debug
+httpd_loglevel: notice
 
 hostcert: /etc/pki/tls/hostcert.pem
 hostkey: /etc/pki/tls/hostkey.pem
 
 ### specify (remote filename of) intermediate certificate in case of a subCA
-#hostcert_intermediate: /etc/pki/tls/GEANTOVRSACA4.pem
+hostcert_intermediate: /etc/pki/tls/GEANTOVRSACA4.pem

@@ -4,10 +4,10 @@
 ########################################################################
 
 ### SimpleSAMLphp version
-#ssp_version: 1.2.3
+ssp_version: 1.19.8
 
 ### SimpleSAMLphp directory suffix, appended after the version
-ssp_suffix: devel
+ssp_suffix: prod
 
 
 ### Configuration directory for simplesamlphp
@@ -53,11 +53,11 @@ ssp_tarball: "https://github.com/simplesamlphp/simplesamlphp/releases/download/v
 
 ### tech contact for the service. It is used both in the metadata and for
 ### sending error reports to (after stripping the mailto:).
-#tech_name: Operator
-#tech_email: mailto:jdoe@example.org
+tech_name: "RCauth Operator"
+tech_email: "mailto:ops-management@rcauth.eu"
 
 ### timezone: either null or name including single quotes
-timezone: "null"
+timezone: "'Europe/Amsterdam'"
 
 
 ### saml metadata signing certificate and key
@@ -70,22 +70,34 @@ ssp_cert: "saml-cert-{{ ssp_hostname }}.pem"
 ssp_key: "saml-key-{{ ssp_hostname }}.pem"
 
 ### eduGAIN metadata signing certificate
-#edugain_cert: edugain-metadata-signer.pem
+edugain_cert: SURFconext-metadata-signer.pem
 
 ### eduGAIN metadata feed URL
-#edugain_url: https://edugain/feed.xml
+edugain_url: https://metadata.surfconext.nl/edugain-downstream.xml
 
 
 ### idp_remote metadata files to include, split in prod & test
-prod_idp_remotes: []
-test_idp_remotes: []
+prod_idp_remotes:
+ - aai.egi.eu.php
+ - cua-sso.surfsara.nl.php
+ - idp.scc.kit.edu.php
+ - login.elixir-czech.org.php
 
+test_idp_remotes:
+# - wayf.rcauth.eu.php
+# - sso.nikhef.nl.php
 
 ### sp_remote metadata files to include, split in prod & test.
 ### This is typically the Delegation Servers
-prod_sp_remotes: []
-test_sp_remotes: []
+prod_sp_remotes:
+ - wasbord.nikhef.nl.php
+ - rcauth-delegation.eosc.grnet.gr.php
+ - rcauth-db.esc.rl.ac.uk.php
 
+test_sp_remotes:
+ - eir.nikhef.nl.php
+ - rcauth-demo-delegation.eosc.grnet.gr.php
+ - rcauth-db-dev.esc.rl.ac.uk.php
 
 ### entityID
 ### Can hardcode, but can also use e.g. $ssp_hostname set via {{ ssp_hostname }}
@@ -93,30 +105,30 @@ test_sp_remotes: []
 entity_id: "https://$ssp_hostname/{{ ssp_ctx_pfx }}/"
 
 ### our own metadata
-#meta_org_name: "WAYF"
-#meta_org_displayname: "Organization"
-#meta_org_url: "https://www.example.org/"
+meta_org_name: "RCauth"
+meta_org_displayname: "RCauth.eu"
+meta_org_url: "https://rcauth.eu/"
 
-#meta_admin_name: "Operator"
-#meta_admin_company: "CA"
-#meta_admin_email: "mailto:ca@ca.example.org"
+meta_admin_name: "Admin"
+meta_admin_company: "RCauth"
+meta_admin_email: "mailto:admin@rcauth.eu"
 
-#meta_support_name: "Operator"
-#meta_support_company: "CA"
-#meta_support_email: "mailto:support@ca.example.org"
+meta_support_name: "Support"
+meta_support_company: "RCauth"
+meta_support_email: "mailto:support@rcauth.eu"
 
-#meta_security_name: "CSIRT"
-#meta_security_company: "Organization"
-#meta_security_email: "mailto:security@example.org"
-#meta_security_phone: "+1234567890"
+meta_security_name: "CSIRT"
+meta_security_company: "RCauth"
+meta_security_email: "mailto:security@rcauth.eu"
+meta_security_phone: "+31205925090"
 
-#meta_service_name: "WAYF"
-#meta_service_displayname: "Online CA"
-#meta_service_description: "Online CA for providing end-user proxy certificates to Science Gateways and other portals"
-#meta_service_url: "https://ca.example.org/"
-#meta_service_privacy: "https://ca.example.org/privacy"
-#meta_service_logo: "https://ca.example.org/images/logo.gif"
-#meta_service_logo_small: "https://ca.example.org/images/logo-150.gif"
+meta_service_name: "RCauth WAYF"
+meta_service_displayname: "RCauth Pilot Online CA"
+meta_service_description: "RCauth Pilot Online CA for providing end-user proxy certificates to Science Gateways and other portals"
+meta_service_url: "https://rcauth.eu/"
+meta_service_privacy: "https://rcauth.eu/privacy"
+meta_service_logo: "https://rcauth.eu/images/RCauth-eu-logo.gif"
+meta_service_logo_small: "https://rcauth.eu/images/RCauth-eu-logo-150.gif"
 
 
 ### Order of the tabs. The mapping to tabs is done via the metadata, and

@@ -43,7 +43,7 @@
 
 
 ### HTTP: loglevel and host credentials
-#httpd_loglevel: debug
+#httpd_loglevel: notice
 
 #hostcert: /etc/pki/tls/hostcert.pem
 #hostkey: /etc/pki/tls/hostkey.pem
