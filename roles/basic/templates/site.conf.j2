@@ -1,34 +1,10 @@
-Listen 443
-
 # just publish Apache as server
 ServerTokens Prod
-
-# SSL/TLS related options, actual engine is switched on per VirtualHost
-SSLPassPhraseDialog  builtin
-SSLSessionCache         shmcb:/var/cache/mod_ssl/scache(512000)
-SSLSessionCacheTimeout  300
-
-SSLRandomSeed startup file:/dev/urandom  256
-SSLRandomSeed connect builtin
-SSLCryptoDevice builtin
-
-SSLProtocol all -SSLv2 -SSLv3 +TLSv1
-SSLHonorCipherOrder On
-SSLCipherSuite "EECDH+ECDSA+AESGCM EECDH+aRSA+AESGCM EECDH+ECDSA+SHA384 EECDH+ECDSA+SHA256 EECDH+aRSA+SHA384 EECDH+aRSA+SHA256 EECDH EDH+aRSA !aNULL !eNULL !MEDIUM !LOW !3DES !MD5 !EXP !PSK !SRP !DSS"
-
-SSLCertificateFile      {{ hostcert }}
-SSLCertificateKeyFile   {{ hostkey }}
-{% if hostcert_intermediate is defined %}
-# Note: from Apache 2.4.8 SSLCertificateChainFile is obsolete. Probably can
-# better use SSLCACertificatePath in that case or put the whole chain in
-# SSLCertificateFile
-SSLCertificateChainFile {{ hostcert_intermediate }}
-{% endif %}
 
 # Create useful variables
 Define root       /{{ ssp_ctx_pfx }}
 Define servername {{ ssp_hostname }}
-Define webroot    {{ ssp_dir }}/www/
+Define webroot    {{ ssp_dir }}/public/
 
 # Redirect http requests to https
 <VirtualHost *:80>

@@ -31,11 +31,22 @@
   when: hostcert_intermediate is defined
   notify: restart httpd
 
-# Configure httpd, all configuration is in ssl.conf
-- name: configure httpd
+# Configure site httpd, rest is in /etc/conf.d/ssl.conf etc.
+
+- name: ensure httpd root dir exists
+  file:
+    path: "{{ httpd_www_root_dir }}"
+    state: directory
+
+- name: ensure httpd site config dir exists
+  file:
+    path: "{{ httpd_www_conf_dir }}"
+    state: directory
+
+- name: configure httpd site.conf
   template:
-    src: ssl.conf.j2
-    dest: /etc/httpd/conf.d/ssl.conf
+    src: site.conf.j2
+    dest: "{{ httpd_www_conf_dir }}/site.conf"
     owner: root
     group: root
     mode: 0644

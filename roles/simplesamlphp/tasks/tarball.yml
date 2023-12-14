@@ -14,7 +14,7 @@
   unarchive:
     remote_src: "{{ ssp_tarball_remote }}"
     src: "{{ ssp_tarball }}"
-    dest: /var
+    dest: "{{ httpd_www_root_dir }}"
     creates: "{{ ssp_dir }}-{{ ssp_version }}"
   when: st.stat.isdir is not defined
 

@@ -7,8 +7,12 @@
 ### Setting to true also enables 'showerrors' for SimpleSAMLphp.
 phpdebug: false
 
+### httpd local directories
+httpd_www_conf_dir: /etc/httpd/conf.d
+httpd_www_root_dir: /var
+
 ### Root for SimpleSAMLphp installation (typically a symlink to the installdir)
-ssp_dir: /var/simplesamlphp
+ssp_dir: "{{ httpd_www_root_dir }}/simplesamlphp"
 
 ### Hostname to use.
 ### This is the primary hostname used by apache as ServerName, and by
