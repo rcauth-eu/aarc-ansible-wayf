@@ -9,4 +9,4 @@
     backup: true
   with_items:
     - httpd
-    - syslog
+    - rsyslog
