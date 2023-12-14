@@ -24,6 +24,7 @@
   command:
     argv:
       - /usr/bin/mv
+      - -T
       - "{{ ssp_dir }}-{{ ssp_version }}"
       - "{{ ssp_installdir }}"
   when: st.stat.isdir is not defined

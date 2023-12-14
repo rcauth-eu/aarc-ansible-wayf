@@ -9,10 +9,10 @@ Description: add tagmapping and handle adfs IdPs
  not sufficient, since e.g. CERN is using a custom string.
 Author: Mischa Sallé <msalle@nikhef.nl>
 Author: Tamas Balogh <tamasb@nikhef.nl>
---- a/modules/metarefresh/lib/MetaLoader.php	2019-11-26 14:18:26.000000000 +0100
-+++ b/modules/metarefresh/lib/MetaLoader.php	2019-11-27 12:38:15.000000000 +0100
-@@ -223,6 +223,67 @@
-                 $template = $source['template'];
+--- a/modules/metarefresh/src/MetaLoader.php	2019-11-26 14:18:26.000000000 +0100
++++ b/modules/metarefresh/src/MetaLoader.php	2019-11-27 12:38:15.000000000 +0100
+@@ -187,6 +187,67 @@
+                 }
              }
  
 +            if(isset($source['tagmapping']) && !empty($source['tagmapping'])) {
@@ -76,6 +76,6 @@ Author: Tamas Balogh <tamasb@nikhef.nl>
 +                    $template['disable_scoping'] = true;
 +            }
 +
-             if (in_array('shib13-sp-remote', $this->types, true)) {
-                 $this->addMetadata($source['src'], $entity->getMetadata1xSP(), 'shib13-sp-remote', $template);
+             if (in_array('saml20-sp-remote', $this->types, true)) {
+                 $this->addMetadata($source['src'], $entity->getMetadata20SP(), 'saml20-sp-remote', $template);
              }

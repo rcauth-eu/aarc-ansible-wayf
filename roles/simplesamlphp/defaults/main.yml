@@ -48,7 +48,7 @@ ssp_loghandler: "syslog"
 ### Note that it is currently assumed to be downloaded from a URL, otherwise
 ### override also ssp_tarball_remote.
 ssp_tarball_remote: true
-ssp_tarball: "https://github.com/simplesamlphp/simplesamlphp/releases/download/v{{ ssp_version }}/simplesamlphp-{{ ssp_version }}.tar.gz"
+ssp_tarball: "https://github.com/simplesamlphp/simplesamlphp/releases/download/v{{ ssp_version }}/simplesamlphp-{{ ssp_version }}-full.tar.gz"
 
 
 ### tech contact for the service. It is used both in the metadata and for

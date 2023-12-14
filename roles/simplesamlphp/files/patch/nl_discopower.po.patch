@@ -6,15 +6,6 @@ Description: add more country tabs
 Author: Mischa Sallé <msalle@nikhef.nl>
 --- a/modules/discopower/locales/nl/LC_MESSAGES/discopower.po	2019-10-03 22:38:23.000000000 +0200
 +++ b/modules/discopower/locales/nl/LC_MESSAGES/discopower.po	2019-11-21 21:46:42.678556100 +0100
-@@ -40,7 +40,7 @@
- msgstr "Zweden"
- 
- msgid "{discopower:tabs:edugain}"
--msgstr "Europa (eduGAIN)"
-+msgstr "eduGAIN"
- 
- msgid "{discopower:tabs:iceland}"
- msgstr "IJsland"
 @@ -54,6 +54,78 @@
  msgid "{discopower:tabs:norway}"
  msgstr "Noorwegen"

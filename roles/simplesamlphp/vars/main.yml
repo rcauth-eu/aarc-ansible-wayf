@@ -13,8 +13,6 @@ disabled_modules:
 # List if source patches, applied by task patches.yml
 source_patches:
   - auth_status.twig.patch
-  - frontpage_config.php.patch
-  - _frontpage_menu.twig.patch
   - en_discopower.po.patch
   - nl_discopower.po.patch
   - MetaLoader.php_tagmapping_adfsdisablescoping.patch

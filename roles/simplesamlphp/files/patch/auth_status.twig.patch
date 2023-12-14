@@ -3,18 +3,18 @@ Description: status.twig references potentially unset variables
  "remaining" and "trackid" variables are not set, but required by the twig
  template.
 Author: David Groep <davidg@nikhef.nl>
---- a/templates/auth_status.twig    2021-01-19 14:53:26.000000000 +0100
-+++ b/templates/auth_status.twig    2021-01-15 16:23:32.948497398 +0100
+--- a/templates/auth_status.twig    2023-11-29 17:51:18.000000000 +0100
++++ b/templates/auth_status.twig    2023-11-29 17:51:18.000000000 +0100
 @@ -6,7 +6,7 @@
  
      <p>{% trans %}Hi, this is the status page of SimpleSAMLphp. Here you can see if your session is timed out, how long it lasts until it times out and all the attributes that are attached to your session.{% endtrans %}</p>
  
 -{% if remaining %}
 +{% if remaining is defined %}
-     <p>{% trans %}Your session is valid for {{ remaining }} seconds from now.{% endtrans %}</p>
- {% endif %}
- 
-@@ -79,7 +79,9 @@
+     <p>{% trans with {
+         '%remaining%': remaining
+     } %}Your session is valid for %remaining% seconds from now.{% endtrans %}</p>
+@@ -81,7 +81,9 @@
                <a class="pure-button copy hljs" data-clipboard-target="#trackid"
                   title="{% trans %}Copy to clipboard{% endtrans %}"><span class="fa fa-copy"></span></a>
              </div>
