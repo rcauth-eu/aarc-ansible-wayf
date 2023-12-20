@@ -36,11 +36,20 @@
     src: "{{ ssp_installdir }}/{{ item }}"
     dest: "{{ configtmp.path}}/"
   with_items:
-    - config-templates/authsources.php
-    - config-templates/config.php
-    - modules/metarefresh/config-templates/config-metarefresh.php
-    - modules/cron/config-templates/module_cron.php
+    - config.dist/authsources.php.dist
+    - config.dist/config.php.dist
+    - modules/cron/config/module_cron.php.dist
+    - modules/metarefresh/config-templates/module_metarefresh.php
     - modules/discopower/config-templates/module_discopower.php
+
+- name: rename .dist configuration templates
+  command:
+    cmd: mv "{{ item }}.dist" "{{ item }}"
+    chdir: "{{ configtmp.path}}/"
+  with_items:
+    - authsources.php
+    - config.php
+    - module_cron.php
 
 - name: copy configuration templated patches
   template:
@@ -49,7 +58,7 @@
   with_items:
     - config_authsources.php.patch
     - config_config.php.patch
-    - config_config-metarefresh.php.patch
+    - config_module_metarefresh.php.patch
     - config_module_cron.php.patch
     - config_module_discopower.php.patch
 
@@ -62,7 +71,7 @@
   with_items:
     - config_authsources.php.patch
     - config_config.php.patch
-    - config_config-metarefresh.php.patch
+    - config_module_metarefresh.php.patch
     - config_module_cron.php.patch
     - config_module_discopower.php.patch
 
@@ -75,7 +84,7 @@
   with_items:
     - authsources.php
     - config.php
-    - config-metarefresh.php
+    - module_metarefresh.php
     - module_cron.php
     - module_discopower.php
 

@@ -57,7 +57,7 @@ tech_name: "RCauth Operator"
 tech_email: "mailto:ops-management@rcauth.eu"
 
 ### timezone: either null or name including single quotes
-timezone: "'Europe/Amsterdam'"
+timezone: "Europe/Amsterdam"
 
 
 ### saml metadata signing certificate and key
@@ -70,7 +70,9 @@ ssp_cert: "saml-cert-{{ ssp_hostname }}.pem"
 ssp_key: "saml-key-{{ ssp_hostname }}.pem"
 
 ### eduGAIN metadata signing certificate
-edugain_cert: SURFconext-metadata-signer.pem
+edugain_certs:
+ - SURFconext-metadata-signer.pem
+ - SURFconext-metadata-CA-2023.pem
 
 ### eduGAIN metadata feed URL
 edugain_url: https://metadata.surfconext.nl/edugain-downstream.xml
@@ -83,7 +85,7 @@ prod_idp_remotes:
  - idp.scc.kit.edu.php
  - login.elixir-czech.org.php
 
-test_idp_remotes:
+test_idp_remotes: []
 # - wayf.rcauth.eu.php
 # - sso.nikhef.nl.php
 
@@ -134,6 +136,7 @@ meta_service_logo_small: "https://rcauth.eu/images/RCauth-eu-logo-150.gif"
 ### Order of the tabs. The mapping to tabs is done via the metadata, and
 ### typically via config-metarefresh.php for the eduGAIN metadata.
 ### The actual names of the tabs are determined via the discopower.po files
+### Note that changing the .po files also requires running msgfmt
 tab_order:
   - "preferred"
   - "edugain"

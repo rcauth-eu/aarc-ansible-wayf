@@ -1,6 +1,6 @@
 #!/bin/sh
 # follow redirects as we might not listen to localhost
-curl -k -L --silent "https://localhost/{{ ssp_ctx_pfx }}/module.php/cron/cron.php?key={{ cron_key }}&tag=daily" || {
+curl -f -k -L --silent "https://localhost/{{ ssp_ctx_pfx }}/module.php/cron/run/daily/{{ cron_key }}" || {
     echo "$0: curl failed with $?"; exit 1;
 }
 

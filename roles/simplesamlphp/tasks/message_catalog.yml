@@ -1,0 +1,8 @@
+---
+
+### Task recreating discopower .mo files
+
+- name: recreate discopower .mo files
+  shell:
+    cmd: find . -name *.po|while read a;do msgfmt -v -o ${a/.po/.mo} $a;done
+    chdir: "{{ ssp_installdir }}/modules/discopower/locales"

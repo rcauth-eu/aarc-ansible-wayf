@@ -39,7 +39,7 @@
       - "{{ ssp_installdir }}/config"
       - "{{ ssp_installdir }}/config.dist"
 
-# Logging directory: create only when logging to file is enabled
+# Logging directory: needs to exist always for version>=2
 - name: create logging directory
   file:
     path: "{{ ssp_logdir }}"
@@ -47,4 +47,3 @@
     owner: root
     group: "{{ ssp_group }}"
     mode: 0770
-  when: ssp_loghandler == "file"

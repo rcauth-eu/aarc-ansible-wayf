@@ -70,7 +70,9 @@
 #ssp_key: "saml-key-{{ ssp_hostname }}.pem"
 
 ### eduGAIN metadata signing certificate
-#edugain_cert: SURFconext-metadata-signer.pem
+#edugain_certs:
+# - SURFconext-metadata-signer.pem
+# - SURFconext-metadata-CA-2023.pem
 
 ### eduGAIN metadata feed URL
 #edugain_url: https://metadata.surfconext.nl/edugain-downstream.xml

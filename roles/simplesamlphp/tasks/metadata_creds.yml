@@ -27,8 +27,9 @@
 
 - name: copy eduGAIN certificate
   copy:
-    src: "{{ edugain_cert }}"
+    src: "{{ item }}"
     dest: "{{ ssp_pkidir }}"
     owner: root
     group: root
     mode: 0644
+  with_items: "{{ edugain_certs }}"

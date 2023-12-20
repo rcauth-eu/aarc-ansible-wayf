@@ -7,8 +7,10 @@ enabled_modules:
   - discopower
   - cron
   - metarefresh
+  - rcauth
+  - authorize
 
-disabled_modules:
+disabled_modules: []
 
 # List if source patches, applied by task patches.yml
 source_patches:

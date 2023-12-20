@@ -5,7 +5,7 @@ Author: Mischa Sallé <msalle@nikhef.nl>
 --- a/metadata/saml20-idp-remote.php	2019-11-19 15:05:50.000000000 +0100
 +++ b/metadata/saml20-idp-remote.php	2019-11-21 21:54:50.080327611 +0100
 {# NOTE: we calculate the new size of the patch based on the list sizes #}
-@@ -7,3 +7,{{ prod_idp_remotes|count + test_idp_remotes|count + 12 }} @@
+@@ -7,3 +7,{{ (prod_idp_remotes|count) + (test_idp_remotes|count) + 12 }} @@
   *
   * See: https://simplesamlphp.org/docs/stable/simplesamlphp-reference-idp-remote
   */

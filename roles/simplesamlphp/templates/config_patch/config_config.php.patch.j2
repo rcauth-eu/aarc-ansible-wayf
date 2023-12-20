@@ -2,9 +2,9 @@ Description: main config changes
  Based on config-templates/config.php this sets all the local configuration.
 Author: Mischa Sallé <msalle@nikhef.nl>
 Author: Tamas Balogh <tamasb@nikhef.nl>
---- a/config/config.php	2019-11-19 15:02:43.000000000 +0100
-+++ b/config/config.php	2019-11-21 22:06:55.379488970 +0100
-@@ -27,7 +27,7 @@
+--- a/config/config.php	2023-11-29 17:51:18.000000000 +0100
++++ b/config/config.php	2023-12-18 11:36:24.482856887 +0100
+@@ -31,7 +31,7 @@
       * external url, no matter where you come from (direct access or via the
       * reverse proxy).
       */
@@ -13,21 +13,27 @@ Author: Tamas Balogh <tamasb@nikhef.nl>
  
      /*
       * The 'application' configuration array groups a set configuration options
-@@ -62,9 +62,10 @@
+@@ -66,8 +66,8 @@
       * When specified as a relative path, this is relative to the SimpleSAMLphp
       * root directory.
       */
--    'certdir' => 'cert/',
--    'loggingdir' => 'log/',
--    'datadir' => 'data/',
-+    'certdir' => '{{ ssp_pkidir }}',
+-    //'loggingdir' => '/var/log/',
+-    //'datadir' => '/var/data/',
 +    'loggingdir' => '{{ ssp_logdir }}',
 +    'datadir' => '{{ ssp_datadir }}',
-+    'metadatadir' => '{{ ssp_metadatadir }}',
      'tempdir' => '/tmp/simplesaml',
  
      /*
-@@ -72,8 +73,8 @@
+@@ -88,7 +88,7 @@
+      * directory. Note that locations with no prefix included will be treated
+      * as file locations.
+      */
+-    'certdir' => 'cert/',
++    'certdir' => '{{ ssp_pkidir }}',
+ 
+     /* To load a certificate or key from the database, it should be specified
+      * as 'pdo://<id>' where <id> is the identifier in the database table that
+@@ -125,8 +125,8 @@
       * The email address will be used as the recipient address for error reports, and
       * also as the technical contact in generated metadata.
       */
@@ -38,25 +44,25 @@ Author: Tamas Balogh <tamasb@nikhef.nl>
  
      /*
       * (Optional) The method by which email is delivered.  Defaults to mail which utilizes the
-@@ -114,7 +115,7 @@
+@@ -171,7 +171,7 @@
       *
       * See this page for a list of valid timezones: http://php.net/manual/en/timezones.php
       */
 -    'timezone' => null,
-+    'timezone' => {{ timezone }},
++    'timezone' => '{{ timezone }}',
  
  
  
-@@ -130,7 +131,7 @@
+@@ -187,7 +187,7 @@
       * A possible way to generate a random salt is by running the following command from a unix shell:
-      * LC_CTYPE=C tr -c -d '0123456789abcdefghijklmnopqrstuvwxyz' </dev/urandom | dd bs=32 count=1 2>/dev/null;echo
+      * LC_ALL=C tr -c -d '0123456789abcdefghijklmnopqrstuvwxyz' </dev/urandom | dd bs=32 count=1 2>/dev/null;echo
       */
 -    'secretsalt' => 'defaultsecretsalt',
 +    'secretsalt' => '{{ secret_salt }}',
  
      /*
       * This password must be kept secret, and modified from the default value 123.
-@@ -138,7 +139,7 @@
+@@ -195,7 +195,7 @@
       * metadata listing and diagnostics pages.
       * You can also put a hash here; run "bin/pwgen.php" to generate one.
       */
@@ -64,8 +70,8 @@ Author: Tamas Balogh <tamasb@nikhef.nl>
 +    'auth.adminpassword' => '{{ admin_pass }}',
  
      /*
-      * Set this options to true if you want to require administrator password to access the web interface
-@@ -261,7 +262,7 @@
+      * Set this option to true if you want to require administrator password to access the metadata.
+@@ -331,7 +331,7 @@
       * When 'errorreporting' is enabled, a form will be presented for the user to report
       * the error to 'technicalcontact_email'.
       */
@@ -74,9 +80,9 @@ Author: Tamas Balogh <tamasb@nikhef.nl>
      'errorreporting' => true,
  
      /*
-@@ -291,8 +292,8 @@
-      * Options: [syslog,file,errorlog,stderr]
-      *
+@@ -363,8 +363,8 @@
+      * must exist and be writable for SimpleSAMLphp. If set to something else, set
+      * loggingdir above to 'null'.
       */
 -    'logging.level' => SimpleSAML\Logger::NOTICE,
 -    'logging.handler' => 'syslog',
@@ -85,24 +91,20 @@ Author: Tamas Balogh <tamasb@nikhef.nl>
  
      /*
       * Specify the format of the logs. Its use varies depending on the log handler used (for instance, you cannot
-@@ -320,7 +321,7 @@
+@@ -392,7 +392,7 @@
       * - %msg: the message to be logged.
       *
       */
-{% raw %}-    //'logging.format' => '%date{%b %d %H:%M:%S} %process %level %stat[%trackid] %msg',
-+    'logging.format' => '%date{%b %d %H:%M:%S} %process %level %stat[%trackid] [%srcip] %msg',
-{% endraw %}
+-    //'logging.format' => '%date{M j H:i:s} %process %level %stat[%trackid] %msg',
+{{ "+    'logging.format' => '%date{%b %d %H:%M:%S} %process %level %stat[%trackid] [%srcip] %msg'," }}
  
      /*
       * Choose which facility should be used when logging with syslog.
-@@ -350,13 +351,12 @@
-      * This is an array of outputs. Each output has at least a 'class' option, which
-      * selects the output.
+@@ -424,12 +424,10 @@
       */
--    'statistics.out' => [// Log statistics to the normal log.
+     'statistics.out' => [
+         // Log statistics to the normal log.
 -        /*
-+    'statistics.out' => [
-+        // Log statistics to the normal log.
          [
              'class' => 'core:Log',
              'level' => 'notice',
@@ -111,27 +113,42 @@ Author: Tamas Balogh <tamasb@nikhef.nl>
          // Log statistics to files in a directory. One file per day.
          /*
          [
-@@ -462,7 +462,7 @@
-      *
-      * Note that shib13-idp has been deprecated and will be removed in SimpleSAMLphp 2.0.
+@@ -533,7 +531,7 @@
+      * one of the functionalities below, but in some cases you could run multiple functionalities.
+      * In example when you are setting up a federation bridge.
       */
 -    'enable.saml20-idp' => false,
 +    'enable.saml20-idp' => true,
-     'enable.shib13-idp' => false,
      'enable.adfs-idp' => false,
  
-@@ -784,9 +784,7 @@
+ 
+@@ -558,7 +556,{{ 7 + (enabled_modules|count) + (disabled_modules|count) }} @@
+         'exampleauth' => false,
+         'core' => true,
+         'admin' => true,
+-        'saml' => true
++        'saml' => true,
+{% for enabled_mod in enabled_modules %}
++        '{{ enabled_mod }}' => true,
+{% endfor %}
+{% for disabled_mod in disabled_modules %}
++        '{{ disabled_mod }}' => false,
+{% endfor %}
+     ],
+ 
+ 
+@@ -816,9 +818,7 @@
       * Languages available, RTL languages, and what language is the default.
       */
      'language.available' => [
 -        'en', 'no', 'nn', 'se', 'da', 'de', 'sv', 'fi', 'es', 'ca', 'fr', 'it', 'nl', 'lb',
--        'cs', 'sl', 'lt', 'hr', 'hu', 'pl', 'pt', 'pt-br', 'tr', 'ja', 'zh', 'zh-tw', 'ru',
--        'et', 'he', 'id', 'sr', 'lv', 'ro', 'eu', 'el', 'af', 'zu', 'xh', 'st',
-+        'en', 'nl'
+-        'cs', 'sk', 'sl', 'lt', 'hr', 'hu', 'pl', 'pt', 'pt-br', 'tr', 'ja', 'zh', 'zh-tw',
+-        'ru', 'et', 'he', 'id', 'sr', 'lv', 'ro', 'eu', 'el', 'af', 'zu', 'xh', 'st',
++        'en', 'nl',
      ],
      'language.rtl' => ['ar', 'dv', 'fa', 'ur', 'he'],
      'language.default' => 'en',
-@@ -855,7 +853,8 @@
+@@ -859,7 +859,8 @@
      /*
       * Which theme directory should be used?
       */
@@ -141,20 +158,7 @@ Author: Tamas Balogh <tamasb@nikhef.nl>
  
      /*
       * Set this option to the text you would like to appear at the header of each page. Set to false if you don't want
-@@ -927,6 +926,12 @@
-         ],
-     ],
- 
-+    /*
-+     * User interface model: TWIG because old one doesn't seem to work nicely
-+     * any longer with 1.18
-+     */
-+    'usenewui' => true,
-+    'language.i18n.backend' => 'gettext/gettext',
- 
-     /*********************
-      | DISCOVERY SERVICE |
-@@ -1030,6 +1035,23 @@
+@@ -1038,6 +1039,23 @@
          ],
          */
  
@@ -178,7 +182,16 @@ Author: Tamas Balogh <tamasb@nikhef.nl>
          /*
           * Generate the 'group' attribute populated from other variables, including eduPersonAffiliation.
          60 => [
-@@ -1151,7 +1173,7 @@
+@@ -1067,7 +1085,7 @@
+      * This option allows you to specify a directory for your metadata outside of the standard metadata directory
+      * included in the standard distribution of the software.
+      */
+-    'metadatadir' => 'metadata',
++    'metadatadir' => '{{ ssp_metadatadir }}',
+ 
+     /*
+      * This option configures the metadata sources. The metadata sources is given as an array with
+@@ -1163,7 +1181,7 @@
       * Metadata signing can also be enabled for a individual SP or IdP by setting the
       * same option in the metadata for the SP or IdP.
       */
@@ -187,3 +200,15 @@ Author: Tamas Balogh <tamasb@nikhef.nl>
  
      /*
       * The default key & certificate which should be used to sign generated metadata. These
+@@ -1175,9 +1193,9 @@
+      * the 'certificate' and 'privatekey' option in the metadata will be used.
+      * if those aren't set, signing of metadata will fail.
+      */
+-    'metadata.sign.privatekey' => null,
++    'metadata.sign.privatekey' => '{{ ssp_key }}',
+     'metadata.sign.privatekey_pass' => null,
+-    'metadata.sign.certificate' => null,
++    'metadata.sign.certificate' => '{{ ssp_cert }}',
+     'metadata.sign.algorithm' => 'http://www.w3.org/2001/04/xmldsig-more#rsa-sha256',
+ 
+ 

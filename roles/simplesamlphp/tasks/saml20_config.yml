@@ -13,8 +13,8 @@
 - name: copy saml20 config templates
   copy:
     remote_src: true
-    src: "{{ ssp_installdir }}/metadata-templates/{{ item }}"
-    dest: "{{ saml20tmp.path}}/"
+    src: "{{ ssp_installdir }}/metadata/{{ item }}.dist"
+    dest: "{{ saml20tmp.path}}/{{ item }}"
   with_items: "{{ saml20_items }}"
 
 - name: copy saml20 config templated patches

@@ -1,17 +1,17 @@
 Description: authsources changes
- Based on config-templates/authsources.php this sets all the local SP
+ Based on config/authsources.php.dist this sets all the local SP
  configuration. The idp is set using our own function getidphintcookie() which
  gets the IdP entityID from the idphint cookie set by the delegation server and
  then resets the cookie.
 Author: Mischa Sallé <msalle@nikhef.nl>
 Author: Tamas Balogh <tamasb@nikhef.nl>
---- a/config/authsources.php    2019-11-19 15:02:43.000000000 +0100
-+++ b/config/authsources.php    2019-11-21 22:01:49.674334334 +0100
+--- a/config/authsources.php	2023-11-29 17:51:18.000000000 +0100
++++ b/config/authsources.php	2023-12-18 12:12:52.891623468 +0100
 @@ -1,5 +1,40 @@
  <?php
  
 +/* Include our hostname, this sets $ssp_hostname */
-+include(\SimpleSAML\Utils\Config::getConfigDir() . "/config_hostname.php");
++include( (new \SimpleSAML\Utils\Config())->getConfigDir() . "/config_hostname.php");
 +
 +/**
 + * Needed to unset the cookie. Otherwise we could have just used isset() ? ... :
@@ -48,11 +48,11 @@ Author: Tamas Balogh <tamasb@nikhef.nl>
  $config = [
      /*
       * When multiple authentication sources are defined, you can specify one to use by default
-@@ -29,15 +64,26 @@
+@@ -27,15 +62,26 @@
+         'saml:SP',
  
          // The entity ID of this SP.
-         // Can be NULL/unset, in which case an entity ID is generated based on the metadata URL.
--        'entityID' => null,
+-        'entityID' => 'https://myapp.example.org/',
 +        'entityID' => "{{ entity_id }}",
 +
 +        // metadata cert and key, w.r.t. certdir set in config.php
@@ -64,7 +64,7 @@ Author: Tamas Balogh <tamasb@nikhef.nl>
 +        // the default type 'transient'. We won't use transient, and asking for
 +        // it can break ADFS, so it is better to just set the policy to false.
 +        // See also https://github.com/simplesamlphp/simplesamlphp/issues/771
-+        'NameIDPolicy' => false,
++        'NameIDPolicy' => [],
  
          // The entity ID of the IdP this SP should contact.
          // Can be NULL/unset, in which case the user will be shown a list of available IdPs.
@@ -77,8 +77,8 @@ Author: Tamas Balogh <tamasb@nikhef.nl>
 +        'discoURL' => '/{{ ssp_ctx_pfx }}/module.php/discopower/disco.php',
  
          /*
-          * The attributes parameter must contain an array of desired attributes by the SP.
-@@ -46,61 +92,120 @@
+          * If SP behind the SimpleSAMLphp in IdP/SP proxy mode requests
+@@ -52,61 +98,119 @@
           * The metadata will then be created as follows:
           * <md:RequestedAttribute FriendlyName="friendlyName" Name="name" />
           */
@@ -86,19 +86,18 @@ Author: Tamas Balogh <tamasb@nikhef.nl>
          'name' => [
 -            'en' => 'A service',
 -            'no' => 'En tjeneste',
-+              'en' => '{{ meta_service_name }}',
-+              'nl' => '{{ meta_service_name }}',
++            'en' => '{{ meta_service_name }}',
++            'nl' => '{{ meta_service_name }}',
          ],
  
 -        'attributes' => [
 -            'attrname' => 'urn:oid:x.x.x.x',
--        ],
--        'attributes.required' => [
--            'urn:oid:x.x.x.x',
 +        // Taken these over from pilot-ica1.rcauth.eu since it's essentially SP
 +        'description' => [
 +            'en' => '{{ meta_service_description }}',
-+        ],
+         ],
+-        'attributes.required' => [
+-            'urn:oid:x.x.x.x',
 +        'OrganizationName' => [
 +            'en' => '{{ meta_org_name }}',
 +        ],
@@ -135,8 +134,10 @@ Author: Tamas Balogh <tamasb@nikhef.nl>
 +                    'height' => 73,
 +                ],
 +            ],
-+        ],
-+
+         ],
+-        */
+-    ],
+ 
 +        'authproc' => [
 +            10 => 'rcauth:OrgDisplayName2Organization', 
 +            21 => [
@@ -147,10 +148,7 @@ Author: Tamas Balogh <tamasb@nikhef.nl>
 +                'class' => 'core:AttributeMap',
 +                'name2oid',
 +            ],
-         ],
--        */
--    ],
--
++        ],
  
 -    /*
 -    'example-sql' => [
@@ -236,18 +234,18 @@ Author: Tamas Balogh <tamasb@nikhef.nl>
 +                    'xmlns:remd'       => 'http://refeds.org/metadata',
 +                    'remd:contactType' => 'http://refeds.org/metadata/contactType/security',
 +                ],
-+            ]
++            ],
          ],
-+
      ],
 -    */
  
      /*
      'crypto-hash' => [
-@@ -113,219 +218,4 @@
+@@ -118,227 +222,4 @@
+         ],
      ],
      */
- 
+-
 -    /*
 -    'htpasswd' => [
 -        'authcrypt:Htpasswd',
@@ -323,107 +321,117 @@ Author: Tamas Balogh <tamasb@nikhef.nl>
 -    /*
 -    // Example of a LDAP authentication source.
 -    'example-ldap' => [
--        'ldap:LDAP',
+-        'ldap:Ldap',
 -
--        // Give the user an option to save their username for future login attempts
--        // And when enabled, what should the default be, to save the username or not
--        //'remember.username.enabled' => false,
--        //'remember.username.checked' => false,
--
--        // The hostname of the LDAP server.
--        'hostname' => 'ldap.example.org',
+-        // The connection string for the LDAP-server.
+-        // You can add multiple by separating them with a space.
+-        'connection_string' => 'ldap.example.org',
 -
 -        // Whether SSL/TLS should be used when contacting the LDAP server.
--        'enable_tls' => true,
+-        // Possible values are 'ssl', 'tls' or 'none'
+-        'encryption' => 'ssl',
 -
--        // Whether debug output from the LDAP library should be enabled.
--        // Default is FALSE.
--        'debug' => false,
+-        // The LDAP version to use when interfacing the LDAP-server.
+-        // Defaults to 3
+-        'version' => 3,
 -
--        // The timeout for accessing the LDAP server, in seconds.
--        // The default is 0, which means no timeout.
--        'timeout' => 0,
+-        // Set to TRUE to enable LDAP debug level. Passed to the LDAP connector class.
+-        //
+-        // Default: FALSE
+-        // Required: No
+-        'ldap.debug' => false,
 -
--        // The port used when accessing the LDAP server.
--        // The default is 389.
--        'port' => 389,
+-        // The LDAP-options to pass when setting up a connection
+-        // See [Symfony documentation][1]
+-        'options' => [
 -
--        // Set whether to follow referrals. AD Controllers may require FALSE to function.
--        'referrals' => true,
+-            // Set whether to follow referrals.
+-            // AD Controllers may require 0x00 to function.
+-            // Possible values are 0x00 (NEVER), 0x01 (SEARCHING),
+-            //   0x02 (FINDING) or 0x03 (ALWAYS).
+-            'referrals' => 0x00,
+-
+-            'network_timeout' => 3,
+-        ],
+-
+-        // The connector to use.
+-        // Defaults to '\SimpleSAML\Module\ldap\Connector\Ldap', but can be set
+-        // to '\SimpleSAML\Module\ldap\Connector\ActiveDirectory' when
+-        // authenticating against Microsoft Active Directory. This will
+-        // provide you with more specific error messages.
+-        'connector' => '\SimpleSAML\Module\ldap\Connector\Ldap',
 -
 -        // Which attributes should be retrieved from the LDAP server.
 -        // This can be an array of attribute names, or NULL, in which case
 -        // all attributes are fetched.
 -        'attributes' => null,
 -
--        // The pattern which should be used to create the users DN given the username.
--        // %username% in this pattern will be replaced with the users username.
+-         // Which attributes should be base64 encoded after retrieval from
+-         // the LDAP server.
+-        'attributes.binary' => [
+-            'jpegPhoto',
+-            'objectGUID',
+-            'objectSid',
+-            'mS-DS-ConsistencyGuid'
+-        ],
+-
+-        // The pattern which should be used to create the user's DN given
+-        // the username. %username% in this pattern will be replaced with
+-        // the user's username.
 -        //
 -        // This option is not used if the search.enable option is set to TRUE.
 -        'dnpattern' => 'uid=%username%,ou=people,dc=example,dc=org',
 -
--        // As an alternative to specifying a pattern for the users DN, it is possible to
--        // search for the username in a set of attributes. This is enabled by this option.
+-        // As an alternative to specifying a pattern for the users DN, it is
+-        // possible to search for the username in a set of attributes. This is
+-        // enabled by this option.
 -        'search.enable' => false,
 -
--        // The DN which will be used as a base for the search.
--        // This can be a single string, in which case only that DN is searched, or an
--        // array of strings, in which case they will be searched in the order given.
--        'search.base' => 'ou=people,dc=example,dc=org',
+-        // An array on DNs which will be used as a base for the search. In
+-        // case of multiple strings, they will be searched in the order given.
+-        'search.base' => [
+-            'ou=people,dc=example,dc=org',
+-        ],
+-
+-        // The scope of the search. Valid values are 'sub' and 'one' and
+-        // 'base', first one being the default if no value is set.
+-        'search.scope' => 'sub',
 -
 -        // The attribute(s) the username should match against.
 -        //
--        // This is an array with one or more attribute names. Any of the attributes in
--        // the array may match the value the username.
+-        // This is an array with one or more attribute names. Any of the
+-        // attributes in the array may match the value the username.
 -        'search.attributes' => ['uid', 'mail'],
 -
--        // Additional LDAP filters appended to the search attributes
--        //'search.filter' => '(objectclass=inetorgperson)',
+-        // Additional filters that must match for the entire LDAP search to
+-        // be true.
+-        //
+-        // This should be a single string conforming to [RFC 1960][2]
+-        // and [RFC 2544][3]. The string is appended to the search attributes
+-        'search.filter' => '(&(objectClass=Person)(|(sn=Doe)(cn=John *)))',
 -
--        // The username & password the SimpleSAMLphp should bind to before searching. If
--        // this is left as NULL, no bind will be performed before searching.
+-        // The username & password where SimpleSAMLphp should bind to before
+-        // searching. If this is left NULL, no bind will be performed before
+-        // searching.
 -        'search.username' => null,
 -        'search.password' => null,
--
--        // If the directory uses privilege separation,
--        // the authenticated user may not be able to retrieve
--        // all required attribures, a privileged entity is required
--        // to get them. This is enabled with this option.
--        'priv.read' => false,
--
--        // The DN & password the SimpleSAMLphp should bind to before
--        // retrieving attributes. These options are required if
--        // 'priv.read' is set to TRUE.
--        'priv.username' => null,
--        'priv.password' => null,
--
 -    ],
 -    */
 -
 -    /*
 -    // Example of an LDAPMulti authentication source.
 -    'example-ldapmulti' => [
--        'ldap:LDAPMulti',
+-        'ldap:LdapMulti',
 -
--        // Give the user an option to save their username for future login attempts
--        // And when enabled, what should the default be, to save the username or not
--        //'remember.username.enabled' => false,
--        //'remember.username.checked' => false,
--
--        // Give the user an option to save their organization choice for future login
--        // attempts. And when enabled, what should the default be, checked or not.
--        //'remember.organization.enabled' => false,
--        //'remember.organization.checked' => false,
--
--        // The way the organization as part of the username should be handled.
--        // Three possible values:
--        // - 'none':   No handling of the organization. Allows '@' to be part
--        //             of the username.
--        // - 'allow':  Will allow users to type 'username@organization'.
--        // - 'force':  Force users to type 'username@organization'. The dropdown
--        //             list will be hidden.
--        //
--        // The default is 'none'.
+-         // The way the organization as part of the username should be handled.
+-         // Three possible values:
+-         // - 'none':   No handling of the organization. Allows '@' to be part
+-         //             of the username.
+-         // - 'allow':  Will allow users to type 'username@organization'.
+-         // - 'force':  Force users to type 'username@organization'. The dropdown
+-         //             list will be hidden.
+-         //
+-         // The default is 'none'.
 -        'username_organization_method' => 'none',
 -
 -        // Whether the organization should be included as part of the username
@@ -442,24 +450,21 @@ Author: Tamas Balogh <tamasb@nikhef.nl>
 -        //
 -        // The value of each element is an array in the same format as an LDAP
 -        // authentication source.
--        'employees' => [
--            // A short name/description for this group. Will be shown in a dropdown list
--            // when the user logs on.
--            //
--            // This option can be a string or an array with language => text mappings.
--            'description' => 'Employees',
+-        'mapping' => [
+-            'employees' => [
+-                // A short name/description for this group. Will be shown in a
+-                // dropdown list when the user logs on.
+-                //
+-                // This option can be a string or an array with
+-                // language => text mappings.
+-                'description' => 'Employees',
+-                'authsource' => 'example-ldap',
+-            ],
 -
--            // The rest of the options are the same as those available for
--            // the LDAP authentication source.
--            'hostname' => 'ldap.employees.example.org',
--            'dnpattern' => 'uid=%username%,ou=employees,dc=example,dc=org',
--        ],
--
--        'students' => [
--            'description' => 'Students',
--
--            'hostname' => 'ldap.students.example.org',
--            'dnpattern' => 'uid=%username%,ou=students,dc=example,dc=org',
+-            'students' => [
+-                'description' => 'Students',
+-                'authsource' => 'example-ldap-2',
+-            ],
 -        ],
 -    ],
 -    */

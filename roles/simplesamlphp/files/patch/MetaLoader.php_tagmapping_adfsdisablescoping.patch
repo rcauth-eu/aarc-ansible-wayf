@@ -24,13 +24,13 @@ Author: Tamas Balogh <tamasb@nikhef.nl>
 +                elseif ( !array_key_exists('tags', $template) )
 +                    $template['tags'] = [];
 +
-+                // Add metadata tags based on 'registrationAuthority' inside
-+                // the 'RegistrationInfo'.
++                // Add metadata tags based on 'authority' inside the
++                // 'RegistrationInfo'.
 +                $idpmetadata = $entity->getMetadata20IdP();
 +                if(array_key_exists('RegistrationInfo', $idpmetadata)) {
 +                    $regAuthInfo = $idpmetadata['RegistrationInfo'];
-+                    if(array_key_exists('registrationAuthority', $regAuthInfo)) {
-+                        $regAuth = $regAuthInfo['registrationAuthority'];
++                    if(array_key_exists('authority', $regAuthInfo)) {
++                        $regAuth = $regAuthInfo['authority'];
 +                        Logger::debug('Found the Registration Auth ' . $regAuth . " for ". $entity->getEntityId());
 +                        if (array_key_exists($regAuth,$tagmapping)) {
 +                            array_push($template['tags'],$tagmapping[$regAuth]);
