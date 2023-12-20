@@ -14,20 +14,11 @@ msgstr ""
 msgid "Authentication status"
 msgstr "Authentication status"
 
-msgid "{rcauth:fullname}"
+msgid "The white-label Research and Collaboration<br>Authentication CA Service for Europe"
 msgstr "The white-label Research and Collaboration<br>Authentication CA Service for Europe"
 
-msgid "{rcauth:footertext}"
+msgid "The RCauth WAYF is part of the RCauth CA service. For support, please contact the help desk of your own home organisations or community."
 msgstr "The RCauth WAYF is part of the RCauth CA service. For support, please contact the help desk of your own home organisations or community."
 
 msgid "A service has requested you to authenticate yourself. Please enter your username and password in the form below."
 msgstr "A service has requested you to authenticate yourself. Please enter your username and password in the form below."
-
-msgid "{cron:cron:link_cron}"
-msgstr "Cron module information"
-
-msgid "{sanitycheck:strings:link_sanitycheck}"
-msgstr "Sanity check"
-
-msgid "{metarefresh:metarefresh:frontpage_link}"
-msgstr "Refresh federation metadata immediately"

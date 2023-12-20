@@ -2,6 +2,8 @@
 
 namespace SimpleSAML\Module\rcauth\Auth\Process;
 
+use SimpleSAML\Auth;
+
 /**
  * Consent Authentication Processing filter
  *
@@ -10,7 +12,7 @@ namespace SimpleSAML\Module\rcauth\Auth\Process;
  *
  * @package SimpleSAMLphp
  */
-class OrgDisplayName2Organization extends \SimpleSAML\Auth\ProcessingFilter
+class OrgDisplayName2Organization extends Auth\ProcessingFilter
 {
     private static $ORGANIZATION_OID = 'urn:oid:2.5.4.10';
 
@@ -26,7 +28,7 @@ class OrgDisplayName2Organization extends \SimpleSAML\Auth\ProcessingFilter
      *
      * @return void
      */
-    public function process(&$state)
+    public function process(&$state): void
     {
         assert(is_array($state));
         assert(array_key_exists("entityid", $state["Source"]));

@@ -46,57 +46,63 @@ class AttributeNameIDRCauth extends \SimpleSAML\Module\saml\BaseNameIDGenerator
      *
      * @param array &$state  The request state.
      */
-    public function process(&$state) {
+    public function process(&$state): void
+    {
         assert(is_array($state));
         assert(is_string($this->format));
 
         // Initialize output array
         $nameId = new \SAML2\XML\saml\NameID();
 
-        // Try to use the incoming NameId value
+        // Try to use the incoming NameId value, only if format matches
         if (isset($state['saml:sp:NameID']) &&
-            isset($state['saml:sp:NameID']->value) &&
-            $state['saml:sp:NameID']->Format === $this->format)
+            $state['saml:sp:NameID']->getFormat() === $this->format)
         {
-            // We have input value, use it
-            $nameId->setValue($state['saml:sp:NameID']->value);
-            $nameId->setFormat($state['saml:sp:NameID']->Format);
-        } else {
-            // Get the 'default attribute' value instead (if available)
-            $val = $this->getValue($state);
-            if (empty($val)) {
-                \SimpleSAML\Logger::warning(
-                    'No appropriate value in attribute ' . var_export($this->attribute, true) .
-                    ' on user - not generating attribute NameID.'
-                );
-                return;
-            }
-            $nameId->setValue($val);
-        }
+            // we have input of same format, use it
+            $nameId->setFormat($this->format);
 
-        // Try to use the incoming NameId NameQualifier
-        if (isset($state['saml:sp:NameID']) &&
-            isset($state['saml:sp:NameID']->NameQualifier) &&
-            $state['saml:sp:NameID']->Format === $this->format)
-        {
-            // Verify the scope of the incoming NameID
-            if ($state['saml:sp:NameID']->NameQualifier !==
-                $state['saml:sp:IdP'])
-            {
-                \SimpleSAML\Logger::warning(
-                    'Invalid scope in NameID: '.
-                    'NameQualifier does not match expected IdP: '.
-                    $state['saml:sp:NameID']->NameQualifier.' != '.$state['saml:sp:IdP']);
-            } else {
-                $nameId->setNameQualifier($state['saml:sp:NameID']->NameQualifier);
-            }
-        } else if (isset($state['saml:sp:IdP'])) {
-            // Fall back on remote IdP
-            $nameId->setNameQualifier($state['saml:sp:IdP']);
-        } else {
-            // Neither incoming NameId, not remote IdP (?!)
-            \SimpleSAML\Logger::warning('No IdP entity ID, unable to set NameQualifier.');
-        }
+	    // now value, if it's null, we'll handle it later
+	    $nameId->setValue($state['saml:sp:NameID']->getValue());
+
+	    // and NameQualifier
+	    if ( ! empty($state['saml:sp:NameID']->getNameQualifier()) ) {
+		// Verify the scope of the incoming NameID
+		if ($state['saml:sp:NameID']->getNameQualifier() === $state['saml:sp:IdP']) {
+		    $nameId->setNameQualifier($state['saml:sp:NameID']->getNameQualifier());
+		} else {
+		    \SimpleSAML\Logger::warning(
+			'Invalid scope in NameID: '.
+			'NameQualifier does not match expected IdP: '.
+			$state['saml:sp:NameID']->getNameQualifier().' != '.$state['saml:sp:IdP']);
+		}
+	    }
+	}
+
+	// Did we manage to get a value?
+	if ( empty($nameId->getValue()) ) {
+	    // Get the 'default attribute' value instead (if available)
+	    $val = $this->getValue($state);
+	    if ( empty($val) ) {
+		\SimpleSAML\Logger::warning(
+		    'No appropriate value in attribute ' . var_export($this->attribute, true) .
+		    ' on user - not generating attribute NameID.'
+		);
+		return;
+	    }
+	    $nameId->setValue($val);
+            $nameId->setFormat($this->format);
+	}
+
+	// Did we manage to get a NameQualifier?
+	if ( empty($nameId->getNameQualifier()) ) {
+	    if (isset($state['saml:sp:IdP'])) {
+		// Fall back on remote IdP
+		$nameId->setNameQualifier($state['saml:sp:IdP']);
+	    } else {
+		// Neither incoming NameId, nor remote IdP (?!)
+		\SimpleSAML\Logger::warning('No IdP entity ID, unable to set NameQualifier.');
+	    }
+	}
 
         // Do we know the remote SP
         if (isset($state['SPMetadata']['entityid'])) {
@@ -120,7 +126,7 @@ class AttributeNameIDRCauth extends \SimpleSAML\Module\saml\BaseNameIDGenerator
      * @param array $state The state array.
      * @return string|null The NameID value.
      */
-    protected function getValue(array &$state)
+    protected function getValue(array &$state): ?string
     {
         if (!isset($state['Attributes'][$this->attribute]) || count($state['Attributes'][$this->attribute]) === 0) {
             \SimpleSAML\Logger::warning(
@@ -164,7 +170,7 @@ class AttributeNameIDRCauth extends \SimpleSAML\Module\saml\BaseNameIDGenerator
             return null;
         }
 
-        if (empty($value)) {
+        if ( empty($value) ) {
             return null;
         }
 

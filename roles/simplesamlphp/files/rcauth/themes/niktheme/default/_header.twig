@@ -3,7 +3,7 @@
                 <div class="left show-for-large">
                         <div id="topLogo" class="topLogoBranding">
                           <div style="vertical-align: top; display: inline-block;"><img class="topLogoAlign" src="/{{ baseurlpath }}module.php/rcauth/assets/RCauth-eu-logo-150.gif" alt="RCauth"></div>
-                          <div style="display: inline-block;">{{ '{rcauth:fullname}'|trans|raw }}</div>
+                          <div style="display: inline-block;">{{ 'The white-label Research and Collaboration<br>Authentication CA Service for Europe'|trans|raw }}</div>
                         </div>
                 </div>
                 <div class="center hide-for-large">
@@ -28,12 +28,12 @@
                                     <li><a class="pure-menu-heading" href="#">{{ lang.name }}</a><li>
                                     {% else -%}
                                     {% if lang.url -%}
-                                    <li class="pure-menu-item"><a href="{{ lang.url }}{%- spaceless %}
+                                    <li class="pure-menu-item"><a href="{{ lang.url }}
                                         {% if queryParams -%}&{% endif -%}
                                         {% for name, value in queryParams -%}
                                             {%- if not loop.first %}&{% endif -%}
                                             {%- if value %}{{ name }}={{ value }}{% else %}{{ name }}{%- endif %}
-                                        {%- endfor %}"{% endspaceless %} class="pure-menu-link">{{ lang.name }}</a></li>
+                                        {%- endfor %}" class="pure-menu-link">{{ lang.name }}</a></li>
                                     {% endif -%}
                                 {% endif -%}
                             {% endfor -%}
