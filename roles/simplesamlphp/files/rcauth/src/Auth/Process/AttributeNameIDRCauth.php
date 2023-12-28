@@ -2,6 +2,9 @@
 
 namespace SimpleSAML\Module\rcauth\Auth\Process;
 
+use SimpleSAML\Module\saml\BaseNameIDGenerator;
+use SimpleSAML\Logger;
+
 /**
  * Authentication processing filter to either pass on the existing NameID or
  * create a new one base on an attribute. The NameQualifier is also either
@@ -12,9 +15,13 @@ namespace SimpleSAML\Module\rcauth\Auth\Process;
  * @package SimpleSAMLphp
  */
 
-class AttributeNameIDRCauth extends \SimpleSAML\Module\saml\BaseNameIDGenerator
+class AttributeNameIDRCauth extends BaseNameIDGenerator
 {
-
+    /**
+     * The attribute we should use as the NameID.
+     *
+     * @var string
+     */
     private $attribute;
 
     /**
@@ -70,7 +77,7 @@ class AttributeNameIDRCauth extends \SimpleSAML\Module\saml\BaseNameIDGenerator
 		if ($state['saml:sp:NameID']->getNameQualifier() === $state['saml:sp:IdP']) {
 		    $nameId->setNameQualifier($state['saml:sp:NameID']->getNameQualifier());
 		} else {
-		    \SimpleSAML\Logger::warning(
+		    Logger::warning(
 			'Invalid scope in NameID: '.
 			'NameQualifier does not match expected IdP: '.
 			$state['saml:sp:NameID']->getNameQualifier().' != '.$state['saml:sp:IdP']);
@@ -83,7 +90,7 @@ class AttributeNameIDRCauth extends \SimpleSAML\Module\saml\BaseNameIDGenerator
 	    // Get the 'default attribute' value instead (if available)
 	    $val = $this->getValue($state);
 	    if ( empty($val) ) {
-		\SimpleSAML\Logger::warning(
+		Logger::warning(
 		    'No appropriate value in attribute ' . var_export($this->attribute, true) .
 		    ' on user - not generating attribute NameID.'
 		);
@@ -100,7 +107,7 @@ class AttributeNameIDRCauth extends \SimpleSAML\Module\saml\BaseNameIDGenerator
 		$nameId->setNameQualifier($state['saml:sp:IdP']);
 	    } else {
 		// Neither incoming NameId, nor remote IdP (?!)
-		\SimpleSAML\Logger::warning('No IdP entity ID, unable to set NameQualifier.');
+		Logger::warning('No IdP entity ID, unable to set NameQualifier.');
 	    }
 	}
 
@@ -108,7 +115,7 @@ class AttributeNameIDRCauth extends \SimpleSAML\Module\saml\BaseNameIDGenerator
         if (isset($state['SPMetadata']['entityid'])) {
             $nameId->setSPNameQualifier($state['SPMetadata']['entityid']);
         } else {
-            \SimpleSAML\Logger::warning('No SP entity ID, unable to set SPNameQualifier.');
+            Logger::warning('No SP entity ID, unable to set SPNameQualifier.');
         }
 
         $state['saml:NameID'][$this->format] = $nameId;
@@ -128,26 +135,30 @@ class AttributeNameIDRCauth extends \SimpleSAML\Module\saml\BaseNameIDGenerator
      */
     protected function getValue(array &$state): ?string
     {
-        if (!isset($state['Attributes'][$this->attribute]) || count($state['Attributes'][$this->attribute]) === 0) {
-            \SimpleSAML\Logger::warning(
+        if (
+            !isset($state['Attributes'][$this->attribute])
+            || count($state['Attributes'][$this->attribute]) === 0
+        ) {
+            Logger::warning(
                 'Missing attribute ' . var_export($this->attribute, true) .
                 ' on user - not generating attribute NameID.'
             );
             return null;
         }
         if (count($state['Attributes'][$this->attribute]) > 1) {
-            \SimpleSAML\Logger::warning(
+            Logger::warning(
                 'More than one value in attribute ' . var_export($this->attribute, true) .
                 ' on user - not generating attribute NameID.'
             );
             return null;
         }
-        $value = array_values($state['Attributes'][$this->attribute]); // just in case the first index is no longer 0
+        // just in case the first index is no longer 0
+        $value = array_values($state['Attributes'][$this->attribute]);
         $value = $value[0];
 
         if (is_object($value)) {
             if (! $value instanceof \SAML2\XML\saml\NameID) {
-                \SimpleSAML\Logger::warning(
+                Logger::warning(
                     'Value of Attribute ' . var_export($this->attribute, true) .
                     ' is of unknown class '.get_class($value)
                 );
@@ -155,7 +166,7 @@ class AttributeNameIDRCauth extends \SimpleSAML\Module\saml\BaseNameIDGenerator
             }
             $val_Format=$value->getFormat();
             if (isset($val_Format) && $val_Format !== $this->format) {
-                \SimpleSAML\Logger::warning(
+                Logger::warning(
                     'Format of attribute ' . var_export($this->attribute, true) .
                     ' is unsupported: '.var_export($val_Format, true)
                 );
@@ -163,7 +174,7 @@ class AttributeNameIDRCauth extends \SimpleSAML\Module\saml\BaseNameIDGenerator
             }
             $value = $value->getValue();
         } elseif (! is_string($value)) {
-            \SimpleSAML\Logger::warning(
+            Logger::warning(
                 'Attribute ' . var_export($this->attribute, true) .
                 ' is of unknown type: '.gettype($value)
             );
