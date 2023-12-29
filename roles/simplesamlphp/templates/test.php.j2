@@ -1,0 +1,60 @@
+<?php
+
+/* Attribute viewer for SimpleSAMLphp 2.0 series pages
+   since the built-in test page is now admin protected
+
+   @(#)$Id$
+   Copyright 2023 David Groep, Nikhef 
+                  Nationaal instituut voor subatomaire fysica
+		  Adapted for RCauth WAYF, Mischa Salle, Nikhef
+   Licensed under the Apache License, Version 2.0 (the "License"); you may
+   not use this file except in compliance with the License. You may obtain
+   a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
+ */
+
+namespace SimpleSAML;
+
+// this setting specific to RCauth setup
+require_once('{{ ssp_dir }}/src/_autoload.php');
+
+use SimpleSAML\Configuration;
+use SimpleSAML\XHTML\Template;
+
+// determine auth source based on script name
+if ( preg_match("/.*\/([a-z][a-z0-9]+)\.php/",$_SERVER['SCRIPT_NAME'],$m) ) {
+  $as = $m[1];
+  $as = 'default-sp';
+} else {
+  $as = 'default-sp';
+}
+
+try {
+    $authsource = new \SimpleSAML\Auth\Simple($as);
+    $authsource->requireAuth();
+} catch ( \SimpleSAML\Error\AuthSource $e ) {
+    echo "Unknown authentication source ".htmlentities($as)." - exiting.\n";
+    exit;
+}
+
+$attributes = $authsource->getAttributes();
+$authData = $authsource->getAuthDataArray();
+$nameId = $authsource->getAuthData('saml:sp:NameID') ?? false;
+
+$httpUtils = new Utils\HTTP(); 
+$config = Configuration::getInstance();
+$t = new Template($config, 'admin:status.twig');
+$l = $t->getLocalization();
+$l->addAttributeDomains();
+$t->data = [
+    'attributes' => $attributes,
+    'authData' => $authData,
+    'remaining' => isset($authData['Expire']) ? $authData['Expire'] - time() : null,
+    'nameid' => $nameId,
+//    'logouturl' => $httpUtils->getSelfURLNoQuery() . '?as=' . urlencode($as) . '&logout',
+    'logouturl' => 'https://' . $httpUtils->getSelfHostWithPath() . '/saml2/idp/SingleLogoutService.php?ReturnTo='. $httpUtils->getSelfURLNoQuery(),
+    'menu' => [ 
+        [ "url" => "{{ meta_service_url }}" , "name" => "RCauth Home" ] ,
+    ],
+];
+
+$t->send();

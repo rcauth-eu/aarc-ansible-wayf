@@ -1,0 +1,11 @@
+---
+
+### Task installing test tool, public attribute viewer
+
+- name: copy test tool
+  template:
+    src: test.php.j2
+    dest: "{{ ssp_installdir }}/public/test.php"
+    mode: 0644
+    owner: root
+    group: root
