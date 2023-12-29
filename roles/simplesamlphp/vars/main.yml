@@ -18,7 +18,6 @@ source_patches:
   - en_discopower.po.patch
   - nl_discopower.po.patch
   - MetaLoader.php_tagmapping_adfsdisablescoping.patch
-  - MetaDataStorageHandler.php.patch
 
 # List of metadata/* files, installed and configured by task saml20_config.yml
 saml20_items:
