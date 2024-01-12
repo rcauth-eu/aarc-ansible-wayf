@@ -3,7 +3,7 @@ Description: Include the trusted SP metadata
 Author: Mischa Sallé <msalle@nikhef.nl>
 --- a/metadata/saml20-sp-remote.php	2023-12-19 12:24:47.983344668 +0100
 +++ b/metadata/saml20-sp-remote.php	2023-12-19 12:34:01.170579944 +0100
-@@ -6,44 +6,16 @@
+@@ -6,44 +6,{{ (prod_sp_remotes|count) + (test_sp_remotes|count) + 8 }} @@
   * See: https://simplesamlphp.org/docs/stable/simplesamlphp-reference-sp-remote
   */
  
