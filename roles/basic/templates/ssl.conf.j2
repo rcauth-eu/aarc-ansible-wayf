@@ -1,0 +1,30 @@
+# @(#)$Id$
+#
+# https config file for SSOed application service
+#
+
+<IfModule ssl_module>
+
+Listen                  443
+SSLPassPhraseDialog     builtin
+SSLSessionCache         shmcb:/var/cache/mod_ssl/scache(512000)
+SSLSessionCacheTimeout  300
+SSLRandomSeed           startup file:/dev/urandom  256
+SSLRandomSeed           connect builtin
+SSLCryptoDevice         builtin
+
+SSLCertificateFile      {{ hostcert }}
+SSLCertificateKeyFile   {{ hostkey }}
+{% if hostcert_intermediate is defined %}
+# Note: from Apache 2.4.8 SSLCertificateChainFile is obsolete. Probably can
+# better use SSLCACertificatePath in that case or put the whole chain in
+# SSLCertificateFile
+SSLCertificateChainFile {{ hostcert_intermediate }}
+{% endif %}
+
+SSLCACertificateFile    /etc/pki/tls/certs/ca-bundle.crt
+
+SSLOptions              +LegacyDNStringFormat
+
+
+</IfModule>

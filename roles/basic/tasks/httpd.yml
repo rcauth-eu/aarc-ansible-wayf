@@ -43,6 +43,26 @@
     path: "{{ httpd_www_conf_dir }}"
     state: directory
 
+- name: configure httpd ssl.conf
+  template:
+    src: ssl.conf.j2
+    dest: "{{ httpd_www_conf_dir }}/ssl.conf"
+    owner: root
+    group: root
+    mode: 0644
+    backup: yes
+  notify: restart httpd
+
+- name: configure httpd ciphersuite
+  template:
+    src: 10-ssl-ciphersuite.conf.j2
+    dest: "{{ httpd_www_conf_dir }}/10-ssl-ciphersuite.conf"
+    owner: root
+    group: root
+    mode: 0644
+    backup: yes
+  notify: restart httpd
+
 - name: configure httpd site.conf
   template:
     src: site.conf.j2

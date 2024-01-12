@@ -1,0 +1,10 @@
+#
+# TLS default security settings for all (v)hosts
+#
+
+<IfModule ssl_module>
+        SSLProtocol all -SSLv2 -SSLv3 +TLSv1
+        SSLHonorCipherOrder On
+        SSLCipherSuite "EECDH+ECDSA+AESGCM EECDH+aRSA+AESGCM EECDH+ECDSA+SHA384  EECDH+ECDSA+SHA256 EECDH+aRSA+SHA384 EECDH+aRSA+SHA256  EECDH EDH+aRSA  !aNULL !eNULL !MEDIUM !LOW !3DES !MD5 !EXP !PSK !SRP !DSS"
+</IfModule>
+
