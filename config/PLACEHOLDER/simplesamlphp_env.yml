@@ -75,7 +75,7 @@
 # - SURFconext-metadata-CA-2023.pem
 
 ### eduGAIN metadata feed URL
-#edugain_url: https://metadata.surfconext.nl/edugain-downstream.xml
+#edugain_url: https://metadata.surfconext.nl/edugain-downstream-idp.xml
 
 
 ### idp_remote metadata files to include, split in prod & test
