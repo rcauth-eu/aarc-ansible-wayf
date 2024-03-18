@@ -4,7 +4,7 @@
 ########################################################################
 
 ### SimpleSAMLphp version
-#ssp_version: 1.19.8
+#ssp_version: 2.2.1
 
 ### SimpleSAMLphp directory suffix, appended after the version
 #ssp_suffix: prod
@@ -30,6 +30,8 @@
 ### data directory for simplesamlphp
 #ssp_datadir: "{{ ssp_installdir }}/data/"
 
+### cache directory for simplesamlphp
+#ssp_cachedir: /var/cache/simplesamlphp/
 
 ### Some log configuration, more complete setting via config.php
 

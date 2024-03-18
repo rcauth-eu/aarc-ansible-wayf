@@ -39,6 +39,15 @@
       - "{{ ssp_installdir }}/config"
       - "{{ ssp_installdir }}/config.dist"
 
+# Cache directory: needs to exist always for version>=2.2
+- name: create cache directory
+  file:
+    path: "{{ ssp_cachedir }}"
+    state: directory
+    owner: root
+    group: "{{ ssp_group }}"
+    mode: 0770
+
 # Logging directory: needs to exist always for version>=2
 - name: create logging directory
   file:
