@@ -4,7 +4,7 @@
 ########################################################################
 
 ### SimpleSAMLphp version
-#ssp_version: 2.2.2
+#ssp_version: 2.3.0
 
 ### SimpleSAMLphp directory suffix, appended after the version
 #ssp_suffix: prod
