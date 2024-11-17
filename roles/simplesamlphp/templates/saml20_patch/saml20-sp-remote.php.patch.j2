@@ -3,7 +3,7 @@ Description: Include the trusted SP metadata
 Author: Mischa Sallé <msalle@nikhef.nl>
 --- a/metadata/saml20-sp-remote.php	2023-12-19 12:24:47.983344668 +0100
 +++ b/metadata/saml20-sp-remote.php	2023-12-19 12:34:01.170579944 +0100
-@@ -6,44 +6,{{ (prod_sp_remotes|count) + (test_sp_remotes|count) + 8 }} @@
+@@ -6,72 +6,{{ (prod_sp_remotes|count) + (test_sp_remotes|count) + 8 }} @@
   * See: https://simplesamlphp.org/docs/stable/simplesamlphp-reference-sp-remote
   */
  
@@ -11,8 +11,20 @@ Author: Mischa Sallé <msalle@nikhef.nl>
 - * Example SimpleSAMLphp SAML 2.0 SP
 - */
 -$metadata['https://saml2sp.example.org'] = [
--    'AssertionConsumerService' => 'https://saml2.example.org/module.php/saml/sp/saml2-acs.php/default-sp',
--    'SingleLogoutService' => 'https://saml2sp.example.org/module.php/saml/sp/saml2-logout.php/default-sp',
+-    'AssertionConsumerService' => [
+-        [
+-            'index' => 1,
+-            'isDefault' => true,
+-            'Location' => 'https://saml2.example.org/module.php/saml/sp/saml2-acs.php/default-sp',
+-            'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST',
+-        ],
+-    ],
+-    'SingleLogoutService' =>  => [
+-        [
+-            'Location' => 'https://saml2sp.example.org/module.php/saml/sp/saml2-logout.php/default-sp',
+-            'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect',
+-        ],
+-    ],
 -];
 + $metadata = [];
  
@@ -24,7 +36,14 @@ Author: Mischa Sallé <msalle@nikhef.nl>
 - * this user has the value of 'john'.
 - */
 -$metadata['google.com'] = [
--    'AssertionConsumerService' => 'https://www.google.com/a/g.feide.no/acs',
+-    'AssertionConsumerService' => [
+-        [
+-            'index' => 1,
+-            'isDefault' => true,
+-            'Location' => 'https://www.google.com/a/g.feide.no/acs',
+-            'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST',
+-        ],
+-    ], 
 -    'NameIDFormat' => 'urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress',
 -    'authproc' => [
 -      1 => [
@@ -36,8 +55,17 @@ Author: Mischa Sallé <msalle@nikhef.nl>
 -    'simplesaml.attributes' => false,
 -];
 -
+-
 -$metadata['https://legacy.example.edu'] = [
--    'AssertionConsumerService' => 'https://legacy.example.edu/saml/acs',
+-    'AssertionConsumerService' =>  => [
+-        [
+-            'index' => 1,
+-            'isDefault' => true,
+-            'Location' => 'https://legacy.example.edu/saml/acs',
+-            'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST',
+-        ],
+-    ],
+-    
 -    /*
 -     * Currently, SimpleSAMLphp defaults to the SHA-256 hashing algorithm.
 -     * Uncomment the following option to use SHA-1 for signatures directed
