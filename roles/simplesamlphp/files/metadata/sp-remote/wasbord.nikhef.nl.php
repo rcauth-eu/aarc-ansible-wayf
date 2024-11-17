@@ -1,129 +1,102 @@
 <?php
-$metadata['https://pilot-ca1.rcauth.eu'] = array (
+$metadata['https://pilot-ca1.rcauth.eu'] = [
   'entityid' => 'https://pilot-ca1.rcauth.eu',
-  'description' => 
-  array (
+  'description' => [
     'en' => 'RCauth Pilot Online CA for providing end-user proxy certificates to Science Gateways and other portals',
-  ),
-  'OrganizationName' => 
-  array (
+  ],
+  'OrganizationName' => [
     'en' => 'Nikhef',
-  ),
-  'name' => 
-  array (
+  ],
+  'name' => [
     'en' => 'RCauth Pilot Online CA',
-  ),
-  'OrganizationDisplayName' => 
-  array (
+  ],
+  'OrganizationDisplayName' => [
     'en' => 'Nikhef',
-  ),
-  'url' => 
-  array (
+  ],
+  'url' => [
     'en' => 'http://www.nikhef.nl',
-  ),
-  'OrganizationURL' => 
-  array (
+  ],
+  'OrganizationURL' => [
     'en' => 'http://www.nikhef.nl',
-  ),
-  'contacts' => 
-  array (
-    0 => 
-    array (
+  ],
+  'contacts' => [
+    0 => [
       'contactType' => 'administrative',
       'company' => 'RCauth',
       'givenName' => 'Operator',
-      'emailAddress' => 
-      array (
+      'emailAddress' => [
         0 => 'mailto:ca@rcauth.eu',
-      ),
-    ),
-    1 => 
-    array (
+      ],
+    ],
+    1 => [
       'contactType' => 'support',
       'company' => 'RCauth',
       'givenName' => 'Operator',
-      'emailAddress' => 
-      array (
+      'emailAddress' => [
         0 => 'mailto:ca@rcauth.eu',
-      ),
-    ),
-    2 => 
-    array (
+      ],
+    ],
+    2 => [
       'contactType' => 'other',
       'company' => 'Nikhef',
       'givenName' => 'CSIRT',
-      'emailAddress' => 
-      array (
+      'emailAddress' => [
         0 => 'mailto:security@nikhef.nl',
-      ),
-      'telephoneNumber' => 
-      array (
+      ],
+      'telephoneNumber' => [
         0 => '+31205925090',
-      ),
-    ),
-    3 => 
-    array (
+      ],
+    ],
+    3 => [
       'contactType' => 'technical',
       'givenName' => 'Operator',
-      'emailAddress' => 
-      array (
+      'emailAddress' => [
         0 => 'mailto:ca@rcauth.eu',
-      ),
-    ),
-  ),
+      ],
+    ],
+  ],
   'metadata-set' => 'saml20-sp-remote',
-  'AssertionConsumerService' => 
-  array (
-    0 => 
-    array (
+  'AssertionConsumerService' => [
+    0 => [
       'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST',
       'Location' => 'https://pilot-ca1.rcauth.eu/Shibboleth.sso/SAML2/POST',
       'index' => 1,
-    ),
-    1 => 
-    array (
+    ],
+    1 => [
       'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST-SimpleSign',
       'Location' => 'https://pilot-ca1.rcauth.eu/Shibboleth.sso/SAML2/POST-SimpleSign',
       'index' => 2,
-    ),
-    2 => 
-    array (
+    ],
+    2 => [
       'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Artifact',
       'Location' => 'https://pilot-ca1.rcauth.eu/Shibboleth.sso/SAML2/Artifact',
       'index' => 3,
-    ),
-    3 => 
-    array (
+    ],
+    3 => [
       'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:PAOS',
       'Location' => 'https://pilot-ca1.rcauth.eu/Shibboleth.sso/SAML2/ECP',
       'index' => 4,
-    ),
-  ),
-  'SingleLogoutService' => 
-  array (
-    0 => 
-    array (
+    ],
+  ],
+  'SingleLogoutService' => [
+    0 => [
       'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:SOAP',
       'Location' => 'https://pilot-ca1.rcauth.eu/Shibboleth.sso/SLO/SOAP',
-    ),
-    1 => 
-    array (
+    ],
+    1 => [
       'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect',
       'Location' => 'https://pilot-ca1.rcauth.eu/Shibboleth.sso/SLO/Redirect',
-    ),
-    2 => 
-    array (
+    ],
+    2 => [
       'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST',
       'Location' => 'https://pilot-ca1.rcauth.eu/Shibboleth.sso/SLO/POST',
-    ),
-    3 => 
-    array (
+    ],
+    3 => [
       'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Artifact',
       'Location' => 'https://pilot-ca1.rcauth.eu/Shibboleth.sso/SLO/Artifact',
-    ),
-  ),
-  'attributes' => 
-  array (
+    ],
+  ],
+  'attributes' => [
     0 => 'urn:oid:1.3.6.1.4.1.5923.1.1.1.6',
     1 => 'urn:oid:1.3.6.1.4.1.5923.1.1.1.13',
     2 => 'urn:oid:1.3.6.1.4.1.5923.1.1.1.10',
@@ -135,12 +108,10 @@ $metadata['https://pilot-ca1.rcauth.eu'] = array (
     8 => 'urn:oid:0.9.2342.19200300.100.1.3',
     9 => 'urn:oid:1.3.6.1.4.1.5923.1.1.1.11',
     10 => 'urn:oid:1.3.6.1.4.1.25178.1.2.9',
-  ),
+  ],
   'attributes.NameFormat' => 'urn:oasis:names:tc:SAML:2.0:attrname-format:uri',
-  'keys' => 
-  array (
-    0 => 
-    array (
+  'keys' => [
+    0 => [
       'encryption' => false,
       'signing' => true,
       'type' => 'X509Certificate',
@@ -167,9 +138,8 @@ a7Txvo+vl7G5oBtty8sNWdb+kWjobfT9/AicPLK3GeVGjWnZOA+FPOyGs/Oz/QtP
 Mr5Q0x7fyqAFWYaF7O1+ENcZDQ/aGr2LQ0oOazasRkVfMFgd4NrSw+BRMD/B5Vie
 5DG+ItnUc1QskNAbpdc=
 ',
-    ),
-    1 => 
-    array (
+    ],
+    1 => [
       'encryption' => true,
       'signing' => false,
       'type' => 'X509Certificate',
@@ -196,35 +166,26 @@ Q94DwcBv+HA6ov32MStA+b1s7KVpx3ye+6Wjwj9U0WjLBUtLxPk+MGcAMI2T4i4n
 Xo19dFb/4yry3xYQIg0lFz3uOxiYW5Ut3wDKkgeEk8nlgLAtaRWPco6d8D7DeOlE
 ucmwTI+Knd1Y0jb4olk=
 ',
-    ),
-  ),
-  'EntityAttributes' => 
-  array (
-    'http://macedir.org/entity-category' => 
-    array (
+    ],
+  ],
+  'EntityAttributes' => [
+    'http://macedir.org/entity-category' => [
       0 => 'http://refeds.org/category/research-and-scholarship',
-    ),
-    'urn:oasis:names:tc:SAML:attribute:assurance-certification' => 
-    array (
+    ],
+    'urn:oasis:names:tc:SAML:attribute:assurance-certification' => [
       0 => 'https://refeds.org/sirtfi',
-    ),
-  ),
-  'UIInfo' => 
-  array (
-    'DisplayName' => 
-    array (
+    ],
+  ],
+  'UIInfo' => [
+    'DisplayName' => [
       'en' => 'RCauth Pilot Online CA',
-    ),
-    'Description' => 
-    array (
+    ],
+    'Description' => [
       'en' => 'RCauth Pilot Online CA for providing end-user proxy certificates to Science Gateways and other portals',
-    ),
-    'InformationURL' => 
-    array (
+    ],
+    'InformationURL' => [
       'en' => 'https://rcauth.eu/',
-    ),
-    'PrivacyStatementURL' => 
-    array (
-    ),
-  ),
-);
+    ],
+    'PrivacyStatementURL' => [],
+  ],
+];

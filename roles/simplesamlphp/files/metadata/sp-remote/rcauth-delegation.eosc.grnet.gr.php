@@ -1,129 +1,102 @@
 <?php
- $metadata['https://rcauth-delegation.eosc.grnet.gr'] = array (
+ $metadata['https://rcauth-delegation.eosc.grnet.gr'] = [
   'entityid' => 'https://rcauth-delegation.eosc.grnet.gr',
-  'description' => 
-  array (
+  'description' => [
     'en' => 'Test RCauth Pilot Delegation Service for providing end-user proxy certificates to Science Gateways and other portals',
-  ),
-  'OrganizationName' => 
-  array (
+  ],
+  'OrganizationName' => [
     'en' => 'Organization',
-  ),
-  'name' => 
-  array (
+  ],
+  'name' => [
     'en' => 'Test RCauth Pilot Delegation Service (GRNET)',
-  ),
-  'OrganizationDisplayName' => 
-  array (
+  ],
+  'OrganizationDisplayName' => [
     'en' => 'Organization',
-  ),
-  'url' => 
-  array (
+  ],
+  'url' => [
     'en' => 'https://www.example.org/',
-  ),
-  'OrganizationURL' => 
-  array (
+  ],
+  'OrganizationURL' => [
     'en' => 'https://www.example.org/',
-  ),
-  'contacts' => 
-  array (
-    0 => 
-    array (
+  ],
+  'contacts' => [
+    0 => [
       'contactType' => 'administrative',
       'company' => 'Example',
       'givenName' => 'Operator',
-      'emailAddress' => 
-      array (
+      'emailAddress' => [
         0 => 'admin@example.org',
-      ),
-    ),
-    1 => 
-    array (
+      ],
+    ],
+    1 => [
       'contactType' => 'support',
       'company' => 'Example',
       'givenName' => 'Operator',
-      'emailAddress' => 
-      array (
+      'emailAddress' => [
         0 => 'admin@example.org',
-      ),
-    ),
-    2 => 
-    array (
+      ],
+    ],
+    2 => [
       'contactType' => 'other',
       'company' => 'Example',
       'givenName' => 'CSIRT',
-      'emailAddress' => 
-      array (
+      'emailAddress' => [
         0 => 'security@example.org',
-      ),
-      'telephoneNumber' => 
-      array (
+      ],
+      'telephoneNumber' => [
         0 => '+1-2-34567890',
-      ),
-    ),
-    3 => 
-    array (
+      ],
+    ],
+    3 => [
       'contactType' => 'technical',
       'givenName' => 'Operator',
-      'emailAddress' => 
-      array (
+      'emailAddress' => [
         0 => 'admin@example.org',
-      ),
-    ),
-  ),
+      ],
+    ],
+  ],
   'metadata-set' => 'saml20-sp-remote',
-  'AssertionConsumerService' => 
-  array (
-    0 => 
-    array (
+  'AssertionConsumerService' => [
+    0 => [
       'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST',
       'Location' => 'https://rcauth-delegation.eosc.grnet.gr/Shibboleth.sso/SAML2/POST',
       'index' => 1,
-    ),
-    1 => 
-    array (
+    ],
+    1 => [
       'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST-SimpleSign',
       'Location' => 'https://rcauth-delegation.eosc.grnet.gr/Shibboleth.sso/SAML2/POST-SimpleSign',
       'index' => 2,
-    ),
-    2 => 
-    array (
+    ],
+    2 => [
       'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Artifact',
       'Location' => 'https://rcauth-delegation.eosc.grnet.gr/Shibboleth.sso/SAML2/Artifact',
       'index' => 3,
-    ),
-    3 => 
-    array (
+    ],
+    3 => [
       'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:PAOS',
       'Location' => 'https://rcauth-delegation.eosc.grnet.gr/Shibboleth.sso/SAML2/ECP',
       'index' => 4,
-    ),
-  ),
-  'SingleLogoutService' => 
-  array (
-    0 => 
-    array (
+    ],
+  ],
+  'SingleLogoutService' => [
+    0 => [
       'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:SOAP',
       'Location' => 'https://rcauth-delegation.eosc.grnet.gr/Shibboleth.sso/SLO/SOAP',
-    ),
-    1 => 
-    array (
+    ],
+    1 => [
       'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect',
       'Location' => 'https://rcauth-delegation.eosc.grnet.gr/Shibboleth.sso/SLO/Redirect',
-    ),
-    2 => 
-    array (
+    ],
+    2 => [
       'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST',
       'Location' => 'https://rcauth-delegation.eosc.grnet.gr/Shibboleth.sso/SLO/POST',
-    ),
-    3 => 
-    array (
+    ],
+    3 => [
       'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Artifact',
       'Location' => 'https://rcauth-delegation.eosc.grnet.gr/Shibboleth.sso/SLO/Artifact',
-    ),
-  ),
-  'attributes' => 
-  array (
+    ],
+  ],
+  'attributes' => [
     0 => 'urn:oid:1.3.6.1.4.1.5923.1.1.1.6',
     1 => 'urn:oid:1.3.6.1.4.1.5923.1.1.1.13',
     2 => 'urn:oid:1.3.6.1.4.1.5923.1.1.1.10',
@@ -135,12 +108,10 @@
     8 => 'urn:oid:0.9.2342.19200300.100.1.3',
     9 => 'urn:oid:1.3.6.1.4.1.5923.1.1.1.11',
     10 => 'urn:oid:1.3.6.1.4.1.25178.1.2.9',
-  ),
+  ],
   'attributes.NameFormat' => 'urn:oasis:names:tc:SAML:2.0:attrname-format:uri',
-  'keys' => 
-  array (
-    0 => 
-    array (
+  'keys' => [
+    0 => [
       'encryption' => false,
       'signing' => true,
       'type' => 'X509Certificate',
@@ -166,9 +137,8 @@ ItwHeeNN5BP1e+5sjF2rTKAL/zqkfuPtqPtUjiG5j8e0mfDfb74VcrAs28OKr4pC
 o60nDUwWpXctrJP1Dp8c50CZCKXHecsHp4Wr61dDnRdL6XOw6rY/8vvbeTme2FLz
 rmtN2ToveCp4VXM0kUukOLUChAql/3VGabo=
 ',
-    ),
-    1 => 
-    array (
+    ],
+    1 => [
       'encryption' => true,
       'signing' => false,
       'type' => 'X509Certificate',
@@ -194,35 +164,26 @@ SN68a9AmDfMB3TptWsB3wm9T5x71nB4Frn5cDBM/pKNb6e8FQmAQiQVon/io4hAR
 azhO9CKpAaYhK7Y5Nu3VS2S8Tob3kjxpEwsGEWRLbwTQdyWrz8bXZhFJdM5QAxPF
 QvNbijzxYQyjVcSivhQALhrGXjfAU2HXYUE=
 ',
-    ),
-  ),
-  'EntityAttributes' => 
-  array (
-    'http://macedir.org/entity-category' => 
-    array (
+    ],
+  ],
+  'EntityAttributes' => [
+    'http://macedir.org/entity-category' => [
       0 => 'http://refeds.org/category/research-and-scholarship',
-    ),
-    'urn:oasis:names:tc:SAML:attribute:assurance-certification' => 
-    array (
+    ],
+    'urn:oasis:names:tc:SAML:attribute:assurance-certification' => [
       0 => 'https://refeds.org/sirtfi',
-    ),
-  ),
-  'UIInfo' => 
-  array (
-    'DisplayName' => 
-    array (
+    ],
+  ],
+  'UIInfo' => [
+    'DisplayName' => [
       'en' => 'Test RCauth Pilot Delegation Service',
-    ),
-    'Description' => 
-    array (
+    ],
+    'Description' => [
       'en' => 'Test RCauth Pilot Delegation Service for providing end-user proxy certificates to Science Gateways and other portals',
-    ),
-    'InformationURL' => 
-    array (
+    ],
+    'InformationURL' => [
       'en' => 'https://www.example.org/',
-    ),
-    'PrivacyStatementURL' => 
-    array (
-    ),
-  ),
-);
+    ],
+    'PrivacyStatementURL' => [],
+  ],
+];

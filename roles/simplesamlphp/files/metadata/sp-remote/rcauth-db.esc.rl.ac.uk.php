@@ -1,129 +1,102 @@
 <?php
-$metadata['https://rcauth-db.esc.rl.ac.uk/'] = array (
+$metadata['https://rcauth-db.esc.rl.ac.uk/'] = [
   'entityid' => 'https://rcauth-db.esc.rl.ac.uk/',
-  'description' =>
-  array (
+  'description' => [
     'en' => 'Test RCauth Pilot Delegation Service for providing end-user proxy certificates to Science Gateways and other portals',
-  ),
-  'OrganizationName' =>
-  array (
+  ],
+  'OrganizationName' => [
     'en' => 'UKRI-STFC',
-  ),
-  'name' =>
-  array (
+  ],
+  'name' => [
     'en' => 'Test RCauth Pilot Delegation Service (STFC)',
-  ),
-  'OrganizationDisplayName' =>
-  array (
+  ],
+  'OrganizationDisplayName' => [
     'en' => 'UKRI-STFC',
-  ),
-  'url' =>
-  array (
+  ],
+  'url' => [
     'en' => 'https://stfc.ukri.org/',
-  ),
-  'OrganizationURL' =>
-  array (
+  ],
+  'OrganizationURL' => [
     'en' => 'https://stfc.ukri.org/',
-  ),
-  'contacts' =>
-  array (
-    0 =>
-    array (
+  ],
+  'contacts' => [
+    0 => [
       'contactType' => 'administrative',
       'company' => 'Example',
       'givenName' => 'Operator',
-      'emailAddress' =>
-      array (
+      'emailAddress' => [
         0 => 'admin@example.org',
-      ),
-    ),
-    1 =>
-    array (
+      ],
+    ],
+    1 => [
       'contactType' => 'support',
       'company' => 'Example',
       'givenName' => 'Operator',
-      'emailAddress' =>
-      array (
+      'emailAddress' => [
         0 => 'admin@example.org',
-      ),
-    ),
-    2 =>
-    array (
+      ],
+    ],
+    2 => [
       'contactType' => 'other',
       'company' => 'Example',
       'givenName' => 'CSIRT',
-      'emailAddress' =>
-      array (
+      'emailAddress' => [
         0 => 'security@example.org',
-      ),
-      'telephoneNumber' =>
-      array (
+      ],
+      'telephoneNumber' => [
         0 => '+1-2-34567890',
-      ),
-    ),
-    3 =>
-    array (
+      ],
+    ],
+    3 => [
       'contactType' => 'technical',
       'givenName' => 'Operator',
-      'emailAddress' =>
-      array (
+      'emailAddress' => [
         0 => 'admin@example.org',
-      ),
-    ),
-  ),
+      ],
+    ],
+  ],
   'metadata-set' => 'saml20-sp-remote',
-  'AssertionConsumerService' =>
-  array (
-    0 =>
-    array (
+  'AssertionConsumerService' => [
+    0 => [
       'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST',
       'Location' => 'https://rcauth-db.esc.rl.ac.uk/Shibboleth.sso/SAML2/POST',
       'index' => 1,
-    ),
-    1 =>
-    array (
+    ],
+    1 => [
       'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST-SimpleSign',
       'Location' => 'https://rcauth-db.esc.rl.ac.uk/Shibboleth.sso/SAML2/POST-SimpleSign',
       'index' => 2,
-    ),
-    2 =>
-    array (
+    ],
+    2 => [
       'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Artifact',
       'Location' => 'https://rcauth-db.esc.rl.ac.uk/Shibboleth.sso/SAML2/Artifact',
       'index' => 3,
-    ),
-    3 =>
-    array (
+    ],
+    3 => [
       'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:PAOS',
       'Location' => 'https://rcauth-db.esc.rl.ac.uk/Shibboleth.sso/SAML2/ECP',
       'index' => 4,
-    ),
-  ),
-  'SingleLogoutService' =>
-  array (
-    0 =>
-    array (
+    ],
+  ],
+  'SingleLogoutService' => [
+    0 => [
       'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:SOAP',
       'Location' => 'https://rcauth-db.esc.rl.ac.uk/Shibboleth.sso/SLO/SOAP',
-    ),
-    1 =>
-    array (
+    ],
+    1 => [
       'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect',
       'Location' => 'https://rcauth-db.esc.rl.ac.uk/Shibboleth.sso/SLO/Redirect',
-    ),
-    2 =>
-    array (
+    ],
+    2 => [
       'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST',
       'Location' => 'https://rcauth-db.esc.rl.ac.uk/Shibboleth.sso/SLO/POST',
-    ),
-    3 =>
-    array (
+    ],
+    3 => [
       'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Artifact',
       'Location' => 'https://rcauth-db.esc.rl.ac.uk/Shibboleth.sso/SLO/Artifact',
-    ),
-  ),
-  'attributes' =>
-  array (
+    ],
+  ],
+  'attributes' => [
     0 => 'urn:oid:1.3.6.1.4.1.5923.1.1.1.6',
     1 => 'urn:oid:1.3.6.1.4.1.5923.1.1.1.13',
     2 => 'urn:oid:1.3.6.1.4.1.5923.1.1.1.10',
@@ -135,12 +108,10 @@ $metadata['https://rcauth-db.esc.rl.ac.uk/'] = array (
     8 => 'urn:oid:0.9.2342.19200300.100.1.3',
     9 => 'urn:oid:1.3.6.1.4.1.5923.1.1.1.11',
     10 => 'urn:oid:1.3.6.1.4.1.25178.1.2.9',
-  ),
+  ],
   'attributes.NameFormat' => 'urn:oasis:names:tc:SAML:2.0:attrname-format:uri',
-  'keys' =>
-  array (
-    0 =>
-    array (
+  'keys' => [
+    0 => [
       'encryption' => false,
       'signing' => true,
       'type' => 'X509Certificate',
@@ -167,9 +138,8 @@ YI/GpyYqB/nWQPHMwl5Sa/UnYmh5Kh3iWLsflR13lp7hCrk1NoblqF7lzc/BTx8p
 RaPMkfF7FhWt4B35O+AHUEL0L0a+NijKIHBtZaYietwfDbT2rzVXmnGKRni+1DxG
 7wiLYQeSBJzv2xXelqpyGXn/nqAmFSKf7UUrXOk=
 ',
-    ),
-    1 =>
-    array (
+    ],
+    1 => [
       'encryption' => true,
       'signing' => false,
       'type' => 'X509Certificate',
@@ -196,35 +166,26 @@ hhyx5j0N9R0zoHWrQL77vInXsJ6BAoHRQISAKzzMdSpmc8yw0OSfU+s9wKBf/GLX
 s8KPFF2XIvv3+blvSzFJxnYHh4I9ZZd+h9S3s4QZa80ODxB2sFjQoyd/j5z9aGAH
 HggWCXM7Y9Q+64YKdRVeg0GwGtnpvnNzu8XrpT4=
 ',
-    ),
-  ),
-  'EntityAttributes' =>
-  array (
-    'http://macedir.org/entity-category' =>
-    array (
+    ],
+  ],
+  'EntityAttributes' => [
+    'http://macedir.org/entity-category' => [
       0 => 'http://refeds.org/category/research-and-scholarship',
-    ),
-    'urn:oasis:names:tc:SAML:attribute:assurance-certification' =>
-    array (
+    ],
+    'urn:oasis:names:tc:SAML:attribute:assurance-certification' => [
       0 => 'https://refeds.org/sirtfi',
-    ),
-  ),
-  'UIInfo' =>
-  array (
-    'DisplayName' =>
-    array (
+    ],
+  ],
+  'UIInfo' => [
+    'DisplayName' => [
       'en' => 'Test RCauth Pilot Delegation Service (STFC)',
-    ),
-    'Description' =>
-    array (
+    ],
+    'Description' => [
       'en' => 'Test RCauth Pilot Delegation Service for providing end-user proxy certificates to Science Gateways and other portals',
-    ),
-    'InformationURL' =>
-    array (
+    ],
+    'InformationURL' => [
       'en' => 'https://rcauth-db.esc.rl.ac.uk/',
-    ),
-    'PrivacyStatementURL' =>
-    array (
-    ),
-  ),
-);
+    ],
+    'PrivacyStatementURL' => [],
+  ],
+];

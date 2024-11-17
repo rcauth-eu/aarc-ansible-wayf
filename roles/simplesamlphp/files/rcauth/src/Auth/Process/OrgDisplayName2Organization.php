@@ -61,7 +61,7 @@ class OrgDisplayName2Organization extends Auth\ProcessingFilter
                 $organization = $idpEntityId;
             }
             $attributes =& $state['Attributes'];
-            $attributes[self::$ORGANIZATION_OID] = array($organization);
+            $attributes[self::$ORGANIZATION_OID] = [$organization];
             \SimpleSAML\Logger::debug('Added attribute '.self::$ORGANIZATION_OID.' = '.$organization);
         }
      }

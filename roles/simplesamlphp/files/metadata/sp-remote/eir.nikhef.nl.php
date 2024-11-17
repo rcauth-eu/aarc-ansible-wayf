@@ -1,129 +1,102 @@
 <?php
-$metadata['https://eir.nikhef.nl'] = array (
+$metadata['https://eir.nikhef.nl'] = [
   'entityid' => 'https://eir.nikhef.nl',
-  'description' => 
-  array (
+  'description' => [
     'en' => 'Test RCauth Pilot Delegation Service for providing end-user proxy certificates to Science Gateways and other portals',
-  ),
-  'OrganizationName' => 
-  array (
+  ],
+  'OrganizationName' => [
     'en' => 'Organization',
-  ),
-  'name' => 
-  array (
+  ],
+  'name' => [
     'en' => 'Test RCauth Pilot Delegation Service',
-  ),
-  'OrganizationDisplayName' => 
-  array (
+  ],
+  'OrganizationDisplayName' => [
     'en' => 'Organization',
-  ),
-  'url' => 
-  array (
+  ],
+  'url' => [
     'en' => 'https://www.example.org/',
-  ),
-  'OrganizationURL' => 
-  array (
+  ],
+  'OrganizationURL' => [
     'en' => 'https://www.example.org/',
-  ),
-  'contacts' => 
-  array (
-    0 => 
-    array (
+  ],
+  'contacts' => [
+    0 => [
       'contactType' => 'administrative',
       'company' => 'Example',
       'givenName' => 'Operator',
-      'emailAddress' => 
-      array (
+      'emailAddress' => [
         0 => 'msalle@nikhef.nl',
-      ),
-    ),
-    1 => 
-    array (
+      ],
+    ],
+    1 => [
       'contactType' => 'support',
       'company' => 'Example',
       'givenName' => 'Operator',
-      'emailAddress' => 
-      array (
+      'emailAddress' => [
         0 => 'msalle@nikhef.nl',
-      ),
-    ),
-    2 => 
-    array (
+      ],
+    ],
+    2 => [
       'contactType' => 'other',
       'company' => 'Example',
       'givenName' => 'CSIRT',
-      'emailAddress' => 
-      array (
+      'emailAddress' => [
         0 => 'msalle@nikhef.nl',
-      ),
-      'telephoneNumber' => 
-      array (
+      ],
+      'telephoneNumber' => [
         0 => '+1-2-34567890',
-      ),
-    ),
-    3 => 
-    array (
+      ],
+    ],
+    3 => [
       'contactType' => 'technical',
       'givenName' => 'Operator',
-      'emailAddress' => 
-      array (
+      'emailAddress' => [
         0 => 'msalle@nikhef.nl',
-      ),
-    ),
-  ),
+      ],
+    ],
+  ],
   'metadata-set' => 'saml20-sp-remote',
-  'AssertionConsumerService' => 
-  array (
-    0 => 
-    array (
+  'AssertionConsumerService' => [
+    0 => [
       'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST',
       'Location' => 'https://eir.nikhef.nl/Shibboleth.sso/SAML2/POST',
       'index' => 1,
-    ),
-    1 => 
-    array (
+    ],
+    1 => [
       'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST-SimpleSign',
       'Location' => 'https://eir.nikhef.nl/Shibboleth.sso/SAML2/POST-SimpleSign',
       'index' => 2,
-    ),
-    2 => 
-    array (
+    ],
+    2 => [
       'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Artifact',
       'Location' => 'https://eir.nikhef.nl/Shibboleth.sso/SAML2/Artifact',
       'index' => 3,
-    ),
-    3 => 
-    array (
+    ],
+    3 => [
       'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:PAOS',
       'Location' => 'https://eir.nikhef.nl/Shibboleth.sso/SAML2/ECP',
       'index' => 4,
-    ),
-  ),
-  'SingleLogoutService' => 
-  array (
-    0 => 
-    array (
+    ],
+  ],
+  'SingleLogoutService' => [
+    0 => [
       'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:SOAP',
       'Location' => 'https://eir.nikhef.nl/Shibboleth.sso/SLO/SOAP',
-    ),
-    1 => 
-    array (
+    ],
+    1 => [
       'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect',
       'Location' => 'https://eir.nikhef.nl/Shibboleth.sso/SLO/Redirect',
-    ),
-    2 => 
-    array (
+    ],
+    2 => [
       'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST',
       'Location' => 'https://eir.nikhef.nl/Shibboleth.sso/SLO/POST',
-    ),
-    3 => 
-    array (
+    ],
+    3 => [
       'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Artifact',
       'Location' => 'https://eir.nikhef.nl/Shibboleth.sso/SLO/Artifact',
-    ),
-  ),
-  'attributes' => 
-  array (
+    ],
+  ],
+  'attributes' => [
     0 => 'urn:oid:1.3.6.1.4.1.5923.1.1.1.6',
     1 => 'urn:oid:1.3.6.1.4.1.5923.1.1.1.13',
     2 => 'urn:oid:1.3.6.1.4.1.5923.1.1.1.10',
@@ -135,12 +108,10 @@ $metadata['https://eir.nikhef.nl'] = array (
     8 => 'urn:oid:0.9.2342.19200300.100.1.3',
     9 => 'urn:oid:1.3.6.1.4.1.5923.1.1.1.11',
     10 => 'urn:oid:1.3.6.1.4.1.25178.1.2.9',
-  ),
+  ],
   'attributes.NameFormat' => 'urn:oasis:names:tc:SAML:2.0:attrname-format:uri',
-  'keys' => 
-  array (
-    0 => 
-    array (
+  'keys' => [
+    0 => [
       'encryption' => false,
       'signing' => true,
       'type' => 'X509Certificate',
@@ -167,9 +138,8 @@ PFEICII7fE9Pi9DtVIVGobH+cHxJ3sT2//f1htFSHAL+8HvG+grUtNcqQrkwMCrx
 9BMxBJ+ZxULIXscgy5saJceYRzYwVARqIN4DBrHipDSvRGEpEfEh78Hg0ZGBI/65
 0qM=
 ',
-    ),
-    1 => 
-    array (
+    ],
+    1 => [
       'encryption' => true,
       'signing' => false,
       'type' => 'X509Certificate',
@@ -196,35 +166,26 @@ lsXc3yH7jZ6G2t3Nu6umd1MAsT3BduCQzvSYkofBaQrK2ZqWp1Ck8rgiOMnaZ1k0
 zpN0c3l9/e0B1/q71OzWRrQKL2EaGlpEgrKdBeHFaogig+ecIVA8pL5/kY+vWCWu
 mRk=
 ',
-    ),
-  ),
-  'EntityAttributes' => 
-  array (
-    'http://macedir.org/entity-category' => 
-    array (
+    ],
+  ],
+  'EntityAttributes' => [
+    'http://macedir.org/entity-category' => [
       0 => 'http://refeds.org/category/research-and-scholarship',
-    ),
-    'urn:oasis:names:tc:SAML:attribute:assurance-certification' => 
-    array (
+    ],
+    'urn:oasis:names:tc:SAML:attribute:assurance-certification' => [
       0 => 'https://refeds.org/sirtfi',
-    ),
-  ),
-  'UIInfo' => 
-  array (
-    'DisplayName' => 
-    array (
+    ],
+  ],
+  'UIInfo' => [
+    'DisplayName' => [
       'en' => 'Test RCauth Pilot Delegation Service',
-    ),
-    'Description' => 
-    array (
+    ],
+    'Description' => [
       'en' => 'Test RCauth Pilot Delegation Service for providing end-user proxy certificates to Science Gateways and other portals',
-    ),
-    'InformationURL' => 
-    array (
+    ],
+    'InformationURL' => [
       'en' => 'https://www.example.org/',
-    ),
-    'PrivacyStatementURL' => 
-    array (
-    ),
-  ),
-);
+    ],
+    'PrivacyStatementURL' => [],
+  ],
+];
