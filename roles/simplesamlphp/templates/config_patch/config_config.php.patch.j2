@@ -124,12 +124,10 @@ Author: Tamas Balogh <tamasb@nikhef.nl>
      'enable.adfs-idp' => false,
  
  
-@@ -564,7 +562,{{ 7 + (enabled_modules|count) + (disabled_modules|count) }} @@
-         'exampleauth' => false,
+@@ -565,6 +563,{{ 6 + (enabled_modules|count) + (disabled_modules|count) }} @@
          'core' => true,
          'admin' => true,
--        'saml' => true
-+        'saml' => true,
+         'saml' => true,
 {% for enabled_mod in enabled_modules %}
 +        '{{ enabled_mod }}' => true,
 {% endfor %}
@@ -145,7 +143,7 @@ Author: Tamas Balogh <tamasb@nikhef.nl>
      'language.available' => [
 -        'en', 'no', 'nn', 'se', 'da', 'de', 'sv', 'fi', 'es', 'ca', 'fr', 'it', 'nl', 'lb',
 -        'cs', 'sk', 'sl', 'lt', 'hr', 'hu', 'pl', 'pt', 'pt_BR', 'tr', 'ja', 'zh', 'zh_TW',
--        'ru', 'et', 'he', 'id', 'sr', 'lv', 'ro', 'eu', 'el', 'af', 'zu', 'xh', 'st'
+-        'ru', 'et', 'he', 'id', 'sr', 'lv', 'ro', 'eu', 'el', 'af', 'zu', 'xh', 'st',
 +        'en', 'nl',
      ],
      'language.rtl' => ['ar', 'dv', 'fa', 'ur', 'he'],
@@ -160,7 +158,7 @@ Author: Tamas Balogh <tamasb@nikhef.nl>
  
      /*
       * Set this option to the text you would like to appear at the header of each page. Set to false if you don't want
-@@ -1040,6 +1042,24 @@
+@@ -1048,6 +1050,24 @@
          ],
          */
  
@@ -185,7 +183,7 @@ Author: Tamas Balogh <tamasb@nikhef.nl>
          /*
           * Generate the 'group' attribute populated from other variables, including eduPersonAffiliation.
          60 => [
-@@ -1069,7 +1089,7 @@
+@@ -1077,7 +1097,7 @@
       * This option allows you to specify a directory for your metadata outside of the standard metadata directory
       * included in the standard distribution of the software.
       */
@@ -194,7 +192,7 @@ Author: Tamas Balogh <tamasb@nikhef.nl>
  
      /*
       * This option configures the metadata sources. The metadata sources is given as an array with
-@@ -1165,7 +1185,7 @@
+@@ -1188,7 +1208,7 @@
       * Metadata signing can also be enabled for a individual SP or IdP by setting the
       * same option in the metadata for the SP or IdP.
       */
@@ -203,7 +201,7 @@ Author: Tamas Balogh <tamasb@nikhef.nl>
  
      /*
       * The default key & certificate which should be used to sign generated metadata. These
-@@ -1177,9 +1197,9 @@
+@@ -1200,9 +1220,9 @@
       * the 'certificate' and 'privatekey' option in the metadata will be used.
       * if those aren't set, signing of metadata will fail.
       */

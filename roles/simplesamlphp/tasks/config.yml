@@ -40,7 +40,7 @@
     - config.dist/config.php.dist
     - modules/cron/config/module_cron.php.dist
     - modules/metarefresh/config-templates/module_metarefresh.php
-    - modules/discopower/config-templates/module_discopower.php
+    - modules/discopower/config/module_discopower.php.dist
 
 - name: rename .dist configuration templates
   command:
@@ -50,6 +50,7 @@
     - authsources.php
     - config.php
     - module_cron.php
+    - module_discopower.php
 
 - name: copy configuration templated patches
   template:
